@@ -309,6 +309,12 @@
     [self hideStatusWindow];
 }
 
+//changed: Added to change background color correctly so it will work with AR
+- (BOOL)isRecording
+{
+    return self.coordinator.isRecording;
+}
+
 #pragma mark Status
 
 - (void)installStatusWindow

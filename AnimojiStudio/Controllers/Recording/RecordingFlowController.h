@@ -16,4 +16,5 @@
 @property (nonatomic, copy) NSString *karaokeTrackID;
 @property (nonatomic, assign) BOOL supportsMemoji;
 
+
 @end

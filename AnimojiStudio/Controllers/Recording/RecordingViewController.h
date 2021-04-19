@@ -16,7 +16,8 @@
 - (void)recordingViewControllerDidTapBroadcast:(RecordingViewController *)controller;
 - (void)recordingViewControllerDidTapKaraoke:(RecordingViewController *)controller;
 - (BOOL)recordingViewControllerDidTapKaraokePlayPause:(RecordingViewController *)controller;
-
+//changed: Added function for isRecording for my UI + AR
+- (BOOL)isRecording;
 @end
 
 @interface RecordingViewController : UIViewController

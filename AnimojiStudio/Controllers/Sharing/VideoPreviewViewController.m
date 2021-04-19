@@ -58,7 +58,7 @@
     [self.videoView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     
     self.shareButton = [BigButton new];
-    [self.shareButton setTitle:@"Share your creation" forState:UIControlStateNormal];
+    [self.shareButton setTitle:@"Place Message" forState:UIControlStateNormal];
     
     [self.view addSubview:self.shareButton];
     

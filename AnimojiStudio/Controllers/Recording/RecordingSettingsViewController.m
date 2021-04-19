@@ -67,10 +67,10 @@
     [self.settingsStack.trailingAnchor constraintEqualToAnchor:self.settingsContainer.trailingAnchor].active = YES;
     [self.settingsStack.topAnchor constraintEqualToAnchor:self.settingsContainer.topAnchor constant: 16].active = YES;
     [self.settingsStack.bottomAnchor constraintEqualToAnchor:self.settingsContainer.safeAreaLayoutGuide.bottomAnchor constant: -36].active = YES;
-    
-    [self _installMicrophoneSettingsUI];
-    [self _installColorSettingsUI];
-    [self _installKaraokeUI];
+    //changed: Don't create settings that are not needed for my project
+    //[self _installMicrophoneSettingsUI];
+    //[self _installColorSettingsUI];
+    //[self _installKaraokeUI];
     
     [self _installInstructionLabel];
     
@@ -83,8 +83,8 @@
     [self.settingsContainer.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
     [self.settingsContainer.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
 }
-
-- (void)_installMicrophoneSettingsUI
+//changed: Commented out functions I don't need
+/*- (void)_installMicrophoneSettingsUI
 {
     self.microphoneLabel = [UILabel new];
     self.microphoneLabel.text = @"Enable Microphone";
@@ -119,23 +119,10 @@
 - (IBAction)microphoneEnabledSwitchAction:(id)sender
 {
     [self.delegate recordingSettingsViewController:self didChangeMicrophoneEnabled:self.microphoneSwitch.isOn];
-}
+}*/
 
-- (void)_installInstructionLabel
-{
-    self.instructionLabel = [UILabel new];
-    self.instructionLabel.text = @"Tap on the screen to start recording, tap again to stop recording.\nDouble tap to live stream.";
-    self.instructionLabel.numberOfLines = 0;
-    self.instructionLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
-    self.instructionLabel.textAlignment = NSTextAlignmentCenter;
-    self.instructionLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.instructionLabel.textColor = [UIColor grayColor];
-    
-    [self.settingsStack addArrangedSubview:self.instructionLabel];
-    
-    [self.instructionLabel.widthAnchor constraintLessThanOrEqualToAnchor:self.settingsStack.widthAnchor multiplier:0.9].active = YES;
-}
 
+/*
 - (void)_installKaraokeUI
 {
     UIStackView *karaokeStackView = [UIStackView new];
@@ -165,6 +152,7 @@
 {
     [self.delegate recordingSettingsViewControllerDidTapChooseBackgroundColor:self];
 }
+ */
 
 - (IBAction)karaokeTapped:(id)sender
 {
@@ -188,6 +176,25 @@
 {
     [self.karaokePlayButton setHidden:isHidden];
 }
+ 
+
+- (void)_installInstructionLabel
+{
+    self.instructionLabel = [UILabel new];
+    //changed: My own instruction
+    //self.instructionLabel.text = @"Tap on the screen to start recording, tap again to stop recording.\nDouble tap to live stream.";
+    self.instructionLabel.text= @"Tap to start and stop recording message";
+    self.instructionLabel.numberOfLines = 0;
+    self.instructionLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+    self.instructionLabel.textAlignment = NSTextAlignmentCenter;
+    self.instructionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.instructionLabel.textColor = [UIColor grayColor];
+    
+    [self.settingsStack addArrangedSubview:self.instructionLabel];
+    
+    [self.instructionLabel.widthAnchor constraintLessThanOrEqualToAnchor:self.settingsStack.widthAnchor multiplier:0.9].active = YES;
+}
+
 
 - (void)_toggleSettingsBackgroundEffectWithColor:(UIColor *)color
 {
@@ -204,6 +211,7 @@
         }];
     }
 }
+ 
 
 - (void)setSceneBackgroundColor:(UIColor *)sceneBackgroundColor
 {

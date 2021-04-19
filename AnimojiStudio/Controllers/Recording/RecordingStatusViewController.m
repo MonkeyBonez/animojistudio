@@ -55,6 +55,7 @@
 
 - (void)_installPuppetSelection
 {
+    //doesn't work as I make sure it doesn't build the puppet selection
     CGFloat height = 38;
     
     self.puppetsController = [PuppetSelectionViewController new];
@@ -154,6 +155,7 @@
 
 - (void)puppetSelectionViewController:(PuppetSelectionViewController *)controller didSelectPuppetWithName:(NSString *)puppetName
 {
+    //get rid of changing animoji here if wanted
     [self.delegate recordingStatusController:self didChangePuppetToPuppetWithName:puppetName];
 }
 

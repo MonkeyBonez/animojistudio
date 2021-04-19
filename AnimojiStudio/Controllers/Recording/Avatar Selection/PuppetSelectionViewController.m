@@ -30,8 +30,8 @@ NSString * const kPuppetCellIdentifier = @"PuppetCell";
     
     self.title = @"Choose Character";
     self.puppetNames = [ASAnimoji puppetNames];
-    
-    [self build];
+    //changed: Don't allow puppet selection to build, only allow user to use their custom memojis
+    //[self build];
 }
 
 - (void)build

@@ -41,7 +41,7 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     [self.view setOpaque:YES];
     
     self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
-    self.title = @"Record";
+    self.title = @"Record Message";
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -87,7 +87,7 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 - (void)_loadMicPreference
 {
     BOOL savedMicEnabledSetting = [[NSUserDefaults standardUserDefaults] boolForKey:kMicrophoneEnabled];
-    
+
     self.settingsController.microphoneEnabled = savedMicEnabledSetting;
     self.microphoneEnabled = savedMicEnabledSetting;
 }
@@ -115,9 +115,21 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 
 - (IBAction)recordTapped:(id)sender
 {
-    [self.puppetView resetTracking];
-    [self.delegate recordingViewControllerDidTapRecord:self];
     
+    [self.puppetView resetTracking];
+    //changed: Added to adjust background color correctly:
+    UIColor *colorToChangeTo;
+    if([self.delegate isRecording]){
+        colorToChangeTo = [UIColor whiteColor];
+    }
+    else{
+        colorToChangeTo = [UIColor redColor];
+    }
+    self.puppetView.backgroundColor = colorToChangeTo;
+    //end
+    
+    [self.delegate recordingViewControllerDidTapRecord:self];
+    //changed: Adjust background color correctly:
     [self.settingsController resetKaraokePlayButtonState];
 }
 
@@ -189,7 +201,7 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 
 - (void)recordingSettingsViewControllerDidTapChooseBackgroundColor:(RecordingSettingsViewController *)controller
 {
-    [self showColorSheet];
+    //[self showColorSheet]; //changed
 }
 
 - (void)recordingSettingsViewController:(RecordingSettingsViewController *)controller didChangeMicrophoneEnabled:(BOOL)isEnabled

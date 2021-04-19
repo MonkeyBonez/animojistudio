@@ -34,14 +34,17 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
-
+    //changed: Automatically go to Memoji selection screen if supported
     if ([MemojiSupport deviceSupportsMemoji]) {
-        self.welcomeController = [WelcomeViewController new];
+        
+        self.title = @"Not supposed to see this";
+        [self _pushMemojiSelection];
+        /*self.welcomeController = [WelcomeViewController new];
         self.welcomeController.delegate = self;
 
-        [self installChildViewController:self.welcomeController];
+        [self installChildViewController:self.welcomeController];*/
     } else {
-        self.title = @"Select Character";
+        self.title = @"Can't support Memoji";
         [self _showAnimojiPuppetSelection];
     }
 }
@@ -60,13 +63,17 @@
 
 - (void)_pushMemojiSelection
 {
+    
+    
     AVTAvatarStore *store = [[ASAvatarStore alloc] initWithDomainIdentifier:[NSBundle mainBundle].bundleIdentifier];
     AVTAvatarLibraryViewController *libraryController = [[ASAvatarLibraryViewController alloc] initWithAvatarStore:store];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_handleMemojiSelectedWithNotification:) name:DidSelectMemoji object:nil];
 
     MemojiSelectionViewController *selection = [MemojiSelectionViewController memojiSelectionViewControllerWithEmbeddedController:libraryController];
-    [self.navigationController pushViewController:selection animated:YES];
+    //changed: set memoji selection as new root controller so user can't go back
+    [self.navigationController setViewControllers:@[selection] animated:YES];
+    //[self.navigationController pushViewController:selection animated:YES];
 }
 
 - (void)_handleMemojiSelectedWithNotification:(NSNotification *)note
@@ -93,7 +100,9 @@
     controller.delegate = self;
 
     if ([MemojiSupport deviceSupportsMemoji]) {
-        [self.navigationController pushViewController:controller animated:YES];
+        //changed: set memoji selection as new root controller so user can't go back
+        [self.navigationController setViewControllers:@[controller] animated:YES];
+        //[self.navigationController pushViewController:controller animated:YES];
     } else {
         [self installChildViewController:controller];
     }
