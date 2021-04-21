@@ -68,4 +68,36 @@
     return [self.spotifyCoordinator handleCallbackURL:url];
 }
 
+//Changed: Allow me to load app delegate manually from swift
+- (BOOL)setUp{
+    [ASAppearance install];
+    
+    self.spotifyCoordinator = [SpotifyCoordinator new];
+    
+    self.window = [UIWindow new];
+    
+    [self.window setOpaque:YES];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+    
+    if (![[NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/AvatarKit.framework"] load]) {
+        [self showErrorMessage:@"This app is only supported on devices with a TrueDepth camera."];
+        [self.window makeKeyAndVisible];
+        return YES;
+    }
+    
+    self.recordingFlow = [RecordingFlowController new];
+
+    [MemojiSupport prepareMemojiRuntime];
+
+    self.recordingFlow.supportsMemoji = [MemojiSupport deviceSupportsMemoji];
+
+    self.recordingFlow.spotifyCoordinator = self.spotifyCoordinator;
+    
+    [self.window setRootViewController:self.recordingFlow];
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+}
+
+
 @end

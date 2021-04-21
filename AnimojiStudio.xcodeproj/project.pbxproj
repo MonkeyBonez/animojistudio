@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360720F9262E57BE0080B767 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360720F8262E57BE0080B767 /* ViewController.swift */; };
+		36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0203262FEA9300C0F926 /* AppDelegate.swift */; };
+		36BB0207262FEB1C00C0F926 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0206262FEB1C00C0F926 /* Main.storyboard */; };
+		36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */; };
+		36BB0210262FEDBD00C0F926 /* Recording.mov in Resources */ = {isa = PBXBuildFile; fileRef = 36BB020F262FEDBD00C0F926 /* Recording.mov */; };
+		36BB0216262FEE9200C0F926 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0215262FEE9200C0F926 /* InitialViewController.swift */; };
 		DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135AE1FBB86E800AAA5E7 /* ASColorWell.m */; };
 		DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135DA1FBB99E900AAA5E7 /* ColorSheetPresentationController.m */; };
@@ -44,6 +50,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		360720F7262E57BD0080B767 /* AnimojiStudio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnimojiStudio-Bridging-Header.h"; sourceTree = "<group>"; };
+		360720F8262E57BE0080B767 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		36BB0203262FEA9300C0F926 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		36BB0206262FEB1C00C0F926 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		36BB020F262FEDBD00C0F926 /* Recording.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Recording.mov; sourceTree = "<group>"; };
+		36BB0215262FEE9200C0F926 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		DC59AD272411C031000F6244 /* AVTRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTRecordView.h; sourceTree = "<group>"; };
 		DC59AD282411C032000F6244 /* AVTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTView.h; sourceTree = "<group>"; };
 		DC59AD292411C032000F6244 /* AVTAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTAvatar.h; sourceTree = "<group>"; };
@@ -130,6 +143,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360720F6262E57950080B767 /* 2nd app stuff */ = {
+			isa = PBXGroup;
+			children = (
+				36BB0213262FEE3000C0F926 /* Controller */,
+				36BB0212262FEE2600C0F926 /* View */,
+				36BB0203262FEA9300C0F926 /* AppDelegate.swift */,
+				36BB0214262FEE4800C0F926 /* Resources */,
+				360720F7262E57BD0080B767 /* AnimojiStudio-Bridging-Header.h */,
+			);
+			path = "2nd app stuff";
+			sourceTree = "<group>";
+		};
+		36BB0212262FEE2600C0F926 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				36BB0206262FEB1C00C0F926 /* Main.storyboard */,
+				36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		36BB0213262FEE3000C0F926 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				360720F8262E57BE0080B767 /* ViewController.swift */,
+				36BB0215262FEE9200C0F926 /* InitialViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		36BB0214262FEE4800C0F926 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				36BB020F262FEDBD00C0F926 /* Recording.mov */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		DD7135D81FBB99E000AAA5E7 /* Color Sheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +266,7 @@
 		DDDBBBE81FB7917F00291D45 /* AnimojiStudio */ = {
 			isa = PBXGroup;
 			children = (
+				360720F6262E57950080B767 /* 2nd app stuff */,
 				DDDBBC051FB7978D00291D45 /* Resources */,
 				DDDBBC151FB79C3900291D45 /* Views */,
 				DDCE6C9C1FB87104000EAE11 /* Core */,
@@ -372,6 +424,7 @@
 				TargetAttributes = {
 					DDDBBBE51FB7917F00291D45 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1240;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -399,7 +452,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36BB0207262FEB1C00C0F926 /* Main.storyboard in Resources */,
+				36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */,
 				DDDBBBF61FB7918000291D45 /* LaunchScreen.storyboard in Resources */,
+				36BB0210262FEDBD00C0F926 /* Recording.mov in Resources */,
 				DDDBBBF31FB7918000291D45 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +470,7 @@
 				DDDBBBEE1FB7918000291D45 /* ErrorViewController.m in Sources */,
 				DDF87E3C1FBCE63A00F1A24C /* RecordingSettingsViewController.m in Sources */,
 				DDCE6CAD1FB8DAB8000EAE11 /* VideoPreviewViewController.m in Sources */,
+				36BB0216262FEE9200C0F926 /* InitialViewController.swift in Sources */,
 				DDA31AD8212709170058B989 /* BigButton.m in Sources */,
 				DDA31ADB212718760058B989 /* MemojiSelectionViewController.m in Sources */,
 				DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */,
@@ -429,8 +486,10 @@
 				DDA31AD3212707910058B989 /* WelcomeViewController.m in Sources */,
 				DD7135DE1FBB99E900AAA5E7 /* ColorSheetViewController.m in Sources */,
 				DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */,
+				36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */,
 				DDA31AD0212703B80058B989 /* AvatarSelectionFlowController.m in Sources */,
 				DDF9BB6221263E2800F19D2E /* MemojiSupport.m in Sources */,
+				360720F9262E57BE0080B767 /* ViewController.swift in Sources */,
 				DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */,
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,
 				DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */,
@@ -568,6 +627,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FMDJTXM4W7;
@@ -582,6 +642,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = snehal.fun.animoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AnimojiStudio/2nd app stuff/AnimojiStudio-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -591,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
@@ -606,6 +670,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = AnimojiStudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AnimojiStudio/2nd app stuff/AnimojiStudio-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

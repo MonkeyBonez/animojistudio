@@ -33,6 +33,13 @@
     self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
     
     self.title = @"Memoji";
+    
+}
+
+//changed: added to help debugging to figure out which view I am on
+- (void)viewDidAppear:(BOOL)animated
+{
+    printf("Im HERE");
 }
 
 @end

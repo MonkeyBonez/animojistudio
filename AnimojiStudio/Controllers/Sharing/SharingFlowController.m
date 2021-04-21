@@ -51,6 +51,8 @@
 
 - (void)videoPreviewViewControllerDidSelectShare:(VideoPreviewViewController *)controller
 {
+    
+    //Changes TODO: set up to upload video w/ current location to firebase here instead of sharing
     if (!self.videoURL) return;
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.videoURL] applicationActivities:nil];

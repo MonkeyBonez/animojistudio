@@ -79,6 +79,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     [self _setupHaptics];
 
     self.avatarSelectionFlow = [AvatarSelectionFlowController new];
@@ -92,6 +93,14 @@
     [hideSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
     [hideSwipe setNumberOfTouchesRequired:2];
     [self.view addGestureRecognizer:hideSwipe];
+    //changed: trying to add bar button with Zihan
+    UIBarButtonItem* item = [[UIBarButtonItem alloc]initWithTitle:@"A" style:UIBarButtonItemStyleDone target:self action:@selector(barButtonItemTapped)];
+    [self.navigationController.navigationItem setRightBarButtonItem: item];
+}
+//changed: Added with Zihan
+- (void) barButtonItemTapped{
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
