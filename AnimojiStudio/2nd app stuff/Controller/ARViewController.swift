@@ -70,7 +70,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     func colorCubeFilterForChromaKey(hueAngle: Float) -> CIFilter {
 
-        let hueRange: Float = 20 // degrees size pie shape that we want to replace
+        let hueRange: Float = 0.1 // degrees size pie shape that we want to replace - Originally 20m
         let minHueAngle: Float = (hueAngle - hueRange/2.0) / 360
         let maxHueAngle: Float = (hueAngle + hueRange/2.0) / 360
 

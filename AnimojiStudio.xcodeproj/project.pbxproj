@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		360720F9262E57BE0080B767 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360720F8262E57BE0080B767 /* ViewController.swift */; };
+		360720F9262E57BE0080B767 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360720F8262E57BE0080B767 /* ARViewController.swift */; };
 		36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0203262FEA9300C0F926 /* AppDelegate.swift */; };
 		36BB0207262FEB1C00C0F926 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0206262FEB1C00C0F926 /* Main.storyboard */; };
 		36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */; };
 		36BB0210262FEDBD00C0F926 /* Recording.mov in Resources */ = {isa = PBXBuildFile; fileRef = 36BB020F262FEDBD00C0F926 /* Recording.mov */; };
 		36BB0216262FEE9200C0F926 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0215262FEE9200C0F926 /* InitialViewController.swift */; };
+		36DDFD672631450700A2A8F7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */; };
+		36DDFD6A2631459100A2A8F7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD692631459100A2A8F7 /* SignUpViewController.swift */; };
 		DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135AE1FBB86E800AAA5E7 /* ASColorWell.m */; };
 		DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135DA1FBB99E900AAA5E7 /* ColorSheetPresentationController.m */; };
@@ -35,7 +37,6 @@
 		DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBBEA1FB7917F00291D45 /* AppDelegate.m */; };
 		DDDBBBEE1FB7918000291D45 /* ErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBBED1FB7918000291D45 /* ErrorViewController.m */; };
 		DDDBBBF31FB7918000291D45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDDBBBF21FB7918000291D45 /* Assets.xcassets */; };
-		DDDBBBF61FB7918000291D45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDDBBBF41FB7918000291D45 /* LaunchScreen.storyboard */; };
 		DDDBBBF91FB7918000291D45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBBF81FB7918000291D45 /* main.m */; };
 		DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC071FB797DA00291D45 /* RecordingFlowController.m */; };
 		DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC0A1FB7987A00291D45 /* PuppetSelectionViewController.m */; };
@@ -51,12 +52,14 @@
 
 /* Begin PBXFileReference section */
 		360720F7262E57BD0080B767 /* AnimojiStudio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnimojiStudio-Bridging-Header.h"; sourceTree = "<group>"; };
-		360720F8262E57BE0080B767 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		360720F8262E57BE0080B767 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		36BB0203262FEA9300C0F926 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BB0206262FEB1C00C0F926 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36BB020F262FEDBD00C0F926 /* Recording.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Recording.mov; sourceTree = "<group>"; };
 		36BB0215262FEE9200C0F926 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		36DDFD692631459100A2A8F7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DC59AD272411C031000F6244 /* AVTRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTRecordView.h; sourceTree = "<group>"; };
 		DC59AD282411C032000F6244 /* AVTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTView.h; sourceTree = "<group>"; };
 		DC59AD292411C032000F6244 /* AVTAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTAvatar.h; sourceTree = "<group>"; };
@@ -102,7 +105,6 @@
 		DDDBBBEC1FB7917F00291D45 /* ErrorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorViewController.h; sourceTree = "<group>"; };
 		DDDBBBED1FB7918000291D45 /* ErrorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ErrorViewController.m; sourceTree = "<group>"; };
 		DDDBBBF21FB7918000291D45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DDDBBBF51FB7918000291D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDDBBBF71FB7918000291D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDDBBBF81FB7918000291D45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DDDBBC061FB797DA00291D45 /* RecordingFlowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingFlowController.h; sourceTree = "<group>"; };
@@ -167,8 +169,10 @@
 		36BB0213262FEE3000C0F926 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				360720F8262E57BE0080B767 /* ViewController.swift */,
+				360720F8262E57BE0080B767 /* ARViewController.swift */,
 				36BB0215262FEE9200C0F926 /* InitialViewController.swift */,
+				36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */,
+				36DDFD692631459100A2A8F7 /* SignUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -179,6 +183,18 @@
 				36BB020F262FEDBD00C0F926 /* Recording.mov */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		36DDFD602631383000A2A8F7 /* Memoji stuff */ = {
+			isa = PBXGroup;
+			children = (
+				DDFC669620CD9A6F000DD478 /* AvatarUI */,
+				DDDBBC031FB7977F00291D45 /* Bootstrap */,
+				DDDBBC041FB7978600291D45 /* Controllers */,
+				DDCE6C9C1FB87104000EAE11 /* Core */,
+				DDDBBC151FB79C3900291D45 /* Views */,
+			);
+			path = "Memoji stuff";
 			sourceTree = "<group>";
 		};
 		DD7135D81FBB99E000AAA5E7 /* Color Sheet */ = {
@@ -266,14 +282,10 @@
 		DDDBBBE81FB7917F00291D45 /* AnimojiStudio */ = {
 			isa = PBXGroup;
 			children = (
+				36DDFD602631383000A2A8F7 /* Memoji stuff */,
 				360720F6262E57950080B767 /* 2nd app stuff */,
 				DDDBBC051FB7978D00291D45 /* Resources */,
-				DDDBBC151FB79C3900291D45 /* Views */,
-				DDCE6C9C1FB87104000EAE11 /* Core */,
-				DDDBBC041FB7978600291D45 /* Controllers */,
-				DDDBBC031FB7977F00291D45 /* Bootstrap */,
 				DDDBBBFF1FB794A400291D45 /* AvatarKit */,
-				DDFC669620CD9A6F000DD478 /* AvatarUI */,
 			);
 			path = AnimojiStudio;
 			sourceTree = "<group>";
@@ -317,7 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				DDDBBBF21FB7918000291D45 /* Assets.xcassets */,
-				DDDBBBF41FB7918000291D45 /* LaunchScreen.storyboard */,
 				DDDBBBF71FB7918000291D45 /* Info.plist */,
 			);
 			path = Resources;
@@ -454,7 +465,6 @@
 			files = (
 				36BB0207262FEB1C00C0F926 /* Main.storyboard in Resources */,
 				36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */,
-				DDDBBBF61FB7918000291D45 /* LaunchScreen.storyboard in Resources */,
 				36BB0210262FEDBD00C0F926 /* Recording.mov in Resources */,
 				DDDBBBF31FB7918000291D45 /* Assets.xcassets in Resources */,
 			);
@@ -467,7 +477,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36DDFD6A2631459100A2A8F7 /* SignUpViewController.swift in Sources */,
 				DDDBBBEE1FB7918000291D45 /* ErrorViewController.m in Sources */,
+				36DDFD672631450700A2A8F7 /* WelcomeViewController.swift in Sources */,
 				DDF87E3C1FBCE63A00F1A24C /* RecordingSettingsViewController.m in Sources */,
 				DDCE6CAD1FB8DAB8000EAE11 /* VideoPreviewViewController.m in Sources */,
 				36BB0216262FEE9200C0F926 /* InitialViewController.swift in Sources */,
@@ -489,7 +501,7 @@
 				36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */,
 				DDA31AD0212703B80058B989 /* AvatarSelectionFlowController.m in Sources */,
 				DDF9BB6221263E2800F19D2E /* MemojiSupport.m in Sources */,
-				360720F9262E57BE0080B767 /* ViewController.swift in Sources */,
+				360720F9262E57BE0080B767 /* ARViewController.swift in Sources */,
 				DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */,
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,
 				DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */,
@@ -502,17 +514,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		DDDBBBF41FB7918000291D45 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DDDBBBF51FB7918000291D45 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DDDBBBFA1FB7918000291D45 /* Debug */ = {
@@ -637,6 +638,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/AnimojiStudio/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = snehal.fun.animoji;
@@ -665,6 +667,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/AnimojiStudio/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = AnimojiStudio;

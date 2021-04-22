@@ -19,11 +19,18 @@ class InitialViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let recordingFlowController = RecordingFlowController()
-        MemojiSupport.prepareMemojiRuntime()
-        recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()
+    @IBAction func testMemojiButtonClicked(_ sender: Any) {
+        goToMemojiView()
+    }
+    
+    func goToMemojiView(){
+        //let recordingFlowController = RecordingFlowController()
+        //MemojiSupport.prepareMemojiRuntime()
+        //recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()
         present(recordingFlowController, animated: true, completion: nil)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        goToMemojiView()
         
     }
     

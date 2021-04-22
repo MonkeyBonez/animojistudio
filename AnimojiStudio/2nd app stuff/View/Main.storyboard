@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ueR-1k-w93">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uY1-pb-Ns3">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -9,16 +9,102 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="xHR-zp-jH5">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jYz-82-xzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="uY1-pb-Ns3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kG5-3A-Dyw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1gx-GJ-Jnd" kind="relationship" relationship="rootViewController" id="cMa-7G-HIP"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-3148" y="64"/>
+        </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="j6u-sR-X6v">
+            <objects>
+                <viewController id="1gx-GJ-Jnd" customClass="WelcomeViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kP1-l5-h3u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sonder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJD-VL-2vB">
+                                <rect key="frame" x="147" y="125" width="81" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;The world is so small... 'till it aint&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v9-Ev-l33">
+                                <rect key="frame" x="39" y="239" width="297" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ST9-Bp-tXk">
+                                <rect key="frame" x="166.5" y="346" width="42" height="30"/>
+                                <state key="normal" title="Log in"/>
+                                <connections>
+                                    <action selector="logInButtonPressed:" destination="1gx-GJ-Jnd" eventType="touchUpInside" id="pkZ-vk-3lF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0Y-AM-ijh">
+                                <rect key="frame" x="161.5" y="473" width="52" height="30"/>
+                                <state key="normal" title="Sign up"/>
+                                <connections>
+                                    <action selector="signUpButtonPressed:" destination="1gx-GJ-Jnd" eventType="touchUpInside" id="mJI-Jn-kde"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MMX-gt-kdB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t0Y-AM-ijh" firstAttribute="top" secondItem="ST9-Bp-tXk" secondAttribute="bottom" constant="97" id="GDd-Qi-T9W"/>
+                            <constraint firstItem="ST9-Bp-tXk" firstAttribute="top" secondItem="2v9-Ev-l33" secondAttribute="bottom" constant="83" id="Hcb-cJ-yaz"/>
+                            <constraint firstItem="t0Y-AM-ijh" firstAttribute="centerX" secondItem="kP1-l5-h3u" secondAttribute="centerX" id="TrJ-u2-Fze"/>
+                            <constraint firstItem="wJD-VL-2vB" firstAttribute="top" secondItem="MMX-gt-kdB" secondAttribute="top" constant="81" id="VMy-Xy-Qfh"/>
+                            <constraint firstItem="2v9-Ev-l33" firstAttribute="top" secondItem="wJD-VL-2vB" secondAttribute="bottom" constant="82" id="YP5-cd-eU2"/>
+                            <constraint firstItem="wJD-VL-2vB" firstAttribute="centerX" secondItem="kP1-l5-h3u" secondAttribute="centerX" id="mZU-9F-N5R"/>
+                            <constraint firstItem="ST9-Bp-tXk" firstAttribute="centerX" secondItem="kP1-l5-h3u" secondAttribute="centerX" id="tEz-9a-e9T"/>
+                            <constraint firstItem="2v9-Ev-l33" firstAttribute="centerX" secondItem="kP1-l5-h3u" secondAttribute="centerX" id="xCz-Hl-YJ8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RlA-yJ-dgx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fFn-Zb-3Ok" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2157" y="66"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="diH-el-Z1m">
+            <objects>
+                <viewController storyboardIdentifier="signUpVC" id="NXf-07-Ffu" customClass="SignUpViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TCU-W0-Om4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tz4-y6-wyf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Q1P-eK-qtm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jNu-QX-tlm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2158" y="837"/>
+        </scene>
         <!--Initial View Controller-->
         <scene sceneID="cxe-oV-MWN">
             <objects>
                 <viewController id="ueR-1k-w93" customClass="InitialViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JWM-ik-WPj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsN-Ie-WsL">
-                                <rect key="frame" x="181" y="128" width="53" height="30"/>
+                                <rect key="frame" x="134" y="119" width="53" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Test AR"/>
                                 <connections>
@@ -26,9 +112,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58W-mD-8Q8">
-                                <rect key="frame" x="166" y="271" width="83" height="30"/>
+                                <rect key="frame" x="119" y="262" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Test Memoji"/>
+                                <connections>
+                                    <action selector="testMemojiButtonClicked:" destination="ueR-1k-w93" eventType="touchUpInside" id="O1v-A4-SVD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IPr-w0-BP5"/>
@@ -37,18 +126,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlZ-QB-3Rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-932" y="66"/>
+            <point key="canvasLocation" x="-311" y="65"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ARViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </arscnView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
@@ -66,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="46"/>
+            <point key="canvasLocation" x="687" y="66"/>
         </scene>
     </scenes>
     <resources>
