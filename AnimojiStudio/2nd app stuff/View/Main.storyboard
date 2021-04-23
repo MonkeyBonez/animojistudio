@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uY1-pb-Ns3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="las-AA-tuk">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -152,6 +152,49 @@
             </objects>
             <point key="canvasLocation" x="-311" y="65"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Tzn-eF-uet">
+            <objects>
+                <viewController id="las-AA-tuk" customClass="MapViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V17-3u-0kb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KDO-Tt-tuy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAh-Nh-7Rv">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="3si-lj-kvf"/>
+                                    <constraint firstAttribute="height" constant="50" id="aoz-xl-I8V"/>
+                                </constraints>
+                                <state key="normal" image="plus.magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="magnifyingGlassButtonPressed:" destination="las-AA-tuk" eventType="touchUpInside" id="hbK-Mi-tqd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="P2t-Ll-hHg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LAh-Nh-7Rv" firstAttribute="top" secondItem="P2t-Ll-hHg" secondAttribute="top" id="1tR-ih-0kH"/>
+                            <constraint firstItem="KDO-Tt-tuy" firstAttribute="leading" secondItem="V17-3u-0kb" secondAttribute="leading" id="9H9-wr-a3e"/>
+                            <constraint firstItem="KDO-Tt-tuy" firstAttribute="top" secondItem="V17-3u-0kb" secondAttribute="top" id="Sd6-S5-Dw7"/>
+                            <constraint firstItem="LAh-Nh-7Rv" firstAttribute="leading" secondItem="P2t-Ll-hHg" secondAttribute="leading" id="pUg-9y-XB9"/>
+                            <constraint firstItem="KDO-Tt-tuy" firstAttribute="bottom" secondItem="V17-3u-0kb" secondAttribute="bottom" id="sTL-hm-1F0"/>
+                            <constraint firstItem="KDO-Tt-tuy" firstAttribute="trailing" secondItem="V17-3u-0kb" secondAttribute="trailing" id="wfV-oe-Mmc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="magnifyingGlassButton" destination="LAh-Nh-7Rv" id="Vno-pO-pbl"/>
+                        <outlet property="mapView" destination="KDO-Tt-tuy" id="wH9-cq-1DK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8z-aX-md6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1170.4000000000001" y="1564.7676161919042"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -184,6 +227,7 @@
     </scenes>
     <resources>
         <image name="Background.gif" width="570" height="777"/>
+        <image name="plus.magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

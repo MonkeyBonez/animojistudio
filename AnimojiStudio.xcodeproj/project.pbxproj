@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		360720F9262E57BE0080B767 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360720F8262E57BE0080B767 /* ARViewController.swift */; };
+		36AB67742632987B00CF072D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AB67732632987B00CF072D /* MapViewController.swift */; };
 		36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0203262FEA9300C0F926 /* AppDelegate.swift */; };
 		36BB0207262FEB1C00C0F926 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0206262FEB1C00C0F926 /* Main.storyboard */; };
 		36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		360720F7262E57BD0080B767 /* AnimojiStudio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnimojiStudio-Bridging-Header.h"; sourceTree = "<group>"; };
 		360720F8262E57BE0080B767 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		36AB67732632987B00CF072D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		36BB0203262FEA9300C0F926 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BB0206262FEB1C00C0F926 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -165,12 +167,12 @@
 			path = "2nd app stuff";
 			sourceTree = "<group>";
 		};
-		365BD877263292E3007EF48A /* Custom ViewControllers */ = {
+		365BD877263292E3007EF48A /* VC Base Classes */ = {
 			isa = PBXGroup;
 			children = (
 				36DDFD832631732900A2A8F7 /* GifBackgroundViewController.swift */,
 			);
-			path = "Custom ViewControllers";
+			path = "VC Base Classes";
 			sourceTree = "<group>";
 		};
 		36BB0212262FEE2600C0F926 /* View */ = {
@@ -186,11 +188,12 @@
 		36BB0213262FEE3000C0F926 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				365BD877263292E3007EF48A /* Custom ViewControllers */,
+				365BD877263292E3007EF48A /* VC Base Classes */,
 				360720F8262E57BE0080B767 /* ARViewController.swift */,
 				36BB0215262FEE9200C0F926 /* InitialViewController.swift */,
 				36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */,
 				36DDFD692631459100A2A8F7 /* SignUpViewController.swift */,
+				36AB67732632987B00CF072D /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */,
 				DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */,
 				DD7135F31FBC86D800AAA5E7 /* SongTableViewCell.m in Sources */,
+				36AB67742632987B00CF072D /* MapViewController.swift in Sources */,
 				DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */,
 				DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */,
 				DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */,

@@ -32,10 +32,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-        
-        //configuration.planeDetection = [.horizontal, .vertical]
-        
-
         // Run the view's session
         sceneView.session.run(configuration)
     }
