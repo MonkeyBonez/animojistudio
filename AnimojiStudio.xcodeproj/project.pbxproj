@@ -15,6 +15,10 @@
 		36BB0216262FEE9200C0F926 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0215262FEE9200C0F926 /* InitialViewController.swift */; };
 		36DDFD672631450700A2A8F7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */; };
 		36DDFD6A2631459100A2A8F7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD692631459100A2A8F7 /* SignUpViewController.swift */; };
+		36DDFD79263169AA00A2A8F7 /* Background.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36DDFD78263169AA00A2A8F7 /* Background.gif */; };
+		36DDFD7C26316BCF00A2A8F7 /* UIImageGifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */; };
+		36DDFD802631719300A2A8F7 /* Background2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36DDFD7F2631719300A2A8F7 /* Background2.gif */; };
+		36DDFD842631732900A2A8F7 /* GifBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD832631732900A2A8F7 /* GifBackgroundViewController.swift */; };
 		DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135AE1FBB86E800AAA5E7 /* ASColorWell.m */; };
 		DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135DA1FBB99E900AAA5E7 /* ColorSheetPresentationController.m */; };
@@ -60,6 +64,10 @@
 		36BB0215262FEE9200C0F926 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		36DDFD692631459100A2A8F7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		36DDFD78263169AA00A2A8F7 /* Background.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Background.gif; sourceTree = "<group>"; };
+		36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageGifExtension.swift; sourceTree = "<group>"; };
+		36DDFD7F2631719300A2A8F7 /* Background2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Background2.gif; sourceTree = "<group>"; };
+		36DDFD832631732900A2A8F7 /* GifBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifBackgroundViewController.swift; sourceTree = "<group>"; };
 		DC59AD272411C031000F6244 /* AVTRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTRecordView.h; sourceTree = "<group>"; };
 		DC59AD282411C032000F6244 /* AVTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTView.h; sourceTree = "<group>"; };
 		DC59AD292411C032000F6244 /* AVTAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTAvatar.h; sourceTree = "<group>"; };
@@ -157,9 +165,18 @@
 			path = "2nd app stuff";
 			sourceTree = "<group>";
 		};
+		365BD877263292E3007EF48A /* Custom ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				36DDFD832631732900A2A8F7 /* GifBackgroundViewController.swift */,
+			);
+			path = "Custom ViewControllers";
+			sourceTree = "<group>";
+		};
 		36BB0212262FEE2600C0F926 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				36DDFD8A26328EE600A2A8F7 /* Custom View Extensions */,
 				36BB0206262FEB1C00C0F926 /* Main.storyboard */,
 				36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */,
 			);
@@ -169,6 +186,7 @@
 		36BB0213262FEE3000C0F926 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				365BD877263292E3007EF48A /* Custom ViewControllers */,
 				360720F8262E57BE0080B767 /* ARViewController.swift */,
 				36BB0215262FEE9200C0F926 /* InitialViewController.swift */,
 				36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */,
@@ -180,6 +198,8 @@
 		36BB0214262FEE4800C0F926 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				36DDFD7F2631719300A2A8F7 /* Background2.gif */,
+				36DDFD78263169AA00A2A8F7 /* Background.gif */,
 				36BB020F262FEDBD00C0F926 /* Recording.mov */,
 			);
 			path = Resources;
@@ -195,6 +215,14 @@
 				DDDBBC151FB79C3900291D45 /* Views */,
 			);
 			path = "Memoji stuff";
+			sourceTree = "<group>";
+		};
+		36DDFD8A26328EE600A2A8F7 /* Custom View Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */,
+			);
+			path = "Custom View Extensions";
 			sourceTree = "<group>";
 		};
 		DD7135D81FBB99E000AAA5E7 /* Color Sheet */ = {
@@ -464,6 +492,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				36BB0207262FEB1C00C0F926 /* Main.storyboard in Resources */,
+				36DDFD802631719300A2A8F7 /* Background2.gif in Resources */,
+				36DDFD79263169AA00A2A8F7 /* Background.gif in Resources */,
 				36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */,
 				36BB0210262FEDBD00C0F926 /* Recording.mov in Resources */,
 				DDDBBBF31FB7918000291D45 /* Assets.xcassets in Resources */,
@@ -487,6 +517,7 @@
 				DDA31ADB212718760058B989 /* MemojiSelectionViewController.m in Sources */,
 				DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */,
 				DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */,
+				36DDFD7C26316BCF00A2A8F7 /* UIImageGifExtension.swift in Sources */,
 				DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */,
 				DDDBBC181FB79C4D00291D45 /* PuppetCollectionViewCell.m in Sources */,
 				DDDBBBF91FB7918000291D45 /* main.m in Sources */,
@@ -510,6 +541,7 @@
 				DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */,
 				DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */,
 				DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */,
+				36DDFD842631732900A2A8F7 /* GifBackgroundViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,7 +702,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = AnimojiStudio;
+				PRODUCT_BUNDLE_IDENTIFIER = snehal.fun.animoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AnimojiStudio/2nd app stuff/AnimojiStudio-Bridging-Header.h";

@@ -3,18 +3,30 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 4/21/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
 //
 
 import UIKit
-
-class WelcomeViewController: UIViewController {
+import ImageIO
+//inherit from GIF 
+class WelcomeViewController: GifBackgroundViewController {
     private let signUpViewControllerStoryboardIdentifier = "signUpVC"
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.backgroundImageName = "Background"
+        loadBackground()
         // Do any additional setup after loading the view.
     }
     
@@ -23,9 +35,10 @@ class WelcomeViewController: UIViewController {
     
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
         let home = storyBoard.instantiateViewController(withIdentifier: signUpViewControllerStoryboardIdentifier) 
         navigationController?.pushViewController(home, animated: true);
     }
     
 }
+

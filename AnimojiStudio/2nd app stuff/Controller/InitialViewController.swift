@@ -3,7 +3,6 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 4/20/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
 //
 
 import UIKit
