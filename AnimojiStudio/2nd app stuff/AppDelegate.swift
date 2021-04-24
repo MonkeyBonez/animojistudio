@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 //Global
 var recordingFlowController = RecordingFlowController()
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         recordingFlowController = RecordingFlowController()
         MemojiSupport.prepareMemojiRuntime()
         recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()

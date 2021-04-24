@@ -3,11 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		360720F9262E57BE0080B767 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360720F8262E57BE0080B767 /* ARViewController.swift */; };
+		3639CF6E2633BD0D002569DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */; };
+		3639CF722633BF90002569DB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF712633BF90002569DB /* FirebaseAuth */; };
+		3639CF742633BF90002569DB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF732633BF90002569DB /* FirebaseFirestore */; };
+		3639CF762633BF90002569DB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF752633BF90002569DB /* FirebaseStorage */; };
+		3639CF7B2633CEE7002569DB /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */; };
 		36AB67742632987B00CF072D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AB67732632987B00CF072D /* MapViewController.swift */; };
 		36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0203262FEA9300C0F926 /* AppDelegate.swift */; };
 		36BB0207262FEB1C00C0F926 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0206262FEB1C00C0F926 /* Main.storyboard */; };
@@ -58,6 +63,8 @@
 /* Begin PBXFileReference section */
 		360720F7262E57BD0080B767 /* AnimojiStudio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnimojiStudio-Bridging-Header.h"; sourceTree = "<group>"; };
 		360720F8262E57BE0080B767 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		36AB67732632987B00CF072D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		36BB0203262FEA9300C0F926 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BB0206262FEB1C00C0F926 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -146,9 +153,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDDBBC211FB7A7E400291D45 /* AvatarKit.framework in Frameworks */,
+				3639CF722633BF90002569DB /* FirebaseAuth in Frameworks */,
 				DD7135E41FBBDA9100AAA5E7 /* SpotifyAudioPlayback.framework in Frameworks */,
 				DD7135E51FBBDA9400AAA5E7 /* SpotifyAuthentication.framework in Frameworks */,
+				3639CF762633BF90002569DB /* FirebaseStorage in Frameworks */,
 				DD7135E61FBBDA9800AAA5E7 /* SpotifyMetadata.framework in Frameworks */,
+				3639CF742633BF90002569DB /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,13 +168,30 @@
 		360720F6262E57950080B767 /* 2nd app stuff */ = {
 			isa = PBXGroup;
 			children = (
+				3639CF792633CECD002569DB /* Services */,
+				3639CF782633CEA5002569DB /* Model */,
+				36BB0214262FEE4800C0F926 /* Resources */,
 				36BB0213262FEE3000C0F926 /* Controller */,
 				36BB0212262FEE2600C0F926 /* View */,
 				36BB0203262FEA9300C0F926 /* AppDelegate.swift */,
-				36BB0214262FEE4800C0F926 /* Resources */,
 				360720F7262E57BD0080B767 /* AnimojiStudio-Bridging-Header.h */,
 			);
 			path = "2nd app stuff";
+			sourceTree = "<group>";
+		};
+		3639CF782633CEA5002569DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3639CF792633CECD002569DB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		365BD877263292E3007EF48A /* VC Base Classes */ = {
@@ -211,7 +238,6 @@
 		36DDFD602631383000A2A8F7 /* Memoji stuff */ = {
 			isa = PBXGroup;
 			children = (
-				DDFC669620CD9A6F000DD478 /* AvatarUI */,
 				DDDBBC031FB7977F00291D45 /* Bootstrap */,
 				DDDBBC041FB7978600291D45 /* Controllers */,
 				DDCE6C9C1FB87104000EAE11 /* Core */,
@@ -313,10 +339,11 @@
 		DDDBBBE81FB7917F00291D45 /* AnimojiStudio */ = {
 			isa = PBXGroup;
 			children = (
-				36DDFD602631383000A2A8F7 /* Memoji stuff */,
-				360720F6262E57950080B767 /* 2nd app stuff */,
+				DDFC669620CD9A6F000DD478 /* AvatarUI */,
 				DDDBBC051FB7978D00291D45 /* Resources */,
 				DDDBBBFF1FB794A400291D45 /* AvatarKit */,
+				36DDFD602631383000A2A8F7 /* Memoji stuff */,
+				360720F6262E57950080B767 /* 2nd app stuff */,
 			);
 			path = AnimojiStudio;
 			sourceTree = "<group>";
@@ -359,6 +386,7 @@
 		DDDBBC051FB7978D00291D45 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */,
 				DDDBBBF21FB7918000291D45 /* Assets.xcassets */,
 				DDDBBBF71FB7918000291D45 /* Info.plist */,
 			);
@@ -451,6 +479,11 @@
 			dependencies = (
 			);
 			name = AnimojiStudio;
+			packageProductDependencies = (
+				3639CF712633BF90002569DB /* FirebaseAuth */,
+				3639CF732633BF90002569DB /* FirebaseFirestore */,
+				3639CF752633BF90002569DB /* FirebaseStorage */,
+			);
 			productName = AnimojiStudio;
 			productReference = DDDBBBE61FB7917F00291D45 /* AnimojiStudio.app */;
 			productType = "com.apple.product-type.application";
@@ -480,6 +513,9 @@
 				Base,
 			);
 			mainGroup = DDDBBBDD1FB7917F00291D45;
+			packageReferences = (
+				3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = DDDBBBE71FB7917F00291D45 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -500,6 +536,7 @@
 				36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */,
 				36BB0210262FEDBD00C0F926 /* Recording.mov in Resources */,
 				DDDBBBF31FB7918000291D45 /* Assets.xcassets in Resources */,
+				3639CF6E2633BD0D002569DB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +558,7 @@
 				DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */,
 				DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */,
 				36DDFD7C26316BCF00A2A8F7 /* UIImageGifExtension.swift in Sources */,
+				3639CF7B2633CEE7002569DB /* FirebaseAuthService.swift in Sources */,
 				DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */,
 				DDDBBC181FB79C4D00291D45 /* PuppetCollectionViewCell.m in Sources */,
 				DDDBBBF91FB7918000291D45 /* main.m in Sources */,
@@ -675,7 +713,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/AnimojiStudio/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = snehal.fun.animoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -704,7 +745,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/AnimojiStudio/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = snehal.fun.animoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -738,6 +782,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3639CF712633BF90002569DB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3639CF732633BF90002569DB /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3639CF752633BF90002569DB /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DDDBBBDE1FB7917F00291D45 /* Project object */;
 }
