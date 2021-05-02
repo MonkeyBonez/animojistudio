@@ -19,12 +19,42 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="NXf-07-Ffu" kind="relationship" relationship="rootViewController" id="jYY-qg-hal"/>
+                        <segue destination="1XT-yZ-HVi" kind="relationship" relationship="rootViewController" id="RCR-ob-Anq"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2e6-H7-8qA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3125" y="836"/>
+            <point key="canvasLocation" x="-3516" y="836"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="E7L-4V-FF1">
+            <objects>
+                <viewController id="1XT-yZ-HVi" customClass="LoadingViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KIM-hs-hEE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Background.gif" translatesAutoresizingMaskIntoConstraints="NO" id="Byx-sH-r3F">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Byx-sH-r3F" firstAttribute="trailing" secondItem="KIM-hs-hEE" secondAttribute="trailing" id="Ebz-ze-dmq"/>
+                            <constraint firstItem="Byx-sH-r3F" firstAttribute="bottom" secondItem="KIM-hs-hEE" secondAttribute="bottom" id="MRP-Nn-sci"/>
+                            <constraint firstItem="Byx-sH-r3F" firstAttribute="leading" secondItem="KIM-hs-hEE" secondAttribute="leading" id="Z5A-n1-Wbh"/>
+                            <constraint firstItem="Byx-sH-r3F" firstAttribute="top" secondItem="KIM-hs-hEE" secondAttribute="top" id="j0Q-P8-ebu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="LW8-EM-Z3P"/>
+                    <connections>
+                        <outlet property="BackgroundImageView" destination="Byx-sH-r3F" id="hts-z4-SFR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f65-hj-Wri" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2746" y="836"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="diH-el-Z1m">
@@ -42,16 +72,16 @@
                                 </connections>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shootingStar.gif" translatesAutoresizingMaskIntoConstraints="NO" id="VgW-at-Smf">
-                                <rect key="frame" x="242" y="44" width="172" height="123"/>
+                                <rect key="frame" x="242" y="0.0" width="172" height="123"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sonder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oub-lV-Qfa">
-                                <rect key="frame" x="168" y="94" width="78" height="32"/>
+                                <rect key="frame" x="168" y="50" width="78" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;The world is so small... 'till it aint&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yin-54-Qe3">
-                                <rect key="frame" x="57" y="226" width="300" height="24"/>
+                                <rect key="frame" x="57" y="182" width="300" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="TFw-qe-jdR"/>
                                 </constraints>
@@ -115,7 +145,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jNu-QX-tlm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="7YY-Yq-Wco"/>
             </objects>
-            <point key="canvasLocation" x="-2159.4202898550725" y="835.59782608695662"/>
+            <point key="canvasLocation" x="-1988" y="836"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="7tb-fh-PgX">
@@ -188,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UN2-aj-BGK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2159.4202898550725" y="1623.0978260869567"/>
+            <point key="canvasLocation" x="-1988" y="1620"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hL1-ak-JY5">

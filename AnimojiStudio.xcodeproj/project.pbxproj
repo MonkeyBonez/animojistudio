@@ -26,6 +26,7 @@
 		36CF7B06263F20F100A76E6E /* HideKeyboardOnScreenTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7B05263F20F100A76E6E /* HideKeyboardOnScreenTapViewController.swift */; };
 		36CF7B0A263F297500A76E6E /* ShowsErrorHideKeyboardGIFBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7B09263F297500A76E6E /* ShowsErrorHideKeyboardGIFBackgroundViewController.swift */; };
 		36CF7B0D263F29F100A76E6E /* CanShowErrorProtocol1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7B0C263F29F100A76E6E /* CanShowErrorProtocol1.swift */; };
+		36CF7B14263F434E00A76E6E /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7B13263F434E00A76E6E /* LoadingViewController.swift */; };
 		36DDFD6A2631459100A2A8F7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD692631459100A2A8F7 /* SignUpViewController.swift */; };
 		36DDFD79263169AA00A2A8F7 /* Background.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36DDFD78263169AA00A2A8F7 /* Background.gif */; };
 		36DDFD7C26316BCF00A2A8F7 /* UIImageGifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */; };
@@ -84,6 +85,7 @@
 		36CF7B05263F20F100A76E6E /* HideKeyboardOnScreenTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardOnScreenTapViewController.swift; sourceTree = "<group>"; };
 		36CF7B09263F297500A76E6E /* ShowsErrorHideKeyboardGIFBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsErrorHideKeyboardGIFBackgroundViewController.swift; sourceTree = "<group>"; };
 		36CF7B0C263F29F100A76E6E /* CanShowErrorProtocol1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanShowErrorProtocol1.swift; sourceTree = "<group>"; };
+		36CF7B13263F434E00A76E6E /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		36DDFD692631459100A2A8F7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		36DDFD78263169AA00A2A8F7 /* Background.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Background.gif; sourceTree = "<group>"; };
 		36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageGifExtension.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				36DDFD692631459100A2A8F7 /* SignUpViewController.swift */,
 				36AB67732632987B00CF072D /* MapViewController.swift */,
 				36CF7AFF263E877E00A76E6E /* UserInfoViewController.swift */,
+				36CF7B13263F434E00A76E6E /* LoadingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				DDF9BB6221263E2800F19D2E /* MemojiSupport.m in Sources */,
 				360720F9262E57BE0080B767 /* ARViewController.swift in Sources */,
 				DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */,
+				36CF7B14263F434E00A76E6E /* LoadingViewController.swift in Sources */,
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,
 				DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */,
 				DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */,

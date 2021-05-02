@@ -28,9 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
         MemojiSupport.prepareMemojiRuntime()
         recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()
         currUserID = Firebase.Auth.auth().currentUser?.uid
+        currUserID = ""
         if let currUserID = currUserID{
-            let userServiceDelegate:FirestoreUserServiceDelegate = FirestoreUserService()
-            userServiceDelegate.userExists(delegate: self, UserID: currUserID)
+            if(!currUserID.isEmpty){
+                let userServiceDelegate:FirestoreUserServiceDelegate = FirestoreUserService()
+                userServiceDelegate.userExists(delegate: self, UserID: currUserID)
+            }
+            else{
+                signInPage()
+            }
         }
         return true
     }
@@ -52,17 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
+    func signInPage(){
+        setNewRootVC(VCIdentifier: "signUpVC")
+    }
+    
     func userExists() {
         //set root VC to tab bar w/ map
     }
     
     func userDoesntExist() {
         //set root VC to Sign up info screen
+        setNewRootVC(VCIdentifier: "UserInfoVC")
+    }
+    
+    func setNewRootVC(VCIdentifier: String){
         //https://stackoverflow.com/questions/10428629/programmatically-set-the-initial-view-controller-using-storyboards?noredirect=1&lq=1
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
         //navigationController.view.frame = self.window!.bounds
-        let rootViewController = storyboard.instantiateViewController(withIdentifier: "UserInfoVC") as UIViewController
+        let rootViewController = storyboard.instantiateViewController(withIdentifier: VCIdentifier) as UIViewController
             navigationController.viewControllers = [rootViewController]
         
             self.window?.rootViewController = navigationController

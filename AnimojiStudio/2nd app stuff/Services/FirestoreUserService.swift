@@ -19,7 +19,7 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
     }
     func userExists(delegate:SignUpViewControllerFirestoreDelegate, UserID:String){
         //https://stackoverflow.com/questions/46880323/how-to-check-if-a-cloud-firestore-document-exists-when-using-realtime-updates
-        let usersRef = db.collection("users").document(UserID)
+        let usersRef = db.collection("Users").document(UserID)
         usersRef.getDocument { (document, error) in
             var userExists = false
             if(document!.exists){//force-unwrap ok here?
