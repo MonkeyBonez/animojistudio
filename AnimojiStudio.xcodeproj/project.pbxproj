@@ -19,7 +19,7 @@
 		36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */; };
 		36BB0210262FEDBD00C0F926 /* Recording.mov in Resources */ = {isa = PBXBuildFile; fileRef = 36BB020F262FEDBD00C0F926 /* Recording.mov */; };
 		36BB0216262FEE9200C0F926 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0215262FEE9200C0F926 /* InitialViewController.swift */; };
-		36DDFD672631450700A2A8F7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */; };
+		36CF7AF2263E34E600A76E6E /* shootingStar.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36CF7AF1263E34E600A76E6E /* shootingStar.gif */; };
 		36DDFD6A2631459100A2A8F7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD692631459100A2A8F7 /* SignUpViewController.swift */; };
 		36DDFD79263169AA00A2A8F7 /* Background.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36DDFD78263169AA00A2A8F7 /* Background.gif */; };
 		36DDFD7C26316BCF00A2A8F7 /* UIImageGifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */; };
@@ -71,7 +71,7 @@
 		36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36BB020F262FEDBD00C0F926 /* Recording.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Recording.mov; sourceTree = "<group>"; };
 		36BB0215262FEE9200C0F926 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		36CF7AF1263E34E600A76E6E /* shootingStar.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = shootingStar.gif; sourceTree = "<group>"; };
 		36DDFD692631459100A2A8F7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		36DDFD78263169AA00A2A8F7 /* Background.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Background.gif; sourceTree = "<group>"; };
 		36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageGifExtension.swift; sourceTree = "<group>"; };
@@ -218,7 +218,6 @@
 				365BD877263292E3007EF48A /* VC Base Classes */,
 				360720F8262E57BE0080B767 /* ARViewController.swift */,
 				36BB0215262FEE9200C0F926 /* InitialViewController.swift */,
-				36DDFD662631450700A2A8F7 /* WelcomeViewController.swift */,
 				36DDFD692631459100A2A8F7 /* SignUpViewController.swift */,
 				36AB67732632987B00CF072D /* MapViewController.swift */,
 			);
@@ -229,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				36DDFD7F2631719300A2A8F7 /* Background2.gif */,
+				36CF7AF1263E34E600A76E6E /* shootingStar.gif */,
 				36DDFD78263169AA00A2A8F7 /* Background.gif */,
 				36BB020F262FEDBD00C0F926 /* Recording.mov */,
 			);
@@ -531,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36BB0207262FEB1C00C0F926 /* Main.storyboard in Resources */,
+				36CF7AF2263E34E600A76E6E /* shootingStar.gif in Resources */,
 				36DDFD802631719300A2A8F7 /* Background2.gif in Resources */,
 				36DDFD79263169AA00A2A8F7 /* Background.gif in Resources */,
 				36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */,
@@ -549,7 +550,6 @@
 			files = (
 				36DDFD6A2631459100A2A8F7 /* SignUpViewController.swift in Sources */,
 				DDDBBBEE1FB7918000291D45 /* ErrorViewController.m in Sources */,
-				36DDFD672631450700A2A8F7 /* WelcomeViewController.swift in Sources */,
 				DDF87E3C1FBCE63A00F1A24C /* RecordingSettingsViewController.m in Sources */,
 				DDCE6CAD1FB8DAB8000EAE11 /* VideoPreviewViewController.m in Sources */,
 				36BB0216262FEE9200C0F926 /* InitialViewController.swift in Sources */,

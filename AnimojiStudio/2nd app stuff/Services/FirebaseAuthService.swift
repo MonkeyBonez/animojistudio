@@ -9,9 +9,9 @@ import Foundation
 import FirebaseAuth
 
 
-struct FirebaseAuthService: FirebaseSignUpProtocol{
-    func signInWithVerificationCode(verificationCode: String, viewController: FirebaseSignUpVCProtocol) {
-        guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else{
+struct FirebaseAuthService: FirebaseSignUpDelegate{
+    func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerDelegate) {
+        guard let verificationID = getUserDefaultsVerificationID() else{
             viewController.showError(error: "Couldn't get verification ID :(")
             return
         }
@@ -27,11 +27,8 @@ struct FirebaseAuthService: FirebaseSignUpProtocol{
         }
     }
     
-    func signUp(email:String, password:String){
-       // Auth.auth().createUser(withEmail: <#T##String#>, password: <#T##String#>, completion: <#T##((AuthDataResult?, Error?) -> Void)?##((AuthDataResult?, Error?) -> Void)?##(AuthDataResult?, Error?) -> Void#>)
-    }
     
-    func verifyPhone(phoneNumber: String, viewController: FirebaseSignUpVCProtocol){
+    func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerDelegate){
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
           if let error = error {
             //self.showMessagePrompt(error.localizedDescription)
@@ -53,9 +50,13 @@ struct FirebaseAuthService: FirebaseSignUpProtocol{
     func setUserDefaultsVerificationID(verificationID: String){
         UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
     }
+    
+    func getUserDefaultsVerificationID()->String?{
+        return UserDefaults.standard.string(forKey: "authVerificationID")
+    }
 }
 
-protocol FirebaseSignUpProtocol{
-    func signInWithVerificationCode(verificationCode: String, viewController: FirebaseSignUpVCProtocol)
-    func verifyPhone(phoneNumber: String, viewController: FirebaseSignUpVCProtocol)
+protocol FirebaseSignUpDelegate{
+    func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerDelegate)
+    func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerDelegate)
 }

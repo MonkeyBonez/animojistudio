@@ -7,19 +7,24 @@
 
 import UIKit
 //toDO: Give up first responder when appropriate
-class SignUpViewController: GifBackgroundViewController, FirebaseSignUpVCProtocol, UITextFieldDelegate {
-    var signInService:FirebaseSignUpProtocol = FirebaseAuthService()
+class SignUpViewController: GifBackgroundViewController, SignUpViewControllerDelegate, UITextFieldDelegate {
+    var signUpDelegate:FirebaseSignUpDelegate = FirebaseAuthService()
 
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var shootingStarImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.backgroundImageName = "Background2"
+        self.backgroundImageName = "Background"
         self.loadBackground()
+        self.loadGif(for: "shootingStar", image: shootingStarImageView)
+        let screenTap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(screenTap)
     }
     
-    @IBAction func keyboardDonePressed(_ sender: Any) {
+    @objc func screenTapped(){
         phoneNumberTextField.resignFirstResponder()
     }
     
@@ -35,7 +40,18 @@ class SignUpViewController: GifBackgroundViewController, FirebaseSignUpVCProtoco
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
         //verify/preprocess inputs
-        signInService.verifyPhone(phoneNumber: phoneNumberTextField.text!, viewController: self)//check if ! messes up for empty
+        if(phoneNumberTextField.text!.isEmpty){
+            showError(error: "Please enter your phone number")
+        }
+        else if(phoneNumberTextField.text!.count == 7){
+            showError(error: "Please enter your area code")
+        }
+        else if (phoneNumberTextField.text!.count != 10){
+            showError(error: "Please enter your 10 digit US phone number")
+        }
+        else{
+        signUpDelegate.verifyPhone(phoneNumber: "+1" + phoneNumberTextField.text!, viewController: self)//check if ! messes up for empty
+        }
     }
     
     func getVerificationCode(){
@@ -45,7 +61,7 @@ class SignUpViewController: GifBackgroundViewController, FirebaseSignUpVCProtoco
                 self.showError(error: "Verification code not input")
                 return
             }
-            self.signInService.signInWithVerificationCode(verificationCode: verificationCode, viewController: self)
+            self.signUpDelegate.signInWithVerificationCode(verificationCode: verificationCode, viewController: self)
         }
         alert.addAction(continueAction)
         
@@ -59,7 +75,7 @@ class SignUpViewController: GifBackgroundViewController, FirebaseSignUpVCProtoco
     }
 }
 
-protocol FirebaseSignUpVCProtocol {
+protocol SignUpViewControllerDelegate {
     func showError(error: String)
     func getVerificationCode()
 }

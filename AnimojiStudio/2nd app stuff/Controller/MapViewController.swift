@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
-    private var mapTileURL = "http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
+    private let mapTileURL = "http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var magnifyingGlassButton: UIButton!
@@ -17,7 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     private let metersRadiusToShow: CLLocationDistance = 2200
     private let tileMinZoom: CLLocationDistance = 8500
     private var zoomed = false
-    private let smallRadiusToDisplay: CLLocationDistance = 50
+    private let smallRadiusToDisplay: CLLocationDistance = 50//increase
     
     private var overlay: MKTileOverlay = MKTileOverlay()
     override func viewDidLoad() {
@@ -85,14 +85,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     @IBAction func magnifyingGlassButtonPressed(_ sender: Any) {
-        if(!zoomed){
+        if(!zoomed){//fix to not have to !
             loadRegularMap()
             regularZoomOnUser()
             magnifyingGlassButton.setImage(UIImage(systemName: "minus.magnifyingglass"), for: .normal)
         }
         else{
             loadMapFromTiles()
-            tileZoomOnUser(animated: true)
+            tileZoomOnUser(animated: true)//true?
             magnifyingGlassButton.setImage(UIImage(systemName: "plus.magnifyingglass"), for: .normal)
         }
         zoomed.toggle()
