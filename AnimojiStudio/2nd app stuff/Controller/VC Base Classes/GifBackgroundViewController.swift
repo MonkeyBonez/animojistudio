@@ -8,7 +8,7 @@ import Foundation
 class GifBackgroundViewController: UIViewController{//Used for any background needing to load GIF
     @IBOutlet weak var backgroundImage: UIImageView! = nil//Image View to be updated
     var backgroundImageName: String = ""//Currently filename of gif in main bundle Change to URL/[URL] Later?
-    func loadBackground(){
+    private func loadBackground(){
         loadGif(for: backgroundImageName, image: backgroundImage)
     }
     
@@ -26,5 +26,10 @@ class GifBackgroundViewController: UIViewController{//Used for any background ne
     
     override func viewDidAppear(_ animated: Bool) {
         hideNavigationBar(animated: animated)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadBackground()
     }
 }

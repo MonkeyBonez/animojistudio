@@ -11,7 +11,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
-struct FirestoreUserService: FirestoreUserServiceDelegate {
+
+struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDelegate {
     var db: Firestore
     init() {
         db = Firestore.firestore()
@@ -33,8 +34,28 @@ struct FirestoreUserService: FirestoreUserServiceDelegate {
 
     }
     
+    func createUser(name: String, VC: UserInfoViewControllerFirestoreDelegate){
+        
+        db.collection("Users").document(currUserID!).setData([
+            "name": name
+        ]){err in
+            if let err = err {
+                VC.showError(error: err.localizedDescription)
+            }
+            else{
+                //go to next page/Bitmoji stuff
+                print("worked!")
+            }
+            
+        }
+    }
+    
 }
 
 protocol FirestoreUserServiceDelegate {
     func userExists(delegate:SignUpViewControllerFirestoreDelegate, UserID:String)
+}
+
+protocol FirestoreUserInfoDelegate {
+    func createUser(name: String, VC: UserInfoViewControllerFirestoreDelegate)
 }

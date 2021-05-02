@@ -7,10 +7,10 @@
 
 import UIKit
 //toDO: Give up first responder when appropriate
-class SignUpViewController: GifBackgroundViewController, SignUpViewControllerAuthDelegate, UITextFieldDelegate, SignUpViewControllerFirestoreDelegate {
+class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, SignUpViewControllerAuthDelegate, UITextFieldDelegate, SignUpViewControllerFirestoreDelegate {
     
     
-    let signUpDelegate:FirebaseSignUpDelegate = FirebaseAuthService() //change to same as below? 
+    let signUpDelegate:FirebaseSignUpDelegate = FirebaseAuthService() //change to same as below?
     var userServiceDelegate:FirestoreUserServiceDelegate!
 
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -18,14 +18,11 @@ class SignUpViewController: GifBackgroundViewController, SignUpViewControllerAut
     
     @IBOutlet weak var shootingStarImageView: UIImageView!
     override func viewDidLoad() {
-        super.viewDidLoad()
         self.backgroundImageName = "Background"
-        self.loadBackground()
+        //self.loadBackground()
         self.loadGif(for: "shootingStar", image: shootingStarImageView)
-        let screenTap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(screenTap)
-        userServiceDelegate = FirestoreUserService()
+        self.keyboardsToHide = [phoneNumberTextField]
+        super.viewDidLoad()
     }
     
 
@@ -34,18 +31,9 @@ class SignUpViewController: GifBackgroundViewController, SignUpViewControllerAut
         hideNavigationBar(animated: animated)
     }*/
     
-    @objc func screenTapped(){
-        phoneNumberTextField.resignFirstResponder()
-    }
     
     
     
-    func showError(error: String) {
-        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        let continueAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(continueAction)
-        self.present(alert, animated: false)
-    }
     
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
@@ -100,8 +88,7 @@ class SignUpViewController: GifBackgroundViewController, SignUpViewControllerAut
     
 }
 
-protocol SignUpViewControllerAuthDelegate {
-    func showError(error: String)
+protocol SignUpViewControllerAuthDelegate: CanShowErrorProtocol {
     func getVerificationCode()
     func signInSuccess(userID: String?)
 }

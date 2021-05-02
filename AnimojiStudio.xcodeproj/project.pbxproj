@@ -23,6 +23,9 @@
 		36CF7AF5263E55E600A76E6E /* NavigationBarHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7AF4263E55E600A76E6E /* NavigationBarHide.swift */; };
 		36CF7AFD263E607400A76E6E /* FirestoreUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7AFC263E607400A76E6E /* FirestoreUserService.swift */; };
 		36CF7B00263E877E00A76E6E /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7AFF263E877E00A76E6E /* UserInfoViewController.swift */; };
+		36CF7B06263F20F100A76E6E /* HideKeyboardOnScreenTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7B05263F20F100A76E6E /* HideKeyboardOnScreenTapViewController.swift */; };
+		36CF7B0A263F297500A76E6E /* ShowsErrorHideKeyboardGIFBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7B09263F297500A76E6E /* ShowsErrorHideKeyboardGIFBackgroundViewController.swift */; };
+		36CF7B0D263F29F100A76E6E /* CanShowErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7B0C263F29F100A76E6E /* CanShowErrorProtocol.swift */; };
 		36DDFD6A2631459100A2A8F7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD692631459100A2A8F7 /* SignUpViewController.swift */; };
 		36DDFD79263169AA00A2A8F7 /* Background.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36DDFD78263169AA00A2A8F7 /* Background.gif */; };
 		36DDFD7C26316BCF00A2A8F7 /* UIImageGifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */; };
@@ -78,6 +81,9 @@
 		36CF7AF4263E55E600A76E6E /* NavigationBarHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarHide.swift; sourceTree = "<group>"; };
 		36CF7AFC263E607400A76E6E /* FirestoreUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUserService.swift; sourceTree = "<group>"; };
 		36CF7AFF263E877E00A76E6E /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		36CF7B05263F20F100A76E6E /* HideKeyboardOnScreenTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardOnScreenTapViewController.swift; sourceTree = "<group>"; };
+		36CF7B09263F297500A76E6E /* ShowsErrorHideKeyboardGIFBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsErrorHideKeyboardGIFBackgroundViewController.swift; sourceTree = "<group>"; };
+		36CF7B0C263F29F100A76E6E /* CanShowErrorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanShowErrorProtocol.swift; sourceTree = "<group>"; };
 		36DDFD692631459100A2A8F7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		36DDFD78263169AA00A2A8F7 /* Background.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Background.gif; sourceTree = "<group>"; };
 		36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageGifExtension.swift; sourceTree = "<group>"; };
@@ -206,6 +212,9 @@
 			children = (
 				36DDFD832631732900A2A8F7 /* GifBackgroundViewController.swift */,
 				36CF7AF4263E55E600A76E6E /* NavigationBarHide.swift */,
+				36CF7B05263F20F100A76E6E /* HideKeyboardOnScreenTapViewController.swift */,
+				36CF7B09263F297500A76E6E /* ShowsErrorHideKeyboardGIFBackgroundViewController.swift */,
+				36CF7B0C263F29F100A76E6E /* CanShowErrorProtocol.swift */,
 			);
 			path = "VC Base Classes";
 			sourceTree = "<group>";
@@ -573,6 +582,7 @@
 				DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */,
 				DDDBBC181FB79C4D00291D45 /* PuppetCollectionViewCell.m in Sources */,
 				DDDBBBF91FB7918000291D45 /* main.m in Sources */,
+				36CF7B06263F20F100A76E6E /* HideKeyboardOnScreenTapViewController.swift in Sources */,
 				DDDBBC1E1FB7A73300291D45 /* ASPuppetView.m in Sources */,
 				DD7135ED1FBBE62900AAA5E7 /* KaraokeFlowController.m in Sources */,
 				DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */,
@@ -580,6 +590,7 @@
 				DD7135F01FBBE68300AAA5E7 /* SpotifySearchViewController.m in Sources */,
 				DDDBBC0E1FB798C100291D45 /* UIViewController+Children.m in Sources */,
 				DDA31AD3212707910058B989 /* WelcomeViewController.m in Sources */,
+				36CF7B0D263F29F100A76E6E /* CanShowErrorProtocol.swift in Sources */,
 				DD7135DE1FBB99E900AAA5E7 /* ColorSheetViewController.m in Sources */,
 				DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */,
 				36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */,
@@ -595,6 +606,7 @@
 				DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */,
 				DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */,
 				DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */,
+				36CF7B0A263F297500A76E6E /* ShowsErrorHideKeyboardGIFBackgroundViewController.swift in Sources */,
 				36DDFD842631732900A2A8F7 /* GifBackgroundViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
