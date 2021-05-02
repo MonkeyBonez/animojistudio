@@ -10,18 +10,34 @@ import Firebase
 
 //Global
 var recordingFlowController = RecordingFlowController()
+var currUserID: String?
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFirestoreDelegate {
+    
 
     var window: UIWindow?
+    
+    override init(){
+        FirebaseApp.configure()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // set up notification center here
-        FirebaseApp.configure()
-        recordingFlowController = RecordingFlowController()
+        //FirebaseApp.configure()
+                recordingFlowController = RecordingFlowController()
+                MemojiSupport.prepareMemojiRuntime()
+                recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()
+                return true
+        //FirebaseApp.configure()
+        /*recordingFlowController = RecordingFlowController()
         MemojiSupport.prepareMemojiRuntime()
         recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()
+        currUserID = Firebase.Auth.auth().currentUser?.uid
+        if let currUserID = currUserID{
+            let userServiceDelegate:FirestoreUserServiceDelegate = FirestoreUserService()
+            userServiceDelegate.userExists(delegate: self, UserID: currUserID)
+        }*/
         return true
     }
 
@@ -40,6 +56,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+    
+    func userExists() {
+        //set root VC to tab bar w/ map
+    }
+    
+    func userDoesntExist() {
+        //set root VC to Sign up info screen
+        //https://stackoverflow.com/questions/10428629/programmatically-set-the-initial-view-controller-using-storyboards?noredirect=1&lq=1
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+        //navigationController.view.frame = self.window!.bounds
+        let rootViewController = storyboard.instantiateViewController(withIdentifier: "UserInfoVC") as UIViewController
+            navigationController.viewControllers = [rootViewController]
+        
+            self.window?.rootViewController = navigationController
     }
 
 

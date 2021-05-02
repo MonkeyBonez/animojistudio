@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NXf-07-Ffu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qgc-vY-76u">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,6 +10,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="unf-2z-DhG">
+            <objects>
+                <navigationController id="qgc-vY-76u" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P5b-he-uWr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NXf-07-Ffu" kind="relationship" relationship="rootViewController" id="jYY-qg-hal"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2e6-H7-8qA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3125" y="836"/>
+        </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="diH-el-Z1m">
             <objects>
@@ -26,10 +42,10 @@
                                 </connections>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shootingStar.gif" translatesAutoresizingMaskIntoConstraints="NO" id="VgW-at-Smf">
-                                <rect key="frame" x="242" y="0.0" width="172" height="123"/>
+                                <rect key="frame" x="242" y="44" width="172" height="123"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sonder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oub-lV-Qfa">
-                                <rect key="frame" x="166.66666666666666" y="50" width="81" height="32"/>
+                                <rect key="frame" x="166.66666666666666" y="94" width="81" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="WNV-hD-ZZ3"/>
                                 </constraints>
@@ -38,7 +54,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;The world is so small... 'till it aint&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yin-54-Qe3">
-                                <rect key="frame" x="57" y="182" width="300" height="24"/>
+                                <rect key="frame" x="57" y="226" width="300" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="TFw-qe-jdR"/>
                                 </constraints>
@@ -68,7 +84,7 @@
                                 </constraints>
                                 <color key="textColor" name="AccentColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" textContentType="tel"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HfS-fS-eX5"/>
@@ -104,9 +120,56 @@
             </objects>
             <point key="canvasLocation" x="-2159.4202898550725" y="835.59782608695662"/>
         </scene>
-        <!--Initial View Controller-->
+        <!--User Info View Controller-->
+        <scene sceneID="7tb-fh-PgX">
+            <objects>
+                <viewController storyboardIdentifier="UserInfoVC" id="vLx-yl-pMX" customClass="UserInfoViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="16R-6t-HbS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Background2.gif" translatesAutoresizingMaskIntoConstraints="NO" id="jbF-FZ-SEc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="jbF-FZ-SEc" secondAttribute="trailing" id="V0N-Z4-h2H"/>
+                            <constraint firstAttribute="bottom" secondItem="jbF-FZ-SEc" secondAttribute="bottom" id="bs5-00-W3e"/>
+                            <constraint firstItem="jbF-FZ-SEc" firstAttribute="leading" secondItem="16R-6t-HbS" secondAttribute="leading" id="gkw-dZ-ppD"/>
+                            <constraint firstItem="jbF-FZ-SEc" firstAttribute="top" secondItem="16R-6t-HbS" secondAttribute="top" id="iW0-HJ-FGs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="jbF-FZ-SEc" id="420-QZ-5Mz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UN2-aj-BGK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2159.4202898550725" y="1623.0978260869567"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hL1-ak-JY5">
+            <objects>
+                <tabBarController id="Eef-7t-vaP" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vef-hd-6AX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ueR-1k-w93" kind="relationship" relationship="viewControllers" id="87G-x9-2aT"/>
+                        <segue destination="las-AA-tuk" kind="relationship" relationship="viewControllers" id="uaJ-LZ-myQ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NuL-VP-wbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-946" y="836"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="cxe-oV-MWN">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AlZ-QB-3Rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="ueR-1k-w93" customClass="InitialViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JWM-ik-WPj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -132,12 +195,12 @@
                         <viewLayoutGuide key="safeArea" id="IPr-w0-BP5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="X96-hx-DbG"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AlZ-QB-3Rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-311" y="65"/>
+            <point key="canvasLocation" x="-190" y="65"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Item-->
         <scene sceneID="Tzn-eF-uet">
             <objects>
                 <viewController id="las-AA-tuk" customClass="MapViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
@@ -171,6 +234,7 @@
                             <constraint firstItem="KDO-Tt-tuy" firstAttribute="trailing" secondItem="V17-3u-0kb" secondAttribute="trailing" id="wfV-oe-Mmc"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Nr3-tK-nIC"/>
                     <connections>
                         <outlet property="magnifyingGlassButton" destination="LAh-Nh-7Rv" id="Vno-pO-pbl"/>
                         <outlet property="mapView" destination="KDO-Tt-tuy" id="wH9-cq-1DK"/>
@@ -178,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8z-aX-md6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1170.4000000000001" y="1564.7676161919042"/>
+            <point key="canvasLocation" x="-191" y="1696"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -212,6 +276,7 @@
     </scenes>
     <resources>
         <image name="Background.gif" width="570" height="777"/>
+        <image name="Background2.gif" width="432" height="768"/>
         <image name="plus.magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="shootingStar.gif" width="500" height="500"/>
         <namedColor name="AccentColor">

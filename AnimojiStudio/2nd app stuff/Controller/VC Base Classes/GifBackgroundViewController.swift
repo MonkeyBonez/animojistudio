@@ -23,4 +23,8 @@ class GifBackgroundViewController: UIViewController{//Used for any background ne
             return
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        hideNavigationBar(animated: animated)
+    }
 }

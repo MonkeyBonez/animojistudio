@@ -7,8 +7,11 @@
 
 import UIKit
 //toDO: Give up first responder when appropriate
-class SignUpViewController: GifBackgroundViewController, SignUpViewControllerDelegate, UITextFieldDelegate {
-    var signUpDelegate:FirebaseSignUpDelegate = FirebaseAuthService()
+class SignUpViewController: GifBackgroundViewController, SignUpViewControllerAuthDelegate, UITextFieldDelegate, SignUpViewControllerFirestoreDelegate {
+    
+    
+    let signUpDelegate:FirebaseSignUpDelegate = FirebaseAuthService()
+    let userServiceDelegate:FirestoreUserServiceDelegate = FirestoreUserService()
 
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
@@ -23,6 +26,12 @@ class SignUpViewController: GifBackgroundViewController, SignUpViewControllerDel
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(screenTap)
     }
+    
+
+    
+    /*override func viewDidAppear(_ animated: Bool) {
+        hideNavigationBar(animated: animated)
+    }*/
     
     @objc func screenTapped(){
         phoneNumberTextField.resignFirstResponder()
@@ -73,9 +82,31 @@ class SignUpViewController: GifBackgroundViewController, SignUpViewControllerDel
         }
         present(alert, animated: false)
     }
+    func signInSuccess(userID: String?) {
+        //check if user exists, push to account creation else tab bar w/map
+        if let userID = userID{
+            userServiceDelegate.userExists(delegate: self, UserID: userID)
+        }
+    }
+    
+    func userExists() {
+        
+    }
+    
+    func userDoesntExist() {
+        
+    }
+    
 }
 
-protocol SignUpViewControllerDelegate {
+protocol SignUpViewControllerAuthDelegate {
     func showError(error: String)
     func getVerificationCode()
+    func signInSuccess(userID: String?)
+}
+
+protocol SignUpViewControllerFirestoreDelegate {
+    func userExists()
+    func userDoesntExist()
+    //change to userExists and userDoesn'tExist
 }

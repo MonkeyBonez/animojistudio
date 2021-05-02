@@ -10,7 +10,7 @@ import FirebaseAuth
 
 
 struct FirebaseAuthService: FirebaseSignUpDelegate{
-    func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerDelegate) {
+    func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerAuthDelegate) {
         guard let verificationID = getUserDefaultsVerificationID() else{
             viewController.showError(error: "Couldn't get verification ID :(")
             return
@@ -19,20 +19,31 @@ struct FirebaseAuthService: FirebaseSignUpDelegate{
        // look through: https://firebase.google.com/docs/auth/ios/phone-auth?authuser=0
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
-                viewController.showError(error: error.localizedDescription)
+                if (error.localizedDescription == "The SMS verification code used to create the phone auth credential is invalid. Please resend the verification code SMS and be sure to use the verification code provided by the user."){
+                    viewController.showError(error: "Incorrect validation code - Please retry.")
+                    //add retry functionality here get resent
+                }
+                else{
+                    viewController.showError(error: error.localizedDescription)
+                }
                 return
             }
-            print("success!") //toDelete
+            /*print("success!") //toDelete
             print(authResult)
+            print(Auth.auth().currentUser?.uid)*/
+            currUserID = Auth.auth().currentUser?.uid
+            viewController.signInSuccess(userID: currUserID)
         }
     }
     
     
-    func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerDelegate){
+    func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerAuthDelegate){
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
           if let error = error {
             //self.showMessagePrompt(error.localizedDescription)
-            viewController.showError(error: error.localizedDescription)
+            if(error.localizedDescription != "The interaction was cancelled by the user."){
+                viewController.showError(error: error.localizedDescription)
+            }
             return
           }
           // Sign in using the verificationID and the code sent to the user
@@ -57,6 +68,6 @@ struct FirebaseAuthService: FirebaseSignUpDelegate{
 }
 
 protocol FirebaseSignUpDelegate{
-    func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerDelegate)
-    func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerDelegate)
+    func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerAuthDelegate)
+    func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerAuthDelegate)
 }
