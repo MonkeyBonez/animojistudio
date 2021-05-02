@@ -18,26 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
 
     var window: UIWindow?
     
-    override init(){
-        FirebaseApp.configure()
-    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // set up notification center here
-        //FirebaseApp.configure()
-                recordingFlowController = RecordingFlowController()
-                MemojiSupport.prepareMemojiRuntime()
-                recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()
-                return true
-        //FirebaseApp.configure()
-        /*recordingFlowController = RecordingFlowController()
+
+        FirebaseApp.configure()
+        
+        recordingFlowController = RecordingFlowController()
         MemojiSupport.prepareMemojiRuntime()
         recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()
         currUserID = Firebase.Auth.auth().currentUser?.uid
         if let currUserID = currUserID{
             let userServiceDelegate:FirestoreUserServiceDelegate = FirestoreUserService()
             userServiceDelegate.userExists(delegate: self, UserID: currUserID)
-        }*/
+        }
         return true
     }
 

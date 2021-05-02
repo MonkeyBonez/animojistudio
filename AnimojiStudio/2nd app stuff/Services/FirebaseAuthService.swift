@@ -38,6 +38,7 @@ struct FirebaseAuthService: FirebaseSignUpDelegate{
     
     
     func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerAuthDelegate){
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
           if let error = error {
             //self.showMessagePrompt(error.localizedDescription)

@@ -10,8 +10,8 @@ import UIKit
 class SignUpViewController: GifBackgroundViewController, SignUpViewControllerAuthDelegate, UITextFieldDelegate, SignUpViewControllerFirestoreDelegate {
     
     
-    let signUpDelegate:FirebaseSignUpDelegate = FirebaseAuthService()
-    let userServiceDelegate:FirestoreUserServiceDelegate = FirestoreUserService()
+    let signUpDelegate:FirebaseSignUpDelegate = FirebaseAuthService() //change to same as below? 
+    var userServiceDelegate:FirestoreUserServiceDelegate!
 
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
@@ -25,6 +25,7 @@ class SignUpViewController: GifBackgroundViewController, SignUpViewControllerAut
         let screenTap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(screenTap)
+        userServiceDelegate = FirestoreUserService()
     }
     
 
