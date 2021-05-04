@@ -36,7 +36,7 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
     
     func createUser(name: String, VC: UserInfoViewControllerFirestoreDelegate){
         
-        db.collection("Users").document(currUserID!).setData([
+        db.collection("Users").document(currUser.shared.currUsedID!).setData([
             "name": name
         ]){err in
             if let err = err {

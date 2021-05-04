@@ -8,7 +8,8 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewControllerFirestoreMessagesDelegate {
+    
     private let mapTileURL = "http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
     @IBOutlet weak var mapView: MKMapView!
     
@@ -20,16 +21,36 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     private let smallRadiusToDisplay: CLLocationDistance = 50//increase
     
     private var overlay: MKTileOverlay = MKTileOverlay()
+    var messageService:FirestoreMessagesMapService!
+    
+    var messages: [Message] = []{
+        didSet{
+            loadMessagesToMap()
+            return
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overlay = MKTileOverlay(urlTemplate: mapTileURL)
         getUserLocationAccess()
         setUpMap()
+        tileZoomOnUser(animated: false)
+        messageService = FirestoreMessageRecieverService()
+        messageService.setMessageAnnotations(VC: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadMapFromTiles()
         tileZoomOnUser(animated: false)
+    }
+    
+    func loadMessagesToMap(){
+        //load messages on to map
+        for message in messages{
+            
+        }
     }
     
     func tileZoomOnUser(animated: Bool){
@@ -99,7 +120,49 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         zoomed.toggle()
     }
     
+    func clearMessages(){
+        messages = []
+    }
     
+    //function not needed
+    /*func addMessage(newMessage: Message){
+        messages.append(newMessage)
+    }*/
+    
+    func setMessages(newMessages: [Message]){
+        messages = newMessages
+    }
+    
+    func addMapAnnotation(annotation: MKPointAnnotation){
+        mapView.addAnnotation(annotation)
+    }
+    
+    //https://www.hackingwithswift.com/example-code/location/how-to-add-annotations-to-mkmapview-using-mkpointannotation-and-mkpinannotationview
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else {
+            return nil
+        }
+        
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annotationView == nil{
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+        }
+        else{
+            annotationView!.annotation = annotation
+        }
+        return annotationView
+    }
     
 
+}
+
+protocol  MapViewControllerFirestoreMessagesDelegate: CanShowErrorProtocol{
+    var messages: [Message]{ get set }
+    func clearMessages()
+    //func addMessage(newMessage: Message)
+    func setMessages(newMessages: [Message])
+    func addMapAnnotation(annotation: MKPointAnnotation)
+    
 }

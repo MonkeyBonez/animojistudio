@@ -397,10 +397,20 @@
         <!--Account-->
         <scene sceneID="RUn-yR-FVD">
             <objects>
-                <viewController id="ZhJ-bl-1Td" sceneMemberID="viewController">
+                <viewController id="ZhJ-bl-1Td" customClass="AccountViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bwi-d3-ww2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpP-lD-G7b">
+                                <rect key="frame" x="182" y="51" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log out"/>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="ZhJ-bl-1Td" eventType="touchUpInside" id="LrV-uu-f4Q"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rfK-GD-xHH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>

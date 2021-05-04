@@ -9,7 +9,7 @@ import Foundation
 import FirebaseAuth
 
 
-struct FirebaseAuthService: FirebaseSignUpDelegate{
+struct FirebaseAuthService: FirebaseSignUpDelegate, FirebaseSignOutDelegate{
     func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerAuthDelegate) {
         guard let verificationID = getUserDefaultsVerificationID() else{
             viewController.showError(error: "Couldn't get verification ID :(")
@@ -31,8 +31,8 @@ struct FirebaseAuthService: FirebaseSignUpDelegate{
             /*print("success!") //toDelete
             print(authResult)
             print(Auth.auth().currentUser?.uid)*/
-            currUserID = Auth.auth().currentUser?.uid
-            viewController.signInSuccess(userID: currUserID)
+            //currUserID = Auth.auth().currentUser?.uid
+            viewController.signInSuccess(userID: currUser.shared.currUsedID)
         }
     }
     
@@ -66,9 +66,24 @@ struct FirebaseAuthService: FirebaseSignUpDelegate{
     func getUserDefaultsVerificationID()->String?{
         return UserDefaults.standard.string(forKey: "authVerificationID")
     }
+    
+    func signOut(VC: SignoutViewControllerAuthDelegate) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            VC.showError(error: "Could not sign out")
+            return
+        }
+        VC.signOutSuccess()
+    }
+    
 }
 
 protocol FirebaseSignUpDelegate{
     func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerAuthDelegate)
     func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerAuthDelegate)
+}
+
+protocol FirebaseSignOutDelegate {
+    func signOut(VC: SignoutViewControllerAuthDelegate)
 }

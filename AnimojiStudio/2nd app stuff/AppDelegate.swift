@@ -13,31 +13,37 @@ import SCSDKCoreKit
 
 //Global
 var recordingFlowController = RecordingFlowController()
-var currUserID: String?
+//var currUserID: String? //-> If you need to share the data across controllers, use a singleton. make published singelton!
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFirestoreDelegate {
     
-
+    
     var window: UIWindow?
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // set up notification center here
-
         FirebaseApp.configure()
+        
+        //to log out during development
+        /*do {
+            try Auth.auth().signOut()
+
+        } catch  {
+            return true
+        }*/
         
         recordingFlowController = RecordingFlowController()
         MemojiSupport.prepareMemojiRuntime()
         recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()
-        currUserID = Firebase.Auth.auth().currentUser?.uid
-        /*do {
-            try Firebase.Auth.auth().signOut()
-        } catch {
-        }
-        //for testing with logout
-        currUserID = ""*/
-        if let currUserID = currUserID{
+        changeViewBasedOnLoggedIn()
+        return true
+    }
+    
+    func changeViewBasedOnLoggedIn(){
+        //currUserID = Firebase.Auth.auth().currentUser?.uid
+        if let currUserID = Firebase.Auth.auth().currentUser?.uid{
             if(!currUserID.isEmpty){
                 let userServiceDelegate:FirestoreUserServiceDelegate = FirestoreUserService()
                 userServiceDelegate.userExists(delegate: self, UserID: currUserID)
@@ -46,7 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
                 signInPage()
             }
         }
-        return true
+        else{
+            signInPage()
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

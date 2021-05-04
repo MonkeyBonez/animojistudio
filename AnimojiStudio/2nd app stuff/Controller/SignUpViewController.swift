@@ -80,10 +80,18 @@ class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, S
     
     func userExists() {
         //send to tab bar view w/ map
+        goToViewController(identifier: "InAppTabBar")
     }
     
     func userDoesntExist() {
         // go to user info page
+        goToViewController(identifier: "UserInfoVC")
+    }
+    
+    func goToViewController(identifier: String){
+        //https://stackoverflow.com/questions/24038215/how-to-navigate-from-one-view-controller-to-another-using-swift
+        let vc = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: identifier)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

@@ -69,9 +69,9 @@
     }];
     activityController.popoverPresentationController.sourceView = self.previewController.shareButton;
     [self presentViewController:activityController animated:YES completion:nil];*/
-    FirestoreVideoUploadService *vc = FirestoreVideoUploadService.shared;
-    vc.videoURL = self.videoURL;
-    [vc uploadVideo];
+    FirestoreMessageUploadService *service = FirestoreMessageUploadService.shared;
+    service.videoURL = self.videoURL;
+    [service uploadVideo];
     
     
     
