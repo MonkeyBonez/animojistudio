@@ -1,4 +1,5 @@
 PODS:
+  - CodableFirebase (0.2.1)
   - PINCache (3.0.3):
     - PINCache/Arc-exception-safe (= 3.0.3)
     - PINCache/Core (= 3.0.3)
@@ -16,20 +17,23 @@ PODS:
     - SnapSDK/SCSDKCoreKit
 
 DEPENDENCIES:
+  - CodableFirebase
   - SnapSDK/SCSDKBitmojiKit
   - SnapSDK/SCSDKLoginKit
 
 SPEC REPOS:
   trunk:
+    - CodableFirebase
     - PINCache
     - PINOperation
     - SnapSDK
 
 SPEC CHECKSUMS:
+  CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   SnapSDK: ac7836cec8c3a380cff4646a1177ea1d753cfb8c
 
-PODFILE CHECKSUM: e52579141a5ad63321b78dd6b89c792654443524
+PODFILE CHECKSUM: 72a70b750c70cc38573c002d3cd684be8733dc62
 
 COCOAPODS: 1.10.1

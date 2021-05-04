@@ -8,13 +8,27 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
+import CoreLocation
+import CodableFirebase
 
-@objc class FirestoreVideoUploadService: NSObject {
 
-    @objc public var videoURL: NSURL = NSURL()
+@objc class FirestoreVideoUploadService: NSObject, CLLocationManagerDelegate{
     
-    override init() {
+    @objc static let shared = FirestoreVideoUploadService()
+    @objc public var videoURL: NSURL = NSURL()
+    var locationManager:CLLocationManager
+    var db: Firestore
+    override private init() {
+        locationManager = CLLocationManager()
+        db = Firestore.firestore()
         super.init()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+    }
+    
+    deinit {
+        print("DEINIT")
     }
     
     @objc func uploadVideo(){
@@ -35,11 +49,41 @@ import Firebase
                     return
                 }
                 //print(url)
-                self.createVideo(url: url)
+                self.createMessage(url: url)
             }
         }
     }
-    func createVideo(url: URL){
+    
+    var newMessageURL:URL?
+    func createMessage(url: URL){
+        newMessageURL = url
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer //change to best
+        locationManager.requestLocation()
+        //newMessage = Message(videoUrl: url, location: )
+        //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let newMessage = Message(videoUrl: newMessageURL!, location: locations.first!, timeCreated: Date(), creatorID: currUserID!)
+        uploadMessageToFirestore(newMessage: newMessage)
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func uploadMessageToFirestore(newMessage: Message){
+        //https://github.com/alickbass/CodableFirebase
+        let docData = try! FirestoreEncoder().encode(newMessage)
+        db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: docData, completion: { (error) in
+            if let error = error{
+                print("Error occured: \(error.localizedDescription)")
+            }
+            else{
+                //succesful, go back to map?
+            }
+        })
         
     }
     /*override func viewDidLoad() {

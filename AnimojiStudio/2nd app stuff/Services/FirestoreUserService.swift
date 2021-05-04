@@ -12,7 +12,6 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 
-
 struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDelegate {
     var db: Firestore
     init() {
@@ -52,11 +51,13 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
         }
     }
     
-    //TODO:DELETE
-    func createVideo(url: String){
-        
+    func addMessageToFirestore(newMessage: Message){        //let diffInDays = Calendar.current.dateComponents([.day], from: Date(), to: Date())
+
         //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
     }
+    
+    //TODO:DELETE
+    
     
     
     /*func uploadVideo(){

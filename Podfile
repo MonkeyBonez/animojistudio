@@ -7,5 +7,6 @@ target 'AnimojiStudio' do
 
   # Pods for AnimojiStudio
   pod 'SnapSDK', :subspecs => ['SCSDKLoginKit','SCSDKBitmojiKit']
+  pod 'CodableFirebase'
 
 end

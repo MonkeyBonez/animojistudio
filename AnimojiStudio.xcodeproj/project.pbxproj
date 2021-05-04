@@ -10,9 +10,9 @@
 		2D60E87EAB6A41ABE8FBA999 /* Pods_AnimojiStudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E46C06DB54CEA7E7E67B376 /* Pods_AnimojiStudio.framework */; };
 		360720F9262E57BE0080B767 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360720F8262E57BE0080B767 /* ARViewController.swift */; };
 		3639CF6E2633BD0D002569DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */; };
-		3639CF722633BF90002569DB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF712633BF90002569DB /* FirebaseAuth */; };
-		3639CF742633BF90002569DB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF732633BF90002569DB /* FirebaseFirestore */; };
-		3639CF762633BF90002569DB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF752633BF90002569DB /* FirebaseStorage */; };
+		3639CF722633BF90002569DB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF712633BF90002569DB /* SwiftPackageProductDependency */; };
+		3639CF742633BF90002569DB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF732633BF90002569DB /* SwiftPackageProductDependency */; };
+		3639CF762633BF90002569DB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF752633BF90002569DB /* SwiftPackageProductDependency */; };
 		3639CF7B2633CEE7002569DB /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */; };
 		36AB67742632987B00CF072D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AB67732632987B00CF072D /* MapViewController.swift */; };
 		36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0203262FEA9300C0F926 /* AppDelegate.swift */; };
@@ -186,13 +186,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDDBBC211FB7A7E400291D45 /* AvatarKit.framework in Frameworks */,
-				3639CF722633BF90002569DB /* FirebaseAuth in Frameworks */,
+				3639CF722633BF90002569DB /* BuildFile in Frameworks */,
 				36D23852264068480070DFCD /* SCSDKCoreKit.xcframework in Frameworks */,
 				DD7135E41FBBDA9100AAA5E7 /* SpotifyAudioPlayback.framework in Frameworks */,
 				DD7135E51FBBDA9400AAA5E7 /* SpotifyAuthentication.framework in Frameworks */,
-				3639CF762633BF90002569DB /* FirebaseStorage in Frameworks */,
+				3639CF762633BF90002569DB /* BuildFile in Frameworks */,
 				DD7135E61FBBDA9800AAA5E7 /* SpotifyMetadata.framework in Frameworks */,
-				3639CF742633BF90002569DB /* FirebaseFirestore in Frameworks */,
+				3639CF742633BF90002569DB /* BuildFile in Frameworks */,
 				2D60E87EAB6A41ABE8FBA999 /* Pods_AnimojiStudio.framework in Frameworks */,
 				36D2384F264068470070DFCD /* SCSDKLoginKit.xcframework in Frameworks */,
 			);
@@ -552,9 +552,9 @@
 			);
 			name = AnimojiStudio;
 			packageProductDependencies = (
-				3639CF712633BF90002569DB /* FirebaseAuth */,
-				3639CF732633BF90002569DB /* FirebaseFirestore */,
-				3639CF752633BF90002569DB /* FirebaseStorage */,
+				3639CF712633BF90002569DB /* SwiftPackageProductDependency */,
+				3639CF732633BF90002569DB /* SwiftPackageProductDependency */,
+				3639CF752633BF90002569DB /* SwiftPackageProductDependency */,
 			);
 			productName = AnimojiStudio;
 			productReference = DDDBBBE61FB7917F00291D45 /* AnimojiStudio.app */;
@@ -586,7 +586,7 @@
 			);
 			mainGroup = DDDBBBDD1FB7917F00291D45;
 			packageReferences = (
-				3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3639CF702633BF90002569DB /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = DDDBBBE71FB7917F00291D45 /* Products */;
 			projectDirPath = "";
@@ -623,6 +623,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AnimojiStudio/Pods-AnimojiStudio-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SCSDKBitmojiKit/SCSDKBitmojiKit.framework/SCSDKBitmojiKit",
@@ -631,6 +632,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCSDKBitmojiKit.framework",
@@ -927,7 +929,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		3639CF702633BF90002569DB /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -938,19 +940,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3639CF712633BF90002569DB /* FirebaseAuth */ = {
+		3639CF712633BF90002569DB /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 3639CF702633BF90002569DB /* RemoteSwiftPackageReference */;
 			productName = FirebaseAuth;
 		};
-		3639CF732633BF90002569DB /* FirebaseFirestore */ = {
+		3639CF732633BF90002569DB /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 3639CF702633BF90002569DB /* RemoteSwiftPackageReference */;
 			productName = FirebaseFirestore;
 		};
-		3639CF752633BF90002569DB /* FirebaseStorage */ = {
+		3639CF752633BF90002569DB /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3639CF702633BF90002569DB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 3639CF702633BF90002569DB /* RemoteSwiftPackageReference */;
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
