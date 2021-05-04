@@ -33,7 +33,8 @@
 		36D2386D2640B45E0070DFCD /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2386C2640B45E0070DFCD /* MainTabBarViewController.swift */; };
 		36D238702640BA040070DFCD /* UITabBarTransparentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2386F2640BA040070DFCD /* UITabBarTransparentExtension.swift */; };
 		36D238752640BD3A0070DFCD /* LeaveMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D238742640BD3A0070DFCD /* LeaveMessageViewController.swift */; };
-		36D2387E2640CA0A0070DFCD /* UploadingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2387D2640CA0A0070DFCD /* UploadingVideoViewController.swift */; };
+		36D2387E2640CA0A0070DFCD /* FirestoreVideoUploadServicee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2387D2640CA0A0070DFCD /* FirestoreVideoUploadServicee.swift */; };
+		36D238882641107F0070DFCD /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D238872641107F0070DFCD /* Message.swift */; };
 		36DDFD6A2631459100A2A8F7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD692631459100A2A8F7 /* SignUpViewController.swift */; };
 		36DDFD79263169AA00A2A8F7 /* Background.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36DDFD78263169AA00A2A8F7 /* Background.gif */; };
 		36DDFD7C26316BCF00A2A8F7 /* UIImageGifExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */; };
@@ -99,7 +100,8 @@
 		36D2386C2640B45E0070DFCD /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		36D2386F2640BA040070DFCD /* UITabBarTransparentExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarTransparentExtension.swift; sourceTree = "<group>"; };
 		36D238742640BD3A0070DFCD /* LeaveMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveMessageViewController.swift; sourceTree = "<group>"; };
-		36D2387D2640CA0A0070DFCD /* UploadingVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingVideoViewController.swift; sourceTree = "<group>"; };
+		36D2387D2640CA0A0070DFCD /* FirestoreVideoUploadServicee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreVideoUploadServicee.swift; sourceTree = "<group>"; };
+		36D238872641107F0070DFCD /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		36DDFD692631459100A2A8F7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		36DDFD78263169AA00A2A8F7 /* Background.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Background.gif; sourceTree = "<group>"; };
 		36DDFD7B26316BCF00A2A8F7 /* UIImageGifExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageGifExtension.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		3639CF782633CEA5002569DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				36D238872641107F0070DFCD /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			children = (
 				3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */,
 				36CF7AFC263E607400A76E6E /* FirestoreUserService.swift */,
+				36D2387D2640CA0A0070DFCD /* FirestoreVideoUploadServicee.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -257,7 +261,6 @@
 				36D238722640BC7F0070DFCD /* Pre-build refrence VCs */,
 				365BD877263292E3007EF48A /* VC Base Classes */,
 				36DDFD692631459100A2A8F7 /* SignUpViewController.swift */,
-				36D2387D2640CA0A0070DFCD /* UploadingVideoViewController.swift */,
 				36AB67732632987B00CF072D /* MapViewController.swift */,
 				36CF7AFF263E877E00A76E6E /* UserInfoViewController.swift */,
 				36CF7B13263F434E00A76E6E /* LoadingViewController.swift */,
@@ -704,7 +707,7 @@
 				36CF7B14263F434E00A76E6E /* LoadingViewController.swift in Sources */,
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,
 				DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */,
-				36D2387E2640CA0A0070DFCD /* UploadingVideoViewController.swift in Sources */,
+				36D2387E2640CA0A0070DFCD /* FirestoreVideoUploadServicee.swift in Sources */,
 				DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */,
 				DD7135F31FBC86D800AAA5E7 /* SongTableViewCell.m in Sources */,
 				36AB67742632987B00CF072D /* MapViewController.swift in Sources */,
@@ -713,6 +716,7 @@
 				DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */,
 				DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */,
 				DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */,
+				36D238882641107F0070DFCD /* Message.swift in Sources */,
 				36CF7B0A263F297500A76E6E /* ShowsErrorHideKeyboardGIFBackgroundViewController.swift in Sources */,
 				36DDFD842631732900A2A8F7 /* GifBackgroundViewController.swift in Sources */,
 			);
@@ -833,12 +837,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7210ACD506C2E9E66D160F5B /* Pods-AnimojiStudio.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AnimojiStudio/AnimojiStudio.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FMDJTXM4W7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -867,13 +872,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE719A62016780E889053C6A /* Pods-AnimojiStudio.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AnimojiStudio/AnimojiStudio.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FMDJTXM4W7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

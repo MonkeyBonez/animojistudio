@@ -11,6 +11,8 @@
 #import "UIViewController+Children.h"
 #import "VideoPreviewViewController.h"
 
+#import <AnimojiStudio-Swift.h>
+
 
 
 @interface SharingFlowController () <VideoPreviewDelegate>
@@ -54,9 +56,9 @@
 - (void)videoPreviewViewControllerDidSelectShare:(VideoPreviewViewController *)controller
 {
     
-    //Changes TODO: set up to upload video w/ current location to firebase here instead of sharing
+    //Changed: Share functionality changed to pass video url to swift VC where I can handle uploading message to firebase
     if (!self.videoURL) return;
-    
+    /*
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.videoURL] applicationActivities:nil];
     
     __weak typeof(self) weakSelf = self;
@@ -66,8 +68,11 @@
         [weakSelf done:nil];
     }];
     activityController.popoverPresentationController.sourceView = self.previewController.shareButton;
-    [self presentViewController:activityController animated:YES completion:nil];
-    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadingVideoVC"];
+    [self presentViewController:activityController animated:YES completion:nil];*/
+    FirestoreVideoUploadService *vc = [FirestoreVideoUploadService new];
+    vc.videoURL = self.videoURL;
+    [vc uploadVideo];
+    
     
     
 

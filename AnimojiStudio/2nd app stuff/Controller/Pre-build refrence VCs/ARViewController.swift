@@ -161,7 +161,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
       
     }
     @objc func tapped(recognizer :UIGestureRecognizer) {
-        DEMOShowMemoji()
+        //DEMOShowMemoji()
+        DEMOFirestoreShowMemoji()
       }
     
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
@@ -203,6 +204,64 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
+        
+    }
+    
+    func DEMOFirestoreShowMemoji(){
+        //https://firebasestorage.googleapis.com/v0/b/sonder-370f3.appspot.com/o/Videos%2FFFPdLgvc9GOLxEssvpn6kRcBJOr21620095230.42256.mp4?alt=media&token=1dd17990-164f-45ab-8823-df867451530d
+        guard let currentFrame = self.sceneView.session.currentFrame else {
+            return
+        }
+        let firebaseURL = URL(string: "https:firebasestorage.googleapis.com/v0/b/sonder-370f3.appspot.com/o/Videos%2FFFPdLgvc9GOLxEssvpn6kRcBJOr21620095230.42256.mp4?alt=media&token=1dd17990-164f-45ab-8823-df867451530d")
+        //let videoNode = SKVideoNode(fileNamed: "Recording.mov")
+        let videoNode = SKVideoNode(url: firebaseURL!)
+      
+      videoNode.size = CGSize(width: 200, height: 200)
+        videoNode.play()
+      videoNode.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        
+      
+      let effectNode = SKEffectNode()
+      effectNode.addChild(videoNode)
+      if let a:SKVideoNode? = (effectNode.children[0]) as! SKVideoNode{
+          a!.play()
+      }
+      
+  effectNode.filter = colorCubeFilterForChromaKey(hueAngle: 0)
+      
+      let skScene = SKScene(size: CGSize(width: 640, height: 480))
+      skScene.backgroundColor = .clear
+      skScene.addChild(effectNode)
+        
+        effectNode.position = CGPoint(x: skScene.size.width/2, y: skScene.size.height/2)
+        //effectNode.size = skScene.size
+        
+        let tvPlane = SCNPlane(width: 1.0, height: 0.75)
+      let material = SCNMaterial()
+      material.diffuse.contents = UIColor.clear
+      view.isOpaque = false
+      //material.diffuse.contents = view
+      //tvPlane.materials = [material]
+      tvPlane.firstMaterial?.diffuse.contents = UIColor.blue
+       //ßtvPlane.firstMaterial?.diffuse.contents = skScene
+      tvPlane.firstMaterial?.diffuse.contents = skScene
+      //tvPlane.insertMaterial(material, at: 0)
+       tvPlane.firstMaterial?.isDoubleSided = true
+      
+      
+      
+      //self.sceneView.scene.rootNode.addChildNode(effectNode)
+//
+        let tvPlaneNode = SCNNode(geometry: tvPlane)
+
+        var translation = matrix_identity_float4x4
+        translation.columns.3.z = -1.0
+
+        tvPlaneNode.simdTransform = matrix_multiply(currentFrame.camera.transform, translation)
+        tvPlaneNode.eulerAngles = SCNVector3(Double.pi,0,0)
+        tvPlaneNode.eulerAngles.y = currentFrame.camera.eulerAngles.y
+        
+        self.sceneView.scene.rootNode.addChildNode(tvPlaneNode)
         
     }
     

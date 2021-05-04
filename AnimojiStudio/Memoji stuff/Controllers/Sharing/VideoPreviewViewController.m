@@ -115,6 +115,10 @@
 - (IBAction)shareButtonTapped:(id)sender
 {
     [self.delegate videoPreviewViewControllerDidSelectShare:self];
+    //changed to go to uploading view controller
+    //UIViewController *uploadVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadingVideoVC"];
+    //[self presentViewController:uploadVC animated: YES completion:nil];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated

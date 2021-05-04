@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 
 struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDelegate {
@@ -50,6 +51,36 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
             
         }
     }
+    
+    //TODO:DELETE
+    func createVideo(url: String){
+        
+        //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
+    }
+    
+    
+    /*func uploadVideo(){
+        //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
+        var videoURL: NSURL = NSURL(fileURLWithPath: "hi/hi") //delete
+        let storageRef = StorageReference()
+        let videoName = currUserID! + String(Date().timeIntervalSince1970)
+        let videoRef = storageRef.child("Videos/\(videoName)")
+        let videoFile:URL = videoURL.absoluteURL!
+        
+        let uploadTask = videoRef.putFile(from: videoFile, metadata: nil) { (metadata, error) in
+            guard let metadata = metadata else{
+                print("Couldn't upload " + error!.localizedDescription)
+                return
+            }
+            videoRef.downloadURL { (url, error) in
+                guard let url = url else{
+                    print("Eror: " + error!.localizedDescription)
+                    return
+                }
+                print(url)
+            }
+        }
+    }*/
     
 }
 
