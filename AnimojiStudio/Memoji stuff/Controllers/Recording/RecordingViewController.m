@@ -42,6 +42,9 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     
     self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
     self.title = @"Record Message";
+    
+    //changed: So tab bar gets hidden in this view
+    self.tabBarController.tabBar.hidden = TRUE;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -117,13 +120,15 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 {
     
     [self.puppetView resetTracking];
-    //changed: Added to adjust background color correctly:
+    //changed: Added to adjust background color correctly and hide/show navigation bar properly:
     UIColor *colorToChangeTo;
     if([self.delegate isRecording]){
         colorToChangeTo = [UIColor whiteColor];
+        self.navigationController.navigationBarHidden = NO;
     }
     else{
         colorToChangeTo = [UIColor redColor];
+        self.navigationController.navigationBarHidden = YES;
     }
     self.puppetView.backgroundColor = colorToChangeTo;
     //end

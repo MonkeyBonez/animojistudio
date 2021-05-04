@@ -28,6 +28,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tileZoomOnUser(animated: false)
     }
     

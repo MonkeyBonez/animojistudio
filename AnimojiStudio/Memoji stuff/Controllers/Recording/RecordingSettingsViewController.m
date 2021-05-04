@@ -82,6 +82,9 @@
     [self.settingsContainer.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;
     [self.settingsContainer.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
     [self.settingsContainer.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+    
+
+
 }
 //changed: Commented out functions I don't need
 /*- (void)_installMicrophoneSettingsUI
@@ -188,7 +191,7 @@
     self.instructionLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
     self.instructionLabel.textAlignment = NSTextAlignmentCenter;
     self.instructionLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.instructionLabel.textColor = [UIColor grayColor];
+    self.instructionLabel.textColor = [UIColor grayColor]; //TODO: change color to Coral here
     
     [self.settingsStack addArrangedSubview:self.instructionLabel];
     

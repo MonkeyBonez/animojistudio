@@ -18,8 +18,8 @@ class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, S
     
     @IBOutlet weak var shootingStarImageView: UIImageView!
     override func viewDidLoad() {
+        userServiceDelegate = FirestoreUserService()
         self.backgroundImageName = "Background"
-        //self.loadBackground()
         self.loadGif(for: "shootingStar", image: shootingStarImageView)
         self.keyboardsToHide = [phoneNumberTextField]
         super.viewDidLoad()
@@ -79,11 +79,11 @@ class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, S
     }
     
     func userExists() {
-        
+        //send to tab bar view w/ map
     }
     
     func userDoesntExist() {
-        
+        // go to user info page
     }
     
 }

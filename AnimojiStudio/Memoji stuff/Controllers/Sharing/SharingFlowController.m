@@ -11,6 +11,8 @@
 #import "UIViewController+Children.h"
 #import "VideoPreviewViewController.h"
 
+
+
 @interface SharingFlowController () <VideoPreviewDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
@@ -65,6 +67,10 @@
     }];
     activityController.popoverPresentationController.sourceView = self.previewController.shareButton;
     [self presentViewController:activityController animated:YES completion:nil];
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"UploadingVideoVC"];
+    
+    
+
 }
 
 @end

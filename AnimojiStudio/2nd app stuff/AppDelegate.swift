@@ -7,6 +7,9 @@
 
 import UIKit
 import Firebase
+import SCSDKLoginKit
+import SCSDKCoreKit
+
 
 //Global
 var recordingFlowController = RecordingFlowController()
@@ -28,7 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
         MemojiSupport.prepareMemojiRuntime()
         recordingFlowController.supportsMemoji = MemojiSupport.deviceSupportsMemoji()
         currUserID = Firebase.Auth.auth().currentUser?.uid
-        currUserID = ""
+        /*do {
+            try Firebase.Auth.auth().signOut()
+        } catch {
+        }
+        //for testing with logout
+        currUserID = ""*/
         if let currUserID = currUserID{
             if(!currUserID.isEmpty){
                 let userServiceDelegate:FirestoreUserServiceDelegate = FirestoreUserService()
@@ -64,6 +72,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
     
     func userExists() {
         //set root VC to tab bar w/ map
+        
+        setNewRootVC(VCIdentifier: "InAppTabBar")
     }
     
     func userDoesntExist() {
@@ -81,7 +91,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
         
             self.window?.rootViewController = navigationController
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return SCSDKLoginClient.application(app, open: url, options: options)
+    }
+    
+    
 
-
+    //https://stackoverflow.com/questions/62269404/snapkit-fails-return-to-app-after-logging-into-snapchat
 }
 

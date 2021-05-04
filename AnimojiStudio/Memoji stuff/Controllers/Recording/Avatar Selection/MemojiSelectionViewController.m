@@ -32,14 +32,17 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
     
-    self.title = @"Memoji";
+    self.title = @"Choose Memoji";
+    
+    //changed: To make sure tab bar can be seen if user goes back to this screen from recording
+    self.tabBarController.tabBar.hidden = NO;
     
 }
 
 //changed: added to help debugging to figure out which view I am on
 - (void)viewDidAppear:(BOOL)animated
 {
-    printf("Im HERE");
+    //printf("Im HERE");
 }
 
 @end

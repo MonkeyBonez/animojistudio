@@ -45,6 +45,7 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
             else{
                 //go to next page/Bitmoji stuff
                 print("worked!")
+                VC.succesfulCreateAccount()
             }
             
         }

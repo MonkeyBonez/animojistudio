@@ -38,13 +38,15 @@
 				<string>com.googleusercontent.apps.395633370811-hbfksbn1ntvenb5a328dosom3nr0d5f4</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array/>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>spotify-action</string>
-	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -83,5 +85,26 @@
 	</array>
 	<key>kTCCServiceMediaLibrary</key>
 	<string>If you want to lip sync, I need to access your Music library</string>
+	<key>SCSDKClientId</key>
+	<string>a7210dfd-2395-4741-8d68-d9e0803d19c1</string>
+	<key>SCSDKRedirectUrl</key>
+	<string>SnehalMulchandani://SonderApp</string>
+	<key>SCSDKScopes</key>
+	<array>
+		<string>https://auth.snapchat.com/oauth2/api/user.external_id</string>
+		<string>https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar</string>
+		<string>https://auth.snapchat.com/oauth2/api/user.display_name</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>snapchat</string>
+		<string>bitmoji-sdk</string>
+		<string>itms-apps</string>
+		<string>spotify-action</string>
+	</array>
+	<key>CFBundleURLSchemes</key>
+	<array>
+		<string>SnehalMulchandani</string>
+	</array>
 </dict>
 </plist>

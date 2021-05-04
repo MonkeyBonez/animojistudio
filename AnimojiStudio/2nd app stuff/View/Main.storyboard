@@ -39,6 +39,7 @@
                                 <gestureRecognizers/>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="dGo-tn-V1v"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Byx-sH-r3F" firstAttribute="trailing" secondItem="KIM-hs-hEE" secondAttribute="trailing" id="Ebz-ze-dmq"/>
@@ -192,6 +193,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11o-ux-eW2">
+                                <rect key="frame" x="153" y="424" width="109" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Connect Bitmoji"/>
+                                <connections>
+                                    <action selector="connectBitmojiButtonPressed:" destination="vLx-yl-pMX" eventType="touchUpInside" id="Ccb-7O-hXL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Z9g-oF-ZzQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -220,18 +229,26 @@
             </objects>
             <point key="canvasLocation" x="-1988" y="1620"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar View Controller-->
         <scene sceneID="hL1-ak-JY5">
             <objects>
-                <tabBarController id="Eef-7t-vaP" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="InAppTabBar" extendedLayoutIncludesOpaqueBars="YES" interfaceStyle="light" id="Eef-7t-vaP" customClass="MainTabBarViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="KoJ-T7-fMH"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vef-hd-6AX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.99747174979999997" green="0.58111244439999998" blue="0.5607699156" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ueR-1k-w93" kind="relationship" relationship="viewControllers" id="87G-x9-2aT"/>
-                        <segue destination="las-AA-tuk" kind="relationship" relationship="viewControllers" id="uaJ-LZ-myQ"/>
+                        <segue destination="las-AA-tuk" kind="relationship" relationship="viewControllers" id="KAH-aZ-t7I"/>
+                        <segue destination="qhl-fQ-NgJ" kind="relationship" relationship="viewControllers" id="MIM-eZ-2TE"/>
+                        <segue destination="ZhJ-bl-1Td" kind="relationship" relationship="viewControllers" id="QLs-1w-C32"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NuL-VP-wbC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -242,7 +259,7 @@
         <scene sceneID="cxe-oV-MWN">
             <objects>
                 <viewController id="ueR-1k-w93" customClass="InitialViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JWM-ik-WPj">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JWM-ik-WPj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -263,16 +280,17 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="IPr-w0-BP5"/>
+                        <viewLayoutGuide key="safeArea" id="aVX-ej-nqi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="X96-hx-DbG"/>
+                    <navigationItem key="navigationItem" id="nLo-R7-f4Y"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlZ-QB-3Rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="65"/>
+            <point key="canvasLocation" x="-1386" y="-283"/>
         </scene>
-        <!--Item-->
+        <!--Sonder-->
         <scene sceneID="Tzn-eF-uet">
             <objects>
                 <viewController id="las-AA-tuk" customClass="MapViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
@@ -306,7 +324,7 @@
                             <constraint firstItem="KDO-Tt-tuy" firstAttribute="trailing" secondItem="V17-3u-0kb" secondAttribute="trailing" id="wfV-oe-Mmc"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Nr3-tK-nIC"/>
+                    <tabBarItem key="tabBarItem" title="Sonder" image="map.fill" catalog="system" id="Nr3-tK-nIC"/>
                     <connections>
                         <outlet property="magnifyingGlassButton" destination="LAh-Nh-7Rv" id="Vno-pO-pbl"/>
                         <outlet property="mapView" destination="KDO-Tt-tuy" id="wH9-cq-1DK"/>
@@ -314,7 +332,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8z-aX-md6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191" y="1696"/>
+            <point key="canvasLocation" x="461" y="-111"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oh3-L3-ZmD">
+            <objects>
+                <viewController storyboardIdentifier="UploadingVideoVC" id="3oa-8u-0OU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5wH-0j-MPb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="aXM-Wh-bvK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QU2-BD-Bfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1555" y="-112"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -343,12 +376,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687" y="66"/>
+            <point key="canvasLocation" x="-507" y="-283"/>
+        </scene>
+        <!--Leave Message-->
+        <scene sceneID="hz4-2w-Lbc">
+            <objects>
+                <viewController id="qhl-fQ-NgJ" customClass="LeaveMessageViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wHT-lU-6EH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jKY-k2-XWz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Leave Message" image="plus.circle.fill" catalog="system" id="fk1-U6-e1r"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iqL-T6-183" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="461" y="836"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="RUn-yR-FVD">
+            <objects>
+                <viewController id="ZhJ-bl-1Td" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bwi-d3-ww2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="rfK-GD-xHH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Account" image="person.fill" catalog="system" id="KDd-5y-xoR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XyT-lx-i4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="461" y="1593"/>
         </scene>
     </scenes>
     <resources>
         <image name="Background.gif" width="570" height="777"/>
         <image name="Background2.gif" width="432" height="768"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="shootingStar.gif" width="500" height="500"/>
         <namedColor name="AccentColor">
