@@ -10,6 +10,7 @@ import FirebaseAuth
 
 
 struct FirebaseAuthService: FirebaseSignUpDelegate, FirebaseSignOutDelegate{
+    
     func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerAuthDelegate) {
         guard let verificationID = getUserDefaultsVerificationID() else{
             viewController.showError(error: "Couldn't get verification ID :(")
@@ -39,6 +40,7 @@ struct FirebaseAuthService: FirebaseSignUpDelegate, FirebaseSignOutDelegate{
     
     func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerAuthDelegate){
         Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+        setUserDefaultsPhoneNumber(phoneNumber: phoneNumber)
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
           if let error = error {
             //self.showMessagePrompt(error.localizedDescription)
@@ -67,6 +69,10 @@ struct FirebaseAuthService: FirebaseSignUpDelegate, FirebaseSignOutDelegate{
         return UserDefaults.standard.string(forKey: "authVerificationID")
     }
     
+    func setUserDefaultsPhoneNumber(phoneNumber: String){
+        UserDefaults.standard.setValue(phoneNumber, forKey: "Phone Number")
+    }
+    
     func signOut(VC: SignoutViewControllerAuthDelegate) {
         do {
             try Auth.auth().signOut()
@@ -81,7 +87,7 @@ struct FirebaseAuthService: FirebaseSignUpDelegate, FirebaseSignOutDelegate{
 
 protocol FirebaseSignUpDelegate{
     func signInWithVerificationCode(verificationCode: String, viewController: SignUpViewControllerAuthDelegate)
-    func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerAuthDelegate)
+    mutating func verifyPhone(phoneNumber: String, viewController: SignUpViewControllerAuthDelegate)
 }
 
 protocol FirebaseSignOutDelegate {

@@ -18,6 +18,11 @@
 		361ED3DF26420FAA00B7CDFA /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3DE26420FAA00B7CDFA /* MessageViewController.swift */; };
 		361ED3E2264235D800B7CDFA /* SnapchatLoginBitmojiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3E1264235D800B7CDFA /* SnapchatLoginBitmojiService.swift */; };
 		361ED3E52642871300B7CDFA /* stickFigure.png in Resources */ = {isa = PBXBuildFile; fileRef = 361ED3E42642871300B7CDFA /* stickFigure.png */; };
+		361ED3EE264313CF00B7CDFA /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3ED264313CF00B7CDFA /* AddFriendsViewController.swift */; };
+		361ED3F12643180200B7CDFA /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3F02643180200B7CDFA /* Contact.swift */; };
+		361ED3F426431D0F00B7CDFA /* FirebaseContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3F326431D0F00B7CDFA /* FirebaseContact.swift */; };
+		361ED3F726431D6500B7CDFA /* FirebaseFriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3F626431D6500B7CDFA /* FirebaseFriendsService.swift */; };
+		361ED3FA26431E8800B7CDFA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3F926431E8800B7CDFA /* User.swift */; };
 		3639CF6E2633BD0D002569DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */; };
 		3639CF722633BF90002569DB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF712633BF90002569DB /* FirebaseAuth */; };
 		3639CF742633BF90002569DB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF732633BF90002569DB /* FirebaseFirestore */; };
@@ -95,6 +100,11 @@
 		361ED3DE26420FAA00B7CDFA /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		361ED3E1264235D800B7CDFA /* SnapchatLoginBitmojiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapchatLoginBitmojiService.swift; sourceTree = "<group>"; };
 		361ED3E42642871300B7CDFA /* stickFigure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stickFigure.png; sourceTree = "<group>"; };
+		361ED3ED264313CF00B7CDFA /* AddFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
+		361ED3F02643180200B7CDFA /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		361ED3F326431D0F00B7CDFA /* FirebaseContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseContact.swift; sourceTree = "<group>"; };
+		361ED3F626431D6500B7CDFA /* FirebaseFriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFriendsService.swift; sourceTree = "<group>"; };
+		361ED3F926431E8800B7CDFA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		36AB67732632987B00CF072D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +248,9 @@
 				361ED3D02641CF6500B7CDFA /* CurrentUser.swift */,
 				361ED3D32641E00A00B7CDFA /* TimestampCodableExtension.swift */,
 				361ED3DA2642074400B7CDFA /* MessageMapAnnotation.swift */,
+				361ED3F326431D0F00B7CDFA /* FirebaseContact.swift */,
+				361ED3F02643180200B7CDFA /* Contact.swift */,
+				361ED3F926431E8800B7CDFA /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +263,7 @@
 				36D2387D2640CA0A0070DFCD /* FirestoreMessageUploadServicee.swift */,
 				361ED3C32641B97C00B7CDFA /* FirestoreMessageRecieverService.swift */,
 				361ED3E1264235D800B7CDFA /* SnapchatLoginBitmojiService.swift */,
+				361ED3F626431D6500B7CDFA /* FirebaseFriendsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -283,6 +297,7 @@
 				36D238722640BC7F0070DFCD /* Proof of concept VCs(not used in actual project) */,
 				365BD877263292E3007EF48A /* VC Base Classes */,
 				36DDFD692631459100A2A8F7 /* SignUpViewController.swift */,
+				361ED3ED264313CF00B7CDFA /* AddFriendsViewController.swift */,
 				36AB67732632987B00CF072D /* MapViewController.swift */,
 				361ED3DE26420FAA00B7CDFA /* MessageViewController.swift */,
 				36CF7AFF263E877E00A76E6E /* UserInfoViewController.swift */,
@@ -705,9 +720,11 @@
 				36BB0216262FEE9200C0F926 /* InitialViewController.swift in Sources */,
 				DDA31AD8212709170058B989 /* BigButton.m in Sources */,
 				361ED3D42641E00A00B7CDFA /* TimestampCodableExtension.swift in Sources */,
+				361ED3F12643180200B7CDFA /* Contact.swift in Sources */,
 				DDA31ADB212718760058B989 /* MemojiSelectionViewController.m in Sources */,
 				DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */,
 				DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */,
+				361ED3F426431D0F00B7CDFA /* FirebaseContact.swift in Sources */,
 				36DDFD7C26316BCF00A2A8F7 /* UIImageGifExtension.swift in Sources */,
 				3639CF7B2633CEE7002569DB /* FirebaseAuthService.swift in Sources */,
 				36CF7AF5263E55E600A76E6E /* NavigationBarHide.swift in Sources */,
@@ -715,6 +732,7 @@
 				DDDBBC181FB79C4D00291D45 /* PuppetCollectionViewCell.m in Sources */,
 				DDDBBBF91FB7918000291D45 /* main.m in Sources */,
 				36CF7B06263F20F100A76E6E /* HideKeyboardOnScreenTapViewController.swift in Sources */,
+				361ED3EE264313CF00B7CDFA /* AddFriendsViewController.swift in Sources */,
 				361ED3C42641B97C00B7CDFA /* FirestoreMessageRecieverService.swift in Sources */,
 				DDDBBC1E1FB7A73300291D45 /* ASPuppetView.m in Sources */,
 				DD7135ED1FBBE62900AAA5E7 /* KaraokeFlowController.m in Sources */,
@@ -741,7 +759,9 @@
 				DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */,
 				361ED3D12641CF6500B7CDFA /* CurrentUser.swift in Sources */,
 				36D2387E2640CA0A0070DFCD /* FirestoreMessageUploadServicee.swift in Sources */,
+				361ED3FA26431E8800B7CDFA /* User.swift in Sources */,
 				DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */,
+				361ED3F726431D6500B7CDFA /* FirebaseFriendsService.swift in Sources */,
 				DD7135F31FBC86D800AAA5E7 /* SongTableViewCell.m in Sources */,
 				36AB67742632987B00CF072D /* MapViewController.swift in Sources */,
 				36D238702640BA040070DFCD /* UITabBarTransparentExtension.swift in Sources */,

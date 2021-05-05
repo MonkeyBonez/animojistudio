@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import CodableFirebase
 
 struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDelegate {
     var db: Firestore
@@ -35,11 +36,9 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
     }
     
     func createUser(name: String, bitmojiURL:String, VC: UserInfoViewControllerFirestoreDelegate){
-        
-        db.collection("Users").document(currUser.shared.currUsedID!).setData([
-            "name": name,
-            "bitmojiURL": bitmojiURL
-        ]){err in
+        let newUser = User(name: name, bitmojiURL: bitmojiURL, telephone: UserDefaults.standard.value(forKey: "Phone Number") as! String)
+        let docData = try! FirestoreEncoder().encode(newUser)
+        db.collection("Users").document(currUser.shared.currUsedID!).setData(docData){err in
             if let err = err {
                 VC.showError(error: err.localizedDescription)
             }

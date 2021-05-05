@@ -105,5 +105,7 @@
 		<string>bitmoji-sdk</string>
 		<string>itms-apps</string>
 	</array>
+	<key>NSContactsUsageDescription</key>
+	<string>Help me find your friends on Sonder</string>
 </dict>
 </plist>

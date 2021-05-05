@@ -24,6 +24,10 @@ class AccountViewController: ShowsErrorViewController, SignoutViewControllerAuth
         signOutDelegate.signOut(VC: self)
     }
     
+    @IBAction func addFriendsButtonPressed(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: "AddFriendsVC")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     func signOutSuccess() {
         //code is repeated from App delegate... how to fix?
         // is this ok?

@@ -10,7 +10,7 @@ import UIKit
 class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, SignUpViewControllerAuthDelegate, UITextFieldDelegate, SignUpViewControllerFirestoreDelegate {
     
     
-    let signUpDelegate:FirebaseSignUpDelegate = FirebaseAuthService() //change to same as below?
+    var signUpDelegate:FirebaseSignUpDelegate = FirebaseAuthService() //change to same as below?
     var userServiceDelegate:FirestoreUserServiceDelegate!
 
     @IBOutlet weak var phoneNumberTextField: UITextField!
