@@ -16,15 +16,16 @@ struct Message:Codable, Equatable{
     var timeCreated:Timestamp
     //var creatorID:String
     var creatorName:String
-    //profile pic/bitmoji?
+    var creatorBitmojiURL:URL
     
-    init(videoUrl: URL, location:CLLocation, timeCreated: Timestamp, creatorName: String){
+    init(videoUrl: URL, location:CLLocation, timeCreated: Timestamp, creatorName: String, creatorBitmojiURL: URL){
         self.videoUrl = videoUrl
         self.longitude = location.coordinate.longitude
         self.latitude = location.coordinate.latitude
         self.timeCreated = timeCreated
         //self.creatorID = creatorID
         self.creatorName = creatorName
+        self.creatorBitmojiURL = creatorBitmojiURL
     }
     
     func isExpired()->Bool{

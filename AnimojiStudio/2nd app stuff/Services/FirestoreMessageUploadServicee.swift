@@ -57,7 +57,7 @@ import CodableFirebase
     var newMessageURL:URL?
     func createMessage(url: URL){
         newMessageURL = url
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer //change to best
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest //change to best
         locationManager.requestLocation()
         //newMessage = Message(videoUrl: url, location: )
         //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
@@ -71,7 +71,7 @@ import CodableFirebase
             }
             else{
                 let name: String = document?.get("name") as! String
-                let newMessage = Message(videoUrl: self.newMessageURL!, location: locations.first!, timeCreated: Timestamp(date: Date()), creatorName: name)
+                let newMessage = Message(videoUrl: self.newMessageURL!, location: locations.first!, timeCreated: Timestamp(date: Date()), creatorName: name, creatorBitmojiURL: currUser.shared.bitmojiURL!)
                 self.uploadMessageToFirestore(newMessage: newMessage)
             }
         }

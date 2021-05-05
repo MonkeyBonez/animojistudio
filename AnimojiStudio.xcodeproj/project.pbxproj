@@ -14,6 +14,9 @@
 		361ED3CE2641BC2E00B7CDFA /* ShowsErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3CD2641BC2E00B7CDFA /* ShowsErrorViewController.swift */; };
 		361ED3D12641CF6500B7CDFA /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3D02641CF6500B7CDFA /* CurrentUser.swift */; };
 		361ED3D42641E00A00B7CDFA /* TimestampCodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3D32641E00A00B7CDFA /* TimestampCodableExtension.swift */; };
+		361ED3DB2642074400B7CDFA /* MessageMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3DA2642074400B7CDFA /* MessageMapAnnotation.swift */; };
+		361ED3DF26420FAA00B7CDFA /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3DE26420FAA00B7CDFA /* MessageViewController.swift */; };
+		361ED3E2264235D800B7CDFA /* SnapchatLoginBitmojiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3E1264235D800B7CDFA /* SnapchatLoginBitmojiService.swift */; };
 		3639CF6E2633BD0D002569DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */; };
 		3639CF722633BF90002569DB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF712633BF90002569DB /* FirebaseAuth */; };
 		3639CF742633BF90002569DB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF732633BF90002569DB /* FirebaseFirestore */; };
@@ -88,6 +91,9 @@
 		361ED3CD2641BC2E00B7CDFA /* ShowsErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsErrorViewController.swift; sourceTree = "<group>"; };
 		361ED3D02641CF6500B7CDFA /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		361ED3D32641E00A00B7CDFA /* TimestampCodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampCodableExtension.swift; sourceTree = "<group>"; };
+		361ED3DA2642074400B7CDFA /* MessageMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMapAnnotation.swift; sourceTree = "<group>"; };
+		361ED3DE26420FAA00B7CDFA /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		361ED3E1264235D800B7CDFA /* SnapchatLoginBitmojiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapchatLoginBitmojiService.swift; sourceTree = "<group>"; };
 		3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		36AB67732632987B00CF072D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 				36D238872641107F0070DFCD /* Message.swift */,
 				361ED3D02641CF6500B7CDFA /* CurrentUser.swift */,
 				361ED3D32641E00A00B7CDFA /* TimestampCodableExtension.swift */,
+				361ED3DA2642074400B7CDFA /* MessageMapAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 				36CF7AFC263E607400A76E6E /* FirestoreUserService.swift */,
 				36D2387D2640CA0A0070DFCD /* FirestoreMessageUploadServicee.swift */,
 				361ED3C32641B97C00B7CDFA /* FirestoreMessageRecieverService.swift */,
+				361ED3E1264235D800B7CDFA /* SnapchatLoginBitmojiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -272,10 +280,11 @@
 		36BB0213262FEE3000C0F926 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				36D238722640BC7F0070DFCD /* Pre-build refrence VCs */,
+				36D238722640BC7F0070DFCD /* Proof of concept VCs(not used in actual project) */,
 				365BD877263292E3007EF48A /* VC Base Classes */,
 				36DDFD692631459100A2A8F7 /* SignUpViewController.swift */,
 				36AB67732632987B00CF072D /* MapViewController.swift */,
+				361ED3DE26420FAA00B7CDFA /* MessageViewController.swift */,
 				36CF7AFF263E877E00A76E6E /* UserInfoViewController.swift */,
 				36CF7B13263F434E00A76E6E /* LoadingViewController.swift */,
 				36D2386C2640B45E0070DFCD /* MainTabBarViewController.swift */,
@@ -296,13 +305,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		36D238722640BC7F0070DFCD /* Pre-build refrence VCs */ = {
+		36D238722640BC7F0070DFCD /* Proof of concept VCs(not used in actual project) */ = {
 			isa = PBXGroup;
 			children = (
 				360720F8262E57BE0080B767 /* ARViewController.swift */,
 				36BB0215262FEE9200C0F926 /* InitialViewController.swift */,
 			);
-			path = "Pre-build refrence VCs";
+			path = "Proof of concept VCs(not used in actual project)";
 			sourceTree = "<group>";
 		};
 		36DDFD602631383000A2A8F7 /* Memoji stuff */ = {
@@ -714,15 +723,18 @@
 				DD7135F01FBBE68300AAA5E7 /* SpotifySearchViewController.m in Sources */,
 				DDDBBC0E1FB798C100291D45 /* UIViewController+Children.m in Sources */,
 				DDA31AD3212707910058B989 /* WelcomeViewController.m in Sources */,
+				361ED3E2264235D800B7CDFA /* SnapchatLoginBitmojiService.swift in Sources */,
 				36CF7B0D263F29F100A76E6E /* CanShowErrorProtocol1.swift in Sources */,
 				361ED3CB2641BB3300B7CDFA /* AccountViewController.swift in Sources */,
 				36D2386D2640B45E0070DFCD /* MainTabBarViewController.swift in Sources */,
+				361ED3DF26420FAA00B7CDFA /* MessageViewController.swift in Sources */,
 				DD7135DE1FBB99E900AAA5E7 /* ColorSheetViewController.m in Sources */,
 				DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */,
 				36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */,
 				DDA31AD0212703B80058B989 /* AvatarSelectionFlowController.m in Sources */,
 				DDF9BB6221263E2800F19D2E /* MemojiSupport.m in Sources */,
 				360720F9262E57BE0080B767 /* ARViewController.swift in Sources */,
+				361ED3DB2642074400B7CDFA /* MessageMapAnnotation.swift in Sources */,
 				DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */,
 				36CF7B14263F434E00A76E6E /* LoadingViewController.swift in Sources */,
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,

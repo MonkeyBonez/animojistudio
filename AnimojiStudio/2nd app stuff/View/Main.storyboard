@@ -335,21 +335,6 @@
             <point key="canvasLocation" x="461" y="-111"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="oh3-L3-ZmD">
-            <objects>
-                <viewController storyboardIdentifier="UploadingVideoVC" id="3oa-8u-0OU" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5wH-0j-MPb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="aXM-Wh-bvK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QU2-BD-Bfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1555" y="-112"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ARViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
@@ -393,6 +378,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqL-T6-183" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="461" y="836"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="8AE-p9-3JR">
+            <objects>
+                <viewController storyboardIdentifier="MessageViewerVC" id="M4a-Au-ymc" customClass="MessageViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="riM-GW-9f7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQL-Om-XXm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </arscnView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QG0-0l-fhz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QG0-0l-fhz" firstAttribute="bottom" secondItem="zQL-Om-XXm" secondAttribute="bottom" id="BjY-9S-Pl3"/>
+                            <constraint firstItem="zQL-Om-XXm" firstAttribute="top" secondItem="QG0-0l-fhz" secondAttribute="top" id="D9k-Md-Aj5"/>
+                            <constraint firstItem="zQL-Om-XXm" firstAttribute="leading" secondItem="QG0-0l-fhz" secondAttribute="leading" id="LyX-iL-lNq"/>
+                            <constraint firstItem="QG0-0l-fhz" firstAttribute="trailing" secondItem="zQL-Om-XXm" secondAttribute="trailing" id="deP-N1-NWk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="zQL-Om-XXm" id="2YD-Ej-nTW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ljc-yu-MAt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1664" y="-112"/>
         </scene>
         <!--Account-->
         <scene sceneID="RUn-yR-FVD">

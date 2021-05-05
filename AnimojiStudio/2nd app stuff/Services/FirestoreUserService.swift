@@ -21,7 +21,7 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
         //https://stackoverflow.com/questions/46880323/how-to-check-if-a-cloud-firestore-document-exists-when-using-realtime-updates
         let usersRef = db.collection("Users").document(UserID)
         usersRef.getDocument { (document, error) in
-            var userExists = false
+            //var userExists = false
             if(document!.exists){//force-unwrap ok here?
                 //go to tab bar
                 delegate.userExists()
@@ -34,17 +34,19 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
 
     }
     
-    func createUser(name: String, VC: UserInfoViewControllerFirestoreDelegate){
+    func createUser(name: String, bitmojiURL:String, VC: UserInfoViewControllerFirestoreDelegate){
         
         db.collection("Users").document(currUser.shared.currUsedID!).setData([
-            "name": name
+            "name": name,
+            "bitmojiURL": bitmojiURL
         ]){err in
             if let err = err {
                 VC.showError(error: err.localizedDescription)
             }
             else{
                 //go to next page/Bitmoji stuff
-                print("worked!")
+                //print("worked!")
+                currUser.shared.bitmojiURL = URL(string: bitmojiURL)
                 VC.succesfulCreateAccount()
             }
             
@@ -54,6 +56,22 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
     func addMessageToFirestore(newMessage: Message){        //let diffInDays = Calendar.current.dateComponents([.day], from: Date(), to: Date())
 
         //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
+    }
+    
+    func loadCurrUserBitmojiURL(){
+        //https://stackoverflow.com/questions/48312485/how-to-access-a-specific-field-from-cloud-firestore-firebase-in-swift
+        if currUser.shared.bitmojiURL == nil{
+            let docRef = db.collection("Users").document(currUser.shared.currUsedID!)
+            
+            docRef.getDocument { (document, error) in
+                if let document = document{
+                    currUser.shared.bitmojiURL = URL (string: document.get("bitmojiURL") as! String)
+                }
+                else{
+                    print(error?.localizedDescription)
+                }
+            }
+        }
     }
     
     //TODO:DELETE
@@ -87,8 +105,9 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
 
 protocol FirestoreUserServiceDelegate {
     func userExists(delegate:SignUpViewControllerFirestoreDelegate, UserID:String)
+    func loadCurrUserBitmojiURL()
 }
 
 protocol FirestoreUserInfoDelegate {
-    func createUser(name: String, VC: UserInfoViewControllerFirestoreDelegate)
+    func createUser(name: String, bitmojiURL:String, VC: UserInfoViewControllerFirestoreDelegate)
 }

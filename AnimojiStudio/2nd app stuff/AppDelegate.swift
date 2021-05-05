@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
         // set up notification center here
         FirebaseApp.configure()
         
-        //to log out during development
+        //to log out during development when bugs arise
         /*do {
             try Auth.auth().signOut()
 
@@ -80,7 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
     
     func userExists() {
         //set root VC to tab bar w/ map
-        
+        let FirestoreUserServicesDelegate:FirestoreUserServiceDelegate = FirestoreUserService()
+        FirestoreUserServicesDelegate.loadCurrUserBitmojiURL()
         setNewRootVC(VCIdentifier: "InAppTabBar")
     }
     
@@ -100,7 +101,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SignUpViewControllerFires
             self.window?.rootViewController = navigationController
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return SCSDKLoginClient.application(app, open: url, options: options)
     }
     

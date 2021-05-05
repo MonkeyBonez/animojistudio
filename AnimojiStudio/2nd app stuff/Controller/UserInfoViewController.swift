@@ -10,10 +10,14 @@ import UIKit
 import SCSDKLoginKit
 
 //add activity indicator stuff
-class UserInfoViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, UserInfoViewControllerFirestoreDelegate {
+class UserInfoViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, UserInfoViewControllerFirestoreDelegate,SnapchatUserDataVC {
+
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     var userInfoDelegate:FirestoreUserInfoDelegate!
+    var bitmojiAvatarUrl:String?
+    var snapchatDelegate: SnapchatUserDataDelegate = SnapchatLoginBitmojiService()
 
     
     override func viewDidLoad() {
@@ -26,37 +30,37 @@ class UserInfoViewController: ShowsErrorHideKeyboardGIFBackgroundViewController,
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func connectBitmojiButtonPressed(_ sender: Any) {//broken
-        SCSDKLoginClient.login(from: self, completion: { success, error in
-
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-
-                if success {
-                    print("EUREKA!")//example code
-                }
-            })
+    @IBAction func connectBitmojiButtonPressed(_ sender: Any) {
+        snapchatDelegate.doSnapchatLogin(VC: self)
     }
-    
     
     
     
     @IBAction func enterButtonPressed(_ sender: Any) {
         //input preprocessing
-        var nameError = false
+        var nameError:Bool
+        var bitmojiError: Bool
         let preprocessedName = preprocessInputs(input: nameTextField.text ?? " ")
         if(preprocessedName.isEmpty){
             nameError = true
         }
         else{
-            userInfoDelegate.createUser(name: preprocessedName, VC: self)
+            nameError = false
+        }
+        
+        if let bitmojiURL = snapchatDelegate.bitmojiAvatarUrl {
+            bitmojiError = false
+        }
+        else{
+            bitmojiError = true
         }
         
         //check all errors and call input error to inform user
-        if(nameError){
-            inputError(nameError: nameError)
+        if(nameError || bitmojiError){
+            inputError(nameError: nameError, bitmojiError: bitmojiError)
+        }
+        else{//update
+            userInfoDelegate.createUser(name: preprocessedName, bitmojiURL: snapchatDelegate.bitmojiAvatarUrl!, VC: self)
         }
     }
     
@@ -64,16 +68,34 @@ class UserInfoViewController: ShowsErrorHideKeyboardGIFBackgroundViewController,
         return input.trimmingCharacters(in: CharacterSet(arrayLiteral: " "))
     }
     
-    func inputError(nameError: Bool){//create bools for other errors
-        showError(error: "Please enter your name")
+    func inputError(nameError: Bool, bitmojiError:Bool){//create bools for other errors
+        var errorToShow = "Please "
+        if(nameError){
+            errorToShow += "enter your name"
+            if(bitmojiError){
+                errorToShow += " and "
+            }
+        }
+        if(bitmojiError){
+            errorToShow += "link your bitmoji"
+        }
+        showError(error: errorToShow)
     }
     
     func succesfulCreateAccount() {
         (UIApplication.shared.delegate as! AppDelegate).userExists()
+    }
+    
+    func getNavigationController() -> UINavigationController {
+        return self.navigationController!
     }
 
 }
 
 protocol UserInfoViewControllerFirestoreDelegate: CanShowErrorProtocol {
     func succesfulCreateAccount()
+}
+
+protocol SnapchatUserDataVC: CanShowErrorProtocol {
+    func getNavigationController() -> UINavigationController
 }

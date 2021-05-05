@@ -22,6 +22,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
     
     private var overlay: MKTileOverlay = MKTileOverlay()
     var messageService:FirestoreMessagesMapService!
+    var FirestoreUserServicesDelegate: FirestoreUserServiceDelegate!
     
     var messages: [Message] = []{
         didSet{
@@ -38,12 +39,18 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
         tileZoomOnUser(animated: false)
         messageService = FirestoreMessageRecieverService()
         messageService.setMessageAnnotations(VC: self)
+        FirestoreUserServicesDelegate = FirestoreUserService()
+        FirestoreUserServicesDelegate.loadCurrUserBitmojiURL()
+        //update user bitmoji URL
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadMapFromTiles()
         tileZoomOnUser(animated: false)
+        magnifyingGlassButton.setImage(UIImage(systemName: "plus.magnifyingglass"), for: .normal)
+        zoomed = false
     }
     
     func loadMessagesToMap(){
@@ -133,13 +140,13 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
         messages = newMessages
     }
     
-    func addMapAnnotation(annotation: MKPointAnnotation){
+    func addMapAnnotation(annotation: MessageMapAnnotation){
         mapView.addAnnotation(annotation)
     }
     
     //https://www.hackingwithswift.com/example-code/location/how-to-add-annotations-to-mkmapview-using-mkpointannotation-and-mkpinannotationview
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard annotation is MKPointAnnotation else {
+        guard annotation is MessageMapAnnotation else {
             return nil
         }
         
@@ -148,11 +155,33 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
         if annotationView == nil{
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
+            //annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
         else{
             annotationView!.annotation = annotation
         }
+        
+        let customMapAnnotation = annotation as! MessageMapAnnotation
+       /* do {
+            try annotationView?.image = UIImage(data: NSData(contentsOf: customMapAnnotation.creatorBitmojiURL) as Data)
+
+        } catch {
+            print("Error with loading user image")
+        }*/
+        
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let messageAnnotation = view.annotation as? MessageMapAnnotation else {
+            return
+        }
+        var vc:takesMessageURL = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MessageViewerVC") as! MessageViewController
+        vc.firebaseURL = messageAnnotation.videoURL
+        self.navigationController?.pushViewController(vc as! UIViewController, animated: false)
+        
+        
+        
     }
     
 
@@ -163,6 +192,6 @@ protocol  MapViewControllerFirestoreMessagesDelegate: CanShowErrorProtocol{
     func clearMessages()
     //func addMessage(newMessage: Message)
     func setMessages(newMessages: [Message])
-    func addMapAnnotation(annotation: MKPointAnnotation)
+    func addMapAnnotation(annotation: MessageMapAnnotation)
     
 }

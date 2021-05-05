@@ -12,4 +12,5 @@ class currUser {
     private init(){}
     static let shared = currUser()
     @Published var currUsedID: String? = Firebase.Auth.auth().currentUser?.uid
+    var bitmojiURL: URL?
 }

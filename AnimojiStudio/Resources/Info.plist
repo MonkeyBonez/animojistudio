@@ -39,10 +39,14 @@
 			</array>
 		</dict>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>SnehalMulchandani1</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -85,28 +89,21 @@
 	</array>
 	<key>kTCCServiceMediaLibrary</key>
 	<string>If you want to lip sync, I need to access your Music library</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>To leave messages at locations</string>
 	<key>SCSDKClientId</key>
 	<string>a7210dfd-2395-4741-8d68-d9e0803d19c1</string>
 	<key>SCSDKRedirectUrl</key>
-	<string>SnehalMulchandani://SonderApp</string>
+	<string>SnehalMulchandani1://Workplz</string>
 	<key>SCSDKScopes</key>
 	<array>
-		<string>https://auth.snapchat.com/oauth2/api/user.external_id</string>
 		<string>https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar</string>
-		<string>https://auth.snapchat.com/oauth2/api/user.display_name</string>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>snapchat</string>
 		<string>bitmoji-sdk</string>
 		<string>itms-apps</string>
-		<string>spotify-action</string>
 	</array>
-	<key>CFBundleURLSchemes</key>
-	<array>
-		<string>SnehalMulchandani</string>
-	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>To leave messages at locations</string>
 </dict>
 </plist>

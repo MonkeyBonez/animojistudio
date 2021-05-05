@@ -14,25 +14,41 @@ import MapKit
 
 class FirestoreMessageRecieverService: FirestoreMessagesMapService{
     var db:Firestore
-    var messageList: [Message] = []
+    //var messageList: [Message] = []
     
     func setMessageAnnotations(VC: MapViewControllerFirestoreMessagesDelegate){
         var friendsIDs = [currUser.shared.currUsedID!] //change to get friends - snapshot listener
         for ID in friendsIDs{
             db.collection("Users").document(ID).collection("Videos").addSnapshotListener { [self] (querySnapshot, error) in
-                guard let documents = querySnapshot?.documents else {
+                guard let snapshot = querySnapshot else {
                         print("Error fetching documents: \(error!)")
                         return
                 }
+                /*let documents  = snapshot.documents
                 for document in documents{
                     let newMessage = try! FirestoreDecoder().decode(Message.self, from: document.data())
-                    if (!self.messageList.contains(newMessage)){
+                    if (!self.messageList.contains(newMessage) && !newMessage.isExpired()){
                         self.messageList.append(newMessage)
-                        let newAnnotation = MKPointAnnotation()
-                        newAnnotation.title = newMessage.creatorName
-                        newAnnotation.coordinate = CLLocationCoordinate2D(latitude: newMessage.latitude, longitude: newMessage.longitude)
+                        let newAnnotation = MessageMapAnnotation(message: newMessage)
                         VC.addMapAnnotation(annotation: newAnnotation)
                         
+                    }
+                }*/
+                snapshot.documentChanges.forEach{diff in
+                    let currMessage = try! FirestoreDecoder().decode(Message.self, from: diff.document.data())
+                    if diff.type == .added{
+                        //add new annotation
+                        let newAnnotation = MessageMapAnnotation(message: currMessage)
+                        VC.addMapAnnotation(annotation: newAnnotation)
+                        
+                    }
+                    else if diff.type == .modified{
+                        //TODO later
+                        //remove annotation and add
+                    }
+                    else if diff.type == .removed{
+                        //TODO later
+                        //remove annotation
                     }
                 }
             }
