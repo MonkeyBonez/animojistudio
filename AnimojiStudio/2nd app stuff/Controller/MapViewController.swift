@@ -215,7 +215,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
             return
         }
 
-        if((mapView.userLocation.location?.distance(from: CLLocation(latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude)))! < 25){
+        if((mapView.userLocation.location?.distance(from: CLLocation(latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude)))! < 40){
             var vc:takesMessageURL = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MessageViewerVC") as! MessageViewController
             vc.firebaseURL = messageAnnotation.videoURL
             self.navigationController?.pushViewController(vc as! UIViewController, animated: false)

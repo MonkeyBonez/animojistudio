@@ -49,26 +49,23 @@ class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageUR
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        registerGestureRecognizers()
+        //registerGestureRecognizers()
         //DEMOShowMemoji()
         self.showNavigationBar(animated: animated)
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
-        DispatchQueue.main.async {
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.ShowMemojiMessage()
         }
-        
         //
     }
     
-    
-    private func registerGestureRecognizers() {
+    /*private func registerGestureRecognizers() {
            
            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
            self.sceneView.addGestureRecognizer(tapGestureRecognizer)
-       }
+       }*/
     func RGBtoHSV(r : Float, g : Float, b : Float) -> (h : Float, s : Float, v : Float) {
         var h : CGFloat = 0
         var s : CGFloat = 0
@@ -120,12 +117,12 @@ class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageUR
     }
 
     
-    @objc func tapped(recognizer :UIGestureRecognizer) {
+    /*@objc func tapped(recognizer :UIGestureRecognizer) {
         //DEMOShowMemoji()
         ShowMemojiMessage()
-      }
+      }*/
     
-    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
+    /*func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
         guard let urlString = Bundle.main.path(forResource: "resourceName", ofType: "mp4") else { return nil }
         
 
@@ -139,7 +136,7 @@ class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageUR
         videoNode.anchorPoint = CGPoint(x: 0.5, y: 0.0)
 
         return videoNode
-    }
+    }*/
 
     // MARK: - ARSCNViewDelegate
     
@@ -167,9 +164,14 @@ class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageUR
         
     }
     
+    
+    
     func ShowMemojiMessage(){
         //https://firebasestorage.googleapis.com/v0/b/sonder-370f3.appspot.com/o/Videos%2FFFPdLgvc9GOLxEssvpn6kRcBJOr21620095230.42256.mp4?alt=media&token=1dd17990-164f-45ab-8823-df867451530d
         guard let currentFrame = self.sceneView.session.currentFrame else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                self.ShowMemojiMessage()
+            }
             return
         }
         //let firebaseURL = URL(string: "https:firebasestorage.googleapis.com/v0/b/sonder-370f3.appspot.com/o/Videos%2FFFPdLgvc9GOLxEssvpn6kRcBJOr21620095230.42256.mp4?alt=media&token=1dd17990-164f-45ab-8823-df867451530d")
@@ -194,6 +196,7 @@ class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageUR
       skScene.addChild(effectNode)
         
         effectNode.position = CGPoint(x: skScene.size.width/2, y: skScene.size.height/2)
+        
         //effectNode.size = skScene.size
         
         let tvPlane = SCNPlane(width: 1.0, height: 0.75)
