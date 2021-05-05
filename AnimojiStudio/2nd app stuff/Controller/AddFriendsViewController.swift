@@ -52,6 +52,10 @@ class AddFriendsViewController: UITableViewController, addFriendsTableView {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        FriendsServiceDelegate.addFriend(position: indexPath.row)
+    }
+    
     
     
 

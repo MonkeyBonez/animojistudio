@@ -18,6 +18,8 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
     init() {
         db = Firestore.firestore()
     }
+    
+    
     func userExists(delegate:SignUpViewControllerFirestoreDelegate, UserID:String){
         //https://stackoverflow.com/questions/46880323/how-to-check-if-a-cloud-firestore-document-exists-when-using-realtime-updates
         let usersRef = db.collection("Users").document(UserID)

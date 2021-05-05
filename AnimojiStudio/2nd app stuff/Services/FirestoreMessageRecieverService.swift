@@ -16,70 +16,57 @@ class FirestoreMessageRecieverService: FirestoreMessagesMapService{
     var db:Firestore
     //var messageList: [Message] = []
     
-    func setMessageAnnotations(VC: MapViewControllerFirestoreMessagesDelegate){
-        var friendsIDs = [currUser.shared.currUsedID!] //change to get friends - snapshot listener
-        for ID in friendsIDs{
-            db.collection("Users").document(ID).collection("Videos").addSnapshotListener { [self] (querySnapshot, error) in
-                guard let snapshot = querySnapshot else {
-                        print("Error fetching documents: \(error!)")
-                        return
+    func setMessageAnnotations(ofUser ID: String, VC: MapViewControllerFirestoreMessagesDelegate){
+        db.collection("Users").document(ID).collection("Videos").addSnapshotListener { (querySnapshot, error) in
+            guard let snapshot = querySnapshot else {
+                    print("Error fetching documents: \(error!)")
+                    return
+            }
+            snapshot.documentChanges.forEach{diff in
+                let currMessage = try! FirestoreDecoder().decode(Message.self, from: diff.document.data())
+                if diff.type == .added{
+                    //add new annotation
+                    let newAnnotation = MessageMapAnnotation(message: currMessage)
+                    VC.addMapAnnotation(annotation: newAnnotation)
+                    
                 }
-                /*let documents  = snapshot.documents
-                for document in documents{
-                    let newMessage = try! FirestoreDecoder().decode(Message.self, from: document.data())
-                    if (!self.messageList.contains(newMessage) && !newMessage.isExpired()){
-                        self.messageList.append(newMessage)
-                        let newAnnotation = MessageMapAnnotation(message: newMessage)
-                        VC.addMapAnnotation(annotation: newAnnotation)
-                        
-                    }
-                }*/
-                snapshot.documentChanges.forEach{diff in
-                    let currMessage = try! FirestoreDecoder().decode(Message.self, from: diff.document.data())
-                    if diff.type == .added{
-                        //add new annotation
-                        let newAnnotation = MessageMapAnnotation(message: currMessage)
-                        VC.addMapAnnotation(annotation: newAnnotation)
-                        
-                    }
-                    else if diff.type == .modified{
-                        //TODO later
-                        //remove annotation and add
-                    }
-                    else if diff.type == .removed{
-                        //TODO later
-                        //remove annotation
-                    }
+                else if diff.type == .modified{
+                    //TODO later
+                    //remove annotation and add
+                }
+                else if diff.type == .removed{
+                    //TODO later
+                    //remove annotation
                 }
             }
         }
-        
     }
+    
+    func setMessageAnnotations(VC: MapViewControllerFirestoreMessagesDelegate){
+        self.setMessageAnnotations(ofUser: currUser.shared.currUsedID!, VC: VC)
+        db.collection("Users").document(currUser.shared.currUsedID!).collection("Friends").addSnapshotListener { (friendsSnapshot, friendsError) in
+            if let friendsError = friendsError{
+                print (friendsError.localizedDescription)
+            }
+            else{
+                friendsSnapshot?.documentChanges.forEach({ (friendsDocumentChange) in
+                    let currFriend = try! FirestoreDecoder().decode(User.self, from: friendsDocumentChange.document.data())
+                    if friendsDocumentChange.type == .added{
+                        self.setMessageAnnotations(ofUser: currFriend.userID ?? friendsDocumentChange.document.documentID, VC: VC)
+                    }
+                    else if friendsDocumentChange.type == .removed{
+                        //remove annotations - TODO
+                    }
+                })
+            }
+        }
+    }
+
     
     init(){
         db = Firestore.firestore()
     }
-    /*func getMessages(VC: MapViewControllerFirestoreMessagesDelegate){
-        VC.clearMessages()
-        var friendsIDs = [currUser.shared.currUsedID!] //change to get friends @Published?
-        for ID in friendsIDs{
-            db.collection("Users").document(ID).collection("Videos").getDocuments { (querySnapshot, error) in
-                if let error = error{
-                    VC.showError(error: error.localizedDescription)
-                    return
-                }else{
-                    var newMessages: [Message] = []
-                    for document in querySnapshot!.documents{
-                        var message = try! FirestoreDecoder().decode(Message.self, from: document.data())
-                        //fix: message.setCreatorName(creatorName: <#T##String#>)
-                        newMessages.append(message)
-                    }
-                    VC.setMessages(newMessages: newMessages)
-                }
-                
-            }
-        }
-    }*/
+    
 }
 
 protocol FirestoreMessagesMapService {

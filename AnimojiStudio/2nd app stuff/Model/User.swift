@@ -13,6 +13,8 @@ struct User: Codable {
     var name: String
     var bitmojiURL: String
     var telephone: String
+    var userID: String?
+    
     
     func matchingTelephone(telephoneToMatch: String) -> Bool{
         var numsToCheck: [String] = []

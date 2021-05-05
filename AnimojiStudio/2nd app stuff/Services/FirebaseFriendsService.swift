@@ -25,26 +25,45 @@ class FirebaseFriendsService: FirestoreAddFriendsDelegate {
         db = Firestore.firestore()
     }
     
-    func findContacts(contacts: [Contact]){
-        var telephones: [String] = contacts.map{$0.telephone}
-        //telephones = ["(562)280-6387"] //for testing
+    func getContactsFromFirestore(alreadyFriends:[User], contacts: [Contact]){
+        let friendIDs:[String?] = alreadyFriends.map{$0.userID}
+        let telephones: [String] = contacts.map{$0.telephone}
         db.collection("Users").getDocuments { (querySnapshot, error) in
             if let error = error{
                 print(error.localizedDescription)
             }
             else{
                 for document in querySnapshot!.documents{
-                    var tempUser = try! FirestoreDecoder().decode(User.self, from: document.data())
-                    if tempUser.telephone != UserDefaults.standard.value(forKey: "Phone Number") as! String{
-                        if !(telephones.filter({ (number) -> Bool in
-                            tempUser.matchingTelephone(telephoneToMatch: number)
-                        })).isEmpty{
-                            self.FirebaseUsers.append(tempUser)
+                    if !friendIDs.contains(document.documentID){
+                        var tempUser = try! FirestoreDecoder().decode(User.self, from: document.data())
+                        tempUser.userID = document.documentID
+                        if tempUser.telephone != UserDefaults.standard.value(forKey: "Phone Number") as! String{
+                            if !(telephones.filter({ (number) -> Bool in
+                                tempUser.matchingTelephone(telephoneToMatch: number)
+                            })).isEmpty{
+                                self.FirebaseUsers.append(tempUser)
+                            }
                         }
                     }
-                        
                 }
                     
+            }
+        }
+    }
+    
+    func findContacts(contacts: [Contact]){
+        //telephones = ["(562)280-6387"] //for testing
+        db.collection("Users").document(currUser.shared.currUsedID!).collection("Friends").getDocuments { (friendsSnapshot, friendsError) in
+            if let friendsError = friendsError{
+                print(friendsError.localizedDescription)
+            }
+            else{
+                var friendsList:[User] = []
+                for document in friendsSnapshot!.documents{
+                    var tempUser = try! FirestoreDecoder().decode(User.self, from: document.data())
+                    friendsList.append(tempUser)
+                }
+                self.getContactsFromFirestore(alreadyFriends: friendsList, contacts: contacts)
             }
         }
     }
@@ -76,8 +95,11 @@ class FirebaseFriendsService: FirestoreAddFriendsDelegate {
         }
     }
     
-    func addFriend(){
-        db.collection("Users").document(currUser.shared.currUsedID!).collection("Friends").document()
+    func addFriend(position: Int){
+        let newFriend = FirebaseUsers[position]
+        let docData = try! FirestoreEncoder().encode(newFriend)
+        FirebaseUsers.remove(at: position)
+        db.collection("Users").document(currUser.shared.currUsedID!).collection("Friends").document(newFriend.userID!).setData(docData)
     }
     
     
@@ -87,4 +109,5 @@ protocol FirestoreAddFriendsDelegate: class {
     var FirebaseUsers:[User]{get set}
     var VC: addFriendsTableView! { get set }
     func askForContactAccess()
+    func addFriend(position: Int)
 }
