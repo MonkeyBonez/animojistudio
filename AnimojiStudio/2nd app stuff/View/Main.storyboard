@@ -383,7 +383,7 @@
         <scene sceneID="8AE-p9-3JR">
             <objects>
                 <viewController storyboardIdentifier="MessageViewerVC" id="M4a-Au-ymc" customClass="MessageViewController" customModule="AnimojiStudio" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="riM-GW-9f7">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="riM-GW-9f7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -391,13 +391,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </arscnView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="QG0-0l-fhz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="QG0-0l-fhz" firstAttribute="bottom" secondItem="zQL-Om-XXm" secondAttribute="bottom" id="BjY-9S-Pl3"/>
-                            <constraint firstItem="zQL-Om-XXm" firstAttribute="top" secondItem="QG0-0l-fhz" secondAttribute="top" id="D9k-Md-Aj5"/>
-                            <constraint firstItem="zQL-Om-XXm" firstAttribute="leading" secondItem="QG0-0l-fhz" secondAttribute="leading" id="LyX-iL-lNq"/>
-                            <constraint firstItem="QG0-0l-fhz" firstAttribute="trailing" secondItem="zQL-Om-XXm" secondAttribute="trailing" id="deP-N1-NWk"/>
+                            <constraint firstAttribute="bottom" secondItem="zQL-Om-XXm" secondAttribute="bottom" id="BjY-9S-Pl3"/>
+                            <constraint firstItem="zQL-Om-XXm" firstAttribute="top" secondItem="riM-GW-9f7" secondAttribute="top" id="D9k-Md-Aj5"/>
+                            <constraint firstItem="zQL-Om-XXm" firstAttribute="leading" secondItem="riM-GW-9f7" secondAttribute="leading" id="LyX-iL-lNq"/>
+                            <constraint firstAttribute="trailing" secondItem="zQL-Om-XXm" secondAttribute="trailing" id="deP-N1-NWk"/>
                         </constraints>
                     </view>
                     <connections>

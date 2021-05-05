@@ -17,6 +17,7 @@
 		361ED3DB2642074400B7CDFA /* MessageMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3DA2642074400B7CDFA /* MessageMapAnnotation.swift */; };
 		361ED3DF26420FAA00B7CDFA /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3DE26420FAA00B7CDFA /* MessageViewController.swift */; };
 		361ED3E2264235D800B7CDFA /* SnapchatLoginBitmojiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3E1264235D800B7CDFA /* SnapchatLoginBitmojiService.swift */; };
+		361ED3E52642871300B7CDFA /* stickFigure.png in Resources */ = {isa = PBXBuildFile; fileRef = 361ED3E42642871300B7CDFA /* stickFigure.png */; };
 		3639CF6E2633BD0D002569DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */; };
 		3639CF722633BF90002569DB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF712633BF90002569DB /* FirebaseAuth */; };
 		3639CF742633BF90002569DB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF732633BF90002569DB /* FirebaseFirestore */; };
@@ -26,7 +27,6 @@
 		36BB0204262FEA9300C0F926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0203262FEA9300C0F926 /* AppDelegate.swift */; };
 		36BB0207262FEB1C00C0F926 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0206262FEB1C00C0F926 /* Main.storyboard */; };
 		36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */; };
-		36BB0210262FEDBD00C0F926 /* Recording.mov in Resources */ = {isa = PBXBuildFile; fileRef = 36BB020F262FEDBD00C0F926 /* Recording.mov */; };
 		36BB0216262FEE9200C0F926 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB0215262FEE9200C0F926 /* InitialViewController.swift */; };
 		36CF7AF2263E34E600A76E6E /* shootingStar.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36CF7AF1263E34E600A76E6E /* shootingStar.gif */; };
 		36CF7AF5263E55E600A76E6E /* NavigationBarHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CF7AF4263E55E600A76E6E /* NavigationBarHide.swift */; };
@@ -94,13 +94,13 @@
 		361ED3DA2642074400B7CDFA /* MessageMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMapAnnotation.swift; sourceTree = "<group>"; };
 		361ED3DE26420FAA00B7CDFA /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		361ED3E1264235D800B7CDFA /* SnapchatLoginBitmojiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapchatLoginBitmojiService.swift; sourceTree = "<group>"; };
+		361ED3E42642871300B7CDFA /* stickFigure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stickFigure.png; sourceTree = "<group>"; };
 		3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		36AB67732632987B00CF072D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		36BB0203262FEA9300C0F926 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BB0206262FEB1C00C0F926 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		36BB0209262FEB2400C0F926 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		36BB020F262FEDBD00C0F926 /* Recording.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Recording.mov; sourceTree = "<group>"; };
 		36BB0215262FEE9200C0F926 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		36CF7AF1263E34E600A76E6E /* shootingStar.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = shootingStar.gif; sourceTree = "<group>"; };
 		36CF7AF4263E55E600A76E6E /* NavigationBarHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarHide.swift; sourceTree = "<group>"; };
@@ -299,8 +299,8 @@
 			children = (
 				36DDFD7F2631719300A2A8F7 /* Background2.gif */,
 				36CF7AF1263E34E600A76E6E /* shootingStar.gif */,
+				361ED3E42642871300B7CDFA /* stickFigure.png */,
 				36DDFD78263169AA00A2A8F7 /* Background.gif */,
-				36BB020F262FEDBD00C0F926 /* Recording.mov */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -631,7 +631,7 @@
 				36DDFD802631719300A2A8F7 /* Background2.gif in Resources */,
 				36DDFD79263169AA00A2A8F7 /* Background.gif in Resources */,
 				36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */,
-				36BB0210262FEDBD00C0F926 /* Recording.mov in Resources */,
+				361ED3E52642871300B7CDFA /* stickFigure.png in Resources */,
 				DDDBBBF31FB7918000291D45 /* Assets.xcassets in Resources */,
 				3639CF6E2633BD0D002569DB /* GoogleService-Info.plist in Resources */,
 			);
