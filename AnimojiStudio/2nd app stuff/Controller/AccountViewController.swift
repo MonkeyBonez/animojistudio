@@ -8,15 +8,29 @@
 
 import UIKit
 
-class AccountViewController: ShowsErrorViewController, SignoutViewControllerAuthDelegate {
+class AccountViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, SignoutViewControllerAuthDelegate {
+
+    @IBOutlet weak var GIFImageBackgroundView: UIImageView!
     
+    @IBOutlet weak var profileImageView: UIImageView!
     var signOutDelegate: FirebaseSignOutDelegate!
     
     override func viewDidLoad() {
         signOutDelegate = FirebaseAuthService()
+        self.backgroundImage = GIFImageBackgroundView
+        self.backgroundImageName = "accountPageGif"
         super.viewDidLoad()
-
+        setProfileBitmojiPicture()
+        //self.tabBarController?.tabBar.backgroundImage = UIImage()
         // Do any additional setup after loading the view.
+    }
+    
+    func setProfileBitmojiPicture(){
+        do {
+            try profileImageView.image = UIImage(data: NSData(contentsOf: currUser.shared.bitmojiURL!) as Data)
+        } catch {
+            return
+        }
     }
     
 

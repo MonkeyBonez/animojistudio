@@ -33,25 +33,29 @@ import CodableFirebase
     
     @objc func uploadVideo(){
         //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
-        let storageRef = StorageReference()
-        let videoName = currUser.shared.currUsedID! + String(Date().timeIntervalSince1970)
-        let videoRef = storageRef.child("Videos/\(videoName).mp4")
-        let videoFile:URL = videoURL.absoluteURL!
-        
-        let uploadTask = videoRef.putFile(from: videoFile, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else{
-                print("Couldn't upload " + error!.localizedDescription)
-                return
-            }
-            videoRef.downloadURL { (url, error) in
-                guard let url = url else{
-                    print("Eror: " + error!.localizedDescription)
+        (UIApplication.shared.delegate as! AppDelegate).userExists()
+        DispatchQueue.global(qos: .utility).async {
+            let storageRef = StorageReference()
+            let videoName = currUser.shared.currUsedID! + String(Date().timeIntervalSince1970)
+            let videoRef = storageRef.child("Videos/\(videoName).mp4")
+            let videoFile:URL = self.videoURL.absoluteURL!
+            
+            let uploadTask = videoRef.putFile(from: videoFile, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else{
+                    print("Couldn't upload " + error!.localizedDescription)
                     return
                 }
-                //print(url)
-                self.createMessage(url: url)
+                videoRef.downloadURL { (url, error) in
+                    guard let url = url else{
+                        print("Eror: " + error!.localizedDescription)
+                        return
+                    }
+                    //print(url)
+                    self.createMessage(url: url)
+                }
             }
         }
+        
     }
     
     var newMessageURL:URL?

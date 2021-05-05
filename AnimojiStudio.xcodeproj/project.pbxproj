@@ -23,6 +23,7 @@
 		361ED3F426431D0F00B7CDFA /* FirebaseContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3F326431D0F00B7CDFA /* FirebaseContact.swift */; };
 		361ED3F726431D6500B7CDFA /* FirebaseFriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3F626431D6500B7CDFA /* FirebaseFriendsService.swift */; };
 		361ED3FA26431E8800B7CDFA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361ED3F926431E8800B7CDFA /* User.swift */; };
+		361ED3FD26435A7500B7CDFA /* accountPageGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 361ED3FC26435A7500B7CDFA /* accountPageGif.gif */; };
 		3639CF6E2633BD0D002569DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */; };
 		3639CF722633BF90002569DB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF712633BF90002569DB /* FirebaseAuth */; };
 		3639CF742633BF90002569DB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3639CF732633BF90002569DB /* FirebaseFirestore */; };
@@ -105,6 +106,7 @@
 		361ED3F326431D0F00B7CDFA /* FirebaseContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseContact.swift; sourceTree = "<group>"; };
 		361ED3F626431D6500B7CDFA /* FirebaseFriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFriendsService.swift; sourceTree = "<group>"; };
 		361ED3F926431E8800B7CDFA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		361ED3FC26435A7500B7CDFA /* accountPageGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = accountPageGif.gif; sourceTree = "<group>"; };
 		3639CF6D2633BD0D002569DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		36AB67732632987B00CF072D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -241,7 +243,7 @@
 			path = "2nd app stuff";
 			sourceTree = "<group>";
 		};
-		3639CF782633CEA5002569DB /* Model */ = {
+		361ED3FF264363E300B7CDFA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				36D238872641107F0070DFCD /* Message.swift */,
@@ -251,6 +253,14 @@
 				361ED3F326431D0F00B7CDFA /* FirebaseContact.swift */,
 				361ED3F02643180200B7CDFA /* Contact.swift */,
 				361ED3F926431E8800B7CDFA /* User.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		3639CF782633CEA5002569DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				361ED3FF264363E300B7CDFA /* Classes */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,6 +324,7 @@
 			children = (
 				36DDFD7F2631719300A2A8F7 /* Background2.gif */,
 				36CF7AF1263E34E600A76E6E /* shootingStar.gif */,
+				361ED3FC26435A7500B7CDFA /* accountPageGif.gif */,
 				361ED3E42642871300B7CDFA /* stickFigure.png */,
 				36DDFD78263169AA00A2A8F7 /* Background.gif */,
 			);
@@ -645,6 +656,7 @@
 				36CF7AF2263E34E600A76E6E /* shootingStar.gif in Resources */,
 				36DDFD802631719300A2A8F7 /* Background2.gif in Resources */,
 				36DDFD79263169AA00A2A8F7 /* Background.gif in Resources */,
+				361ED3FD26435A7500B7CDFA /* accountPageGif.gif in Resources */,
 				36BB020A262FEB2400C0F926 /* LaunchScreen.storyboard in Resources */,
 				361ED3E52642871300B7CDFA /* stickFigure.png in Resources */,
 				DDDBBBF31FB7918000291D45 /* Assets.xcassets in Resources */,
