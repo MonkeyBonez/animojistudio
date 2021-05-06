@@ -3,13 +3,14 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/3/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
-
+    
+    //sets the tab bar to be transparent
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.setTransparentTabBar()
@@ -17,6 +18,7 @@ class MainTabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
+    //automatically hide navigation bar
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.hideNavigationBar(animated: animated)

@@ -3,7 +3,7 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/3/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 
 import Foundation
@@ -30,11 +30,20 @@ struct Message:Codable, Equatable{
     
     func isExpired()->Bool{
         //https://stackoverflow.com/questions/40075850/swift-3-find-number-of-calendar-days-between-two-dates
-        let diffInDays = Calendar.current.dateComponents([.day], from: Date(), to: timeCreated.dateValue()).day ?? 1
+        let diffInDays = Calendar.current.dateComponents([.day], from: timeCreated.dateValue(), to: Date()).day ?? 1
+        print(videoUrl)
+        print(diffInDays)
         if(diffInDays >= 1){
+            //delete from FB?
             return true
         }
         return false
+    }
+    
+    func getOpacity()->Double{
+        let diffInMinutes:Double = Double(Calendar.current.dateComponents([.minute], from:timeCreated.dateValue() , to: Date()).minute!)
+        print(diffInMinutes)
+        return 1.0-(diffInMinutes/(24.0*60.0))
     }
     
     mutating func setCreatorName(creatorName: String){

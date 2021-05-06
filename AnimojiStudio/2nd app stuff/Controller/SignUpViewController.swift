@@ -1,12 +1,13 @@
 //
 //  SignUpViewController.swift
 //  AnimojiStudio
-//
+//  Snehal Mulchandani - Snehalmu@usc.edu
+
 //  Created by Snehal Mulchandani on 4/21/21.
 //
 
 import UIKit
-//toDO: Give up first responder when appropriate
+//sign up through this VC
 class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, SignUpViewControllerAuthDelegate, UITextFieldDelegate, SignUpViewControllerFirestoreDelegate {
     
     
@@ -17,6 +18,7 @@ class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, S
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var shootingStarImageView: UIImageView!
+    //set up GIFs and hiding keyboard when needed
     override func viewDidLoad() {
         userServiceDelegate = FirestoreUserService()
         self.backgroundImageName = "Background"
@@ -35,7 +37,7 @@ class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, S
     
     
     
-    
+    //when sign up pressed handle inputs
     @IBAction func signUpButtonPressed(_ sender: Any) {
         //verify/preprocess inputs
         if(phoneNumberTextField.text!.isEmpty){
@@ -51,7 +53,7 @@ class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, S
         signUpDelegate.verifyPhone(phoneNumber: "+1" + phoneNumberTextField.text!, viewController: self)//check if ! messes up for empty
         }
     }
-    
+    //pass to delegate once input
     func getVerificationCode(){
         let alert = UIAlertController(title: "Verify Phone Number", message: "Provide verification code", preferredStyle: .alert)
         let continueAction = UIAlertAction(title: "Ok", style: .default) { (actionPerformed) in
@@ -87,7 +89,7 @@ class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, S
         // go to user info page
         goToViewController(identifier: "UserInfoVC")
     }
-    
+    //easy function to switch VC
     func goToViewController(identifier: String){
         //https://stackoverflow.com/questions/24038215/how-to-navigate-from-one-view-controller-to-another-using-swift
         let vc = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(identifier: identifier)
@@ -95,11 +97,13 @@ class SignUpViewController: ShowsErrorHideKeyboardGIFBackgroundViewController, S
     }
     
 }
+//to communicate to delegate without exposing whole VC interface
 
 protocol SignUpViewControllerAuthDelegate: CanShowErrorProtocol {
     func getVerificationCode()
     func signInSuccess(userID: String?)
 }
+//to communicate to delegate without exposing whole VC interface
 
 protocol SignUpViewControllerFirestoreDelegate {
     func userExists()

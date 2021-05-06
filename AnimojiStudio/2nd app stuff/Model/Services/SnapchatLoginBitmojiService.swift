@@ -3,16 +3,16 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/4/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 
 import Foundation
 import SCSDKLoginKit
-
+//Service for getting bitmoji url and to handle snapchat login
 class SnapchatLoginBitmojiService: SnapchatUserDataDelegate{
     var bitmojiAvatarUrl: String?
     
-    
+    //log in to snapchat
     func doSnapchatLogin(VC: SnapchatUserDataVC){
         //https://github.com/Snapchat/login-kit-sample
         SCSDKLoginClient.login(from: VC.getNavigationController()) { (success: Bool, error: Error?) in
@@ -27,7 +27,7 @@ class SnapchatLoginBitmojiService: SnapchatUserDataDelegate{
             }
         }
     }
-    
+    //get user's bitmoji
     func getSnapchatBitmoji(VC: SnapchatUserDataVC){
         //https://kit.snapchat.com/docs/login-kit-ios
         let graphQLQuery = "{me{bitmoji{avatar}}}"
@@ -50,6 +50,7 @@ class SnapchatLoginBitmojiService: SnapchatUserDataDelegate{
 
     }
 }
+//to communicate to VC without exposing whole interface
 
 protocol SnapchatUserDataDelegate {
     var bitmojiAvatarUrl: String? { get set }

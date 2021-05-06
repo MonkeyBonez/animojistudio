@@ -3,18 +3,21 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/4/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 
 import UIKit
 import SceneKit
 import ARKit
-
-class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageURL {
+import CoreMotion
+//Augmented-Reality + Core motion used  in this VC to display message to user.
+class MessageViewController: ShowsErrorViewController, ARSCNViewDelegate, takesMessageURL {
 
     @IBOutlet weak var sceneView: ARSCNView!
     var firebaseURL:URL!
-    
+    var messageShowed = false
+    @IBOutlet weak var arrowDirections: UIImageView!
+    //set scene view delegate as self and enable lighting option
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,43 +32,92 @@ class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageUR
         sceneView.autoenablesDefaultLighting = true
         
     }
-    
+    //set up sceneView + Tracking
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        arrowDirections.image = UIImage()
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         // Run the view's session
         sceneView.session.run(configuration)
     }
-    
+    //stop the scene view and hide navigation bar as previous view doesn't need it
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Pause the view's session
         sceneView.session.pause()
         self.hideNavigationBar(animated: animated)
+        //NotificationCenter.default.removeObserver(self)
+        //UIDevice.current.endGeneratingDeviceOrientationNotifications()
     }
     
+    var motionManager: CMMotionManager!//Sorry this isn't declared at the top I threw the Core motion stuff together pretty last second dont wanna mess it up
+    //when view appears, set navigation bar to how we want and start guiding the user to the message
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //registerGestureRecognizers()
-        //DEMOShowMemoji()
         self.showNavigationBar(animated: animated)
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.ShowMemojiMessage()
+        motionManager = CMMotionManager()
+        self.arrowDirections.isHidden = false
+        guideUserToMessage()
+
+
+    }
+    //set up motion manager and get results and respond to show user the correct way to look and display message when they're looking at the correct spot
+    func guideUserToMessage(){
+        if motionManager.isMagnetometerAvailable {
+            //motionManager.magnetometerUpdateInterval = 10.0/60.0
+            motionManager.deviceMotionUpdateInterval = 10.0/60.0
+            motionManager.magnetometerUpdateInterval = 5.0/60.0
+            motionManager.gyroUpdateInterval = 5.0/60.0
+            motionManager.accelerometerUpdateInterval = 5.0/60.0
+            motionManager.startDeviceMotionUpdates(using: .xTrueNorthZVertical, to: .main) { (deviceMotion, error) in
+                if let error = error{
+                    //just show memoji
+                }
+                else{
+                    //print(deviceMotion?.magneticField.field.z)
+                    if((deviceMotion?.magneticField.field.z)! < -16){
+                        self.arrowDirections.image = UIImage(systemName: "arrow.up.square")
+                    }
+                    else if ((deviceMotion?.magneticField.field.z)! > 8){
+                        self.arrowDirections.image = UIImage(systemName: "arrow.down.square")
+                    }
+                    else{
+                        self.motionManager.stopDeviceMotionUpdates()
+                        self.motionManager.stopGyroUpdates()
+                        self.motionManager.stopMagnetometerUpdates()
+                        self.motionManager.stopAccelerometerUpdates()
+                        self.arrowDirections.isHidden = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                            self.ShowMemojiMessage()
+                        }
+                    }
+                }
+            }
         }
-        //
     }
     
-    /*private func registerGestureRecognizers() {
-           
-           let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-           self.sceneView.addGestureRecognizer(tapGestureRecognizer)
-       }*/
+    //NOT USED ANYMORE COREMOTION WAY BETTER FOR WHAT I NEED
+    @objc func orientationChanged(_ notification: NSNotification){
+        let currentOrientation = UIDevice.current.orientation
+        if(currentOrientation == .faceUp){
+            showError(error: "Move your camera up to see the message!")
+            //inform user to move camera up
+        }
+        else if !messageShowed{
+            messageShowed = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                self.ShowMemojiMessage()
+            }
+        }
+        
+    }
+    //helper function to make video background invisible
     func RGBtoHSV(r : Float, g : Float, b : Float) -> (h : Float, s : Float, v : Float) {
         var h : CGFloat = 0
         var s : CGFloat = 0
@@ -74,7 +126,7 @@ class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageUR
         col.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
         return (Float(h), Float(s), Float(v))
     }
-
+//CIFILTER to make video invisible in AR view (gotten from stackoverflow: https://stackoverflow.com/questions/50139146/arkit-spritekit-set-pixelbufferattributes-to-skvideonode-or-make-transparent) does this go in model?
     func colorCubeFilterForChromaKey(hueAngle: Float) -> CIFilter {
 
         let hueRange: Float = 0.1 // degrees size pie shape that we want to replace - Originally 20m
@@ -165,9 +217,9 @@ class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageUR
     }
     
     
-    
+    //load Memoji message correctly in AR from video URL and display
     func ShowMemojiMessage(){
-        //https://firebasestorage.googleapis.com/v0/b/sonder-370f3.appspot.com/o/Videos%2FFFPdLgvc9GOLxEssvpn6kRcBJOr21620095230.42256.mp4?alt=media&token=1dd17990-164f-45ab-8823-df867451530d
+
         guard let currentFrame = self.sceneView.session.currentFrame else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                 self.ShowMemojiMessage()
@@ -229,7 +281,7 @@ class MessageViewController: UIViewController, ARSCNViewDelegate, takesMessageUR
     }
     
 }
-
+//protocol to get the URL without exposing whole interface
 protocol takesMessageURL {
     var firebaseURL:URL! { get set }
 }

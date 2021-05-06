@@ -3,7 +3,7 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/2/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 
 import UIKit
@@ -11,6 +11,7 @@ import UIKit
 class LoadingViewController: GifBackgroundViewController {
 
     @IBOutlet weak var BackgroundImageView: UIImageView!
+    //set background GIF Image
     override func viewDidLoad() {
         self.backgroundImage = BackgroundImageView
         self.backgroundImageName = "Background"

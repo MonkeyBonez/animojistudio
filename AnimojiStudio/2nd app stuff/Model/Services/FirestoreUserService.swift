@@ -3,7 +3,7 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/1/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 
 import Foundation
@@ -12,14 +12,14 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import CodableFirebase
-
+//to create user and check if they exist
 struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDelegate {
     var db: Firestore
     init() {
         db = Firestore.firestore()
     }
     
-    
+    //checks if users exists, lets delegater know
     func userExists(delegate:SignUpViewControllerFirestoreDelegate, UserID:String){
         //https://stackoverflow.com/questions/46880323/how-to-check-if-a-cloud-firestore-document-exists-when-using-realtime-updates
         let usersRef = db.collection("Users").document(UserID)
@@ -36,7 +36,7 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
         
 
     }
-    
+    //creates user in firestore
     func createUser(name: String, bitmojiURL:String, VC: UserInfoViewControllerFirestoreDelegate){
         let newUser = User(name: name, bitmojiURL: bitmojiURL, telephone: UserDefaults.standard.value(forKey: "Phone Number") as! String)
         let docData = try! FirestoreEncoder().encode(newUser)
@@ -53,12 +53,12 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
             
         }
     }
-    
+    //not needed
     func addMessageToFirestore(newMessage: Message){        //let diffInDays = Calendar.current.dateComponents([.day], from: Date(), to: Date())
 
         //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
     }
-    
+    //load current user's bitmoji for later use
     func loadCurrUserBitmojiURL(){
         //https://stackoverflow.com/questions/48312485/how-to-access-a-specific-field-from-cloud-firestore-firebase-in-swift
         if currUser.shared.bitmojiURL == nil{
@@ -75,39 +75,16 @@ struct FirestoreUserService: FirestoreUserServiceDelegate, FirestoreUserInfoDele
         }
     }
     
-    //TODO:DELETE
     
-    
-    
-    /*func uploadVideo(){
-        //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
-        var videoURL: NSURL = NSURL(fileURLWithPath: "hi/hi") //delete
-        let storageRef = StorageReference()
-        let videoName = currUserID! + String(Date().timeIntervalSince1970)
-        let videoRef = storageRef.child("Videos/\(videoName)")
-        let videoFile:URL = videoURL.absoluteURL!
-        
-        let uploadTask = videoRef.putFile(from: videoFile, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else{
-                print("Couldn't upload " + error!.localizedDescription)
-                return
-            }
-            videoRef.downloadURL { (url, error) in
-                guard let url = url else{
-                    print("Eror: " + error!.localizedDescription)
-                    return
-                }
-                print(url)
-            }
-        }
-    }*/
     
 }
+//to communicate to VC without exposing whole interface
 
 protocol FirestoreUserServiceDelegate {
     func userExists(delegate:SignUpViewControllerFirestoreDelegate, UserID:String)
     func loadCurrUserBitmojiURL()
 }
+//to communicate to VC without exposing whole interface
 
 protocol FirestoreUserInfoDelegate {
     func createUser(name: String, bitmojiURL:String, VC: UserInfoViewControllerFirestoreDelegate)

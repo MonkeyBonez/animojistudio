@@ -3,20 +3,21 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/5/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 import Foundation
 import UIKit
 import Contacts
-
+//VC to add friends
 class AddFriendsViewController: UITableViewController, addFriendsTableView {
+    //for delegate to be able to refresh lsit
     func refreshList() {
         self.tableView.reloadData()
     }
     
     var FriendsServiceDelegate: FirestoreAddFriendsDelegate!
     
-
+//establish delegate
     override func viewDidLoad() {
         super.viewDidLoad()
         FriendsServiceDelegate = FirebaseFriendsService() //weak...
@@ -25,7 +26,7 @@ class AddFriendsViewController: UITableViewController, addFriendsTableView {
         // Do any additional setup after loading the view.
     }
     
-    
+    //when view appears or dissapears set navigation bar how i want
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.showNavigationBar(animated: animated)
@@ -38,11 +39,11 @@ class AddFriendsViewController: UITableViewController, addFriendsTableView {
     }
     
     
-    
+    //num of rows in tableview
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return FriendsServiceDelegate.FirebaseUsers.count
     }
-    
+    //get tableview cells from delegate
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = FriendsServiceDelegate.FirebaseUsers[indexPath.row].name
@@ -51,7 +52,7 @@ class AddFriendsViewController: UITableViewController, addFriendsTableView {
 
         return cell
     }
-    
+    //hand off the friend to be added to delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         FriendsServiceDelegate.addFriend(position: indexPath.row)
     }
@@ -70,7 +71,7 @@ class AddFriendsViewController: UITableViewController, addFriendsTableView {
     */
 
 }
-
+//show necessray interface to delegate
 protocol addFriendsTableView{
     func refreshList()
 }

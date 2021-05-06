@@ -3,14 +3,14 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/5/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 
 import Foundation
 import Firebase
 import CodableFirebase
 import Contacts
-
+//service with Firestore for friends
 class FirebaseFriendsService: FirestoreAddFriendsDelegate {
     var VC: addFriendsTableView!
     var db: Firestore
@@ -24,7 +24,7 @@ class FirebaseFriendsService: FirestoreAddFriendsDelegate {
     init() {
         db = Firestore.firestore()
     }
-    
+    //check contact numbers with fiebasee users numbers
     func getContactsFromFirestore(alreadyFriends:[User], contacts: [Contact]){
         let friendIDs:[String?] = alreadyFriends.map{$0.userID}
         let telephones: [String] = contacts.map{$0.telephone}
@@ -50,7 +50,7 @@ class FirebaseFriendsService: FirestoreAddFriendsDelegate {
             }
         }
     }
-    
+    // get contacts and pass to getContactsFromFirestoe once we have a list of friends
     func findContacts(contacts: [Contact]){
         //telephones = ["(562)280-6387"] //for testing
         db.collection("Users").document(currUser.shared.currUsedID!).collection("Friends").getDocuments { (friendsSnapshot, friendsError) in
@@ -79,7 +79,7 @@ class FirebaseFriendsService: FirestoreAddFriendsDelegate {
             }
         }
     }
-    
+    //load contacts of user and pass to find contacts
     func loadContacts(){
         var contacts:[Contact] = []
         let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
@@ -94,7 +94,7 @@ class FirebaseFriendsService: FirestoreAddFriendsDelegate {
             print("Failed to get contact")
         }
     }
-    
+    //add a friend in Firestore
     func addFriend(position: Int){
         let newFriend = FirebaseUsers[position]
         let docData = try! FirestoreEncoder().encode(newFriend)
@@ -104,6 +104,7 @@ class FirebaseFriendsService: FirestoreAddFriendsDelegate {
     
     
 }
+//to communicate to VC without exposing whole interface
 
 protocol FirestoreAddFriendsDelegate: class {
     var FirebaseUsers:[User]{get set}

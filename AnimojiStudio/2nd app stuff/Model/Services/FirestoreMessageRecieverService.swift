@@ -3,7 +3,7 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/4/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 
 import Foundation
@@ -11,11 +11,11 @@ import Firebase
 import CodableFirebase
 import MapKit
 
-
+//Firestore service to download messges
 class FirestoreMessageRecieverService: FirestoreMessagesMapService{
     var db:Firestore
     //var messageList: [Message] = []
-    
+    // create map annottations of user when message made
     func setMessageAnnotations(ofUser ID: String, VC: MapViewControllerFirestoreMessagesDelegate){
         db.collection("Users").document(ID).collection("Videos").addSnapshotListener { (querySnapshot, error) in
             guard let snapshot = querySnapshot else {
@@ -26,8 +26,10 @@ class FirestoreMessageRecieverService: FirestoreMessagesMapService{
                 let currMessage = try! FirestoreDecoder().decode(Message.self, from: diff.document.data())
                 if diff.type == .added{
                     //add new annotation
-                    let newAnnotation = MessageMapAnnotation(message: currMessage)
-                    VC.addMapAnnotation(annotation: newAnnotation)
+                    if(!currMessage.isExpired()){
+                        let newAnnotation = MessageMapAnnotation(message: currMessage)
+                        VC.addMapAnnotation(annotation: newAnnotation)
+                    }
                     
                 }
                 else if diff.type == .modified{
@@ -41,7 +43,7 @@ class FirestoreMessageRecieverService: FirestoreMessagesMapService{
             }
         }
     }
-    
+    //start making map annotations for self and friends
     func setMessageAnnotations(VC: MapViewControllerFirestoreMessagesDelegate){
         self.setMessageAnnotations(ofUser: currUser.shared.currUsedID!, VC: VC)
         db.collection("Users").document(currUser.shared.currUsedID!).collection("Friends").addSnapshotListener { (friendsSnapshot, friendsError) in
@@ -68,6 +70,7 @@ class FirestoreMessageRecieverService: FirestoreMessagesMapService{
     }
     
 }
+//to communicate to VC without exposing whole interface
 
 protocol FirestoreMessagesMapService {
     func setMessageAnnotations(VC: MapViewControllerFirestoreMessagesDelegate)

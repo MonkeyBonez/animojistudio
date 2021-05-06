@@ -1,13 +1,14 @@
 //
 //  MapViewController.swift
 //  AnimojiStudio
-//
+//  Snehal Mulchandani - Snehalmu@usc.edu
+
 //  Created by Snehal Mulchandani on 4/22/21.
 //
 
 import UIKit
 import MapKit
-
+//class with map to display user messagse
 class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewControllerFirestoreMessagesDelegate {
     
     private let mapTileURL = "http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
@@ -25,7 +26,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
     var FirestoreUserServicesDelegate: FirestoreUserServiceDelegate!
     
     var messages: [Message] = []
-    
+    //set up delegates
     override func viewDidLoad() {
         super.viewDidLoad()
         overlay = MKTileOverlay(urlTemplate: mapTileURL)
@@ -40,12 +41,12 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
         
     }
     
-    //https://stackoverflow.com/questions/40492623/mkmapview-does-call-didselect-callback-only-once
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //deselectAnnotations()
     }
-    
+    //set up map to be in the nice map tile view at first
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadMapFromTiles()
@@ -53,7 +54,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
         magnifyingGlassButton.setImage(UIImage(systemName: "plus.magnifyingglass"), for: .normal)
         zoomed = false
     }
-    
+    //https://stackoverflow.com/questions/40492623/mkmapview-does-call-didselect-callback-only-once
     func deselectAnnotations(){
         DispatchQueue.main.async {
             for annotation in self.mapView.selectedAnnotations{
@@ -62,7 +63,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
         }
     }
     
-    
+    //zoom on user how I want when tile map is loaded
     func tileZoomOnUser(animated: Bool){
         guard let currLocation = mapView.userLocation.location else {
             return
@@ -72,7 +73,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
         mapView.setRegion(regionToShow, animated: animated)
         
     }
-    
+    //zoom on user how I want when regular Apple maps is loaded
     func regularZoomOnUser(){
         guard let currLocation = mapView.userLocation.location else {
             return
@@ -80,32 +81,32 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
         let regionToShow = MKCoordinateRegion(center: currLocation.coordinate, latitudinalMeters: smallRadiusToDisplay, longitudinalMeters: smallRadiusToDisplay)
         mapView.setRegion(regionToShow, animated: true)
     }
-    
+    //initilize map with self s delegate and load from map tiles
     func setUpMap(){
         mapView.delegate = self
         mapView.showsUserLocation = true
         loadMapFromTiles()
         //set Max Zoom if needed
     }
-    
+    // loads map from tilse
     func loadMapFromTiles(){
         mapView.setCameraZoomRange(MKMapView.CameraZoomRange(minCenterCoordinateDistance: tileMinZoom), animated: false)
         overlay.canReplaceMapContent = true
         mapView.addOverlay(overlay, level: .aboveRoads)//change lab els to .aboveLabels to remove labels (puts map custom labels)
     }
-    
+    //loads map from reegular apple maps
     func loadRegularMap(){
         mapView.setCameraZoomRange(MKMapView.CameraZoomRange(maxCenterCoordinateDistance: tileMinZoom), animated: false)
         mapView.removeOverlay(overlay)
     }
-    
+    //get user lcoation
     func getUserLocationAccess(){
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.startUpdatingLocation()
     }
-    
+    //needed to render from tiles
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKTileOverlay{
             let renderer = MKTileOverlayRenderer(overlay: overlay)
@@ -116,6 +117,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
         }
         
     }
+    //how to zoom when button pressed
     @IBAction func magnifyingGlassButtonPressed(_ sender: Any) {
         if(!zoomed){//fix to not have to !
             loadRegularMap()
@@ -142,7 +144,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
     func setMessages(newMessages: [Message]){
         messages = newMessages
     }*/
-    
+    //for delegate to add annotations
     func addMapAnnotation(annotation: MessageMapAnnotation){
         mapView.addAnnotation(annotation)
     }
@@ -195,7 +197,8 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
             print("Error with loading user image")
         }
         
-        annotationView?.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        annotationView?.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        annotationView?.alpha = CGFloat(customMapAnnotation.currOpacity)
         return annotationView
     }
     
@@ -206,7 +209,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
                 userView?.isEnabled = false
                 userView?.canShowCallout = false
     }
-    
+    //how to react to annottion presses: go to message view
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if view.annotation is MKUserLocation{
             return
@@ -230,7 +233,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
     
 
 }
-
+//protocol to expose necesary interface to delegate
 protocol  MapViewControllerFirestoreMessagesDelegate: CanShowErrorProtocol{
     var messages: [Message]{ get set }
     //func clearMessages()

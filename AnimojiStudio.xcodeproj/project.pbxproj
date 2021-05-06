@@ -232,7 +232,6 @@
 		360720F6262E57950080B767 /* 2nd app stuff */ = {
 			isa = PBXGroup;
 			children = (
-				3639CF792633CECD002569DB /* Services */,
 				3639CF782633CEA5002569DB /* Model */,
 				36BB0214262FEE4800C0F926 /* Resources */,
 				36BB0213262FEE3000C0F926 /* Controller */,
@@ -260,6 +259,7 @@
 		3639CF782633CEA5002569DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3639CF792633CECD002569DB /* Services */,
 				361ED3FF264363E300B7CDFA /* Classes */,
 			);
 			path = Model;
@@ -268,8 +268,8 @@
 		3639CF792633CECD002569DB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */,
 				36CF7AFC263E607400A76E6E /* FirestoreUserService.swift */,
+				3639CF7A2633CEE6002569DB /* FirebaseAuthService.swift */,
 				36D2387D2640CA0A0070DFCD /* FirestoreMessageUploadServicee.swift */,
 				361ED3C32641B97C00B7CDFA /* FirestoreMessageRecieverService.swift */,
 				361ED3E1264235D800B7CDFA /* SnapchatLoginBitmojiService.swift */,

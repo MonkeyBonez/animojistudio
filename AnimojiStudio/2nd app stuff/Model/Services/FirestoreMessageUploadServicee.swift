@@ -3,7 +3,7 @@
 //  AnimojiStudio
 //
 //  Created by Snehal Mulchandani on 5/3/21.
-//  Copyright © 2021 Guilherme Rambo. All rights reserved.
+//  Snehal Mulchandani - Snehalmu@usc.edu
 //
 
 import UIKit
@@ -12,13 +12,14 @@ import FirebaseStorage
 import CoreLocation
 import CodableFirebase
 
-
+//to upload messages -> OBJC to work with OBJC memoji code
 @objc class FirestoreMessageUploadService: NSObject, CLLocationManagerDelegate{
     
     @objc static let shared = FirestoreMessageUploadService()
     @objc public var videoURL: NSURL = NSURL()
     var locationManager:CLLocationManager
     var db: Firestore
+    //set up location manager and get permission for user location
     override private init() {
         locationManager = CLLocationManager()
         db = Firestore.firestore()
@@ -30,7 +31,7 @@ import CodableFirebase
     deinit {//for debugging - Switched to singleton as gets deinit before location request and thus create video suceeds.
         print("DEINIT")
     }
-    
+    //upload message to firebase
     @objc func uploadVideo(){
         //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
         (UIApplication.shared.delegate as! AppDelegate).userExists()
@@ -59,6 +60,7 @@ import CodableFirebase
     }
     
     var newMessageURL:URL?
+    //to create a message, we request location once
     func createMessage(url: URL){
         newMessageURL = url
         locationManager.desiredAccuracy = kCLLocationAccuracyBest //change to best
@@ -66,7 +68,7 @@ import CodableFirebase
         //newMessage = Message(videoUrl: url, location: )
         //db.collection("Users").document(currUserID!).collection("Videos").addDocument(data: <#T##[String : Any]#>, completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
     }
-    
+    //to create a message, we get location once and when recieved, create message
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         db.collection("Users").document(currUser.shared.currUsedID!).getDocument { (document, error) in
             if let error = error{
@@ -82,11 +84,11 @@ import CodableFirebase
 
         
     }
-    
+    //print error
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
     }
-    
+    //send message to upload in firestore
     func uploadMessageToFirestore(newMessage: Message){
         //https://github.com/alickbass/CodableFirebase
         let docData = try! FirestoreEncoder().encode(newMessage)
