@@ -20,6 +20,7 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
     private let tileMinZoom: CLLocationDistance = 8500
     private var zoomed = false
     private let smallRadiusToDisplay: CLLocationDistance = 50//increase
+    var lastRouteOverlay:MKPolyline?
     
     private var overlay: MKTileOverlay = MKTileOverlay()
     var messageService:FirestoreMessagesMapService!
@@ -112,9 +113,14 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
             let renderer = MKTileOverlayRenderer(overlay: overlay)
             return renderer
         }
-        else{
-            return MKOverlayRenderer()
+        else if overlay is MKPolyline{
+            let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+            renderer.strokeColor = UIColor(red: (254/255), green: (148/255), blue: (143/255), alpha: 1)
+            //renderer.strokeColor  = .ma
+            return renderer
         }
+        return MKOverlayRenderer()
+        
         
     }
     //how to zoom when button pressed
@@ -218,18 +224,64 @@ class MapViewController: ShowsErrorViewController, MKMapViewDelegate, MapViewCon
             return
         }
 
-        if((mapView.userLocation.location?.distance(from: CLLocation(latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude)))! < 40){
+        if((mapView.userLocation.location?.distance(from: CLLocation(latitude: view.annotation!.coordinate.latitude, longitude: view.annotation!.coordinate.longitude)))! < 25){//25 meters
             var vc:takesMessageURL = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MessageViewerVC") as! MessageViewController
             vc.firebaseURL = messageAnnotation.videoURL
             self.navigationController?.pushViewController(vc as! UIViewController, animated: false)
         }
         else{
-            showError(error: "Get closer to message")//handle better
+            //showError(error: "Get closer to message")//handle better
+            loadDirectionsToMessage(message: messageAnnotation)
         }
             
         
         deselectAnnotations()
     }
+    
+    func loadDirectionsToMessage(message: MessageMapAnnotation){
+        //remove other directions
+        if let lastRoute = lastRouteOverlay{
+            self.mapView.removeOverlay(lastRoute)
+        }
+        let request = MKDirections.Request()
+        guard let currCoordinates = locationManager.location?.coordinate else{
+            print("Could not get user location - try to just show error")
+            showError(error: "Get closer to message")
+            return
+        }
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: currCoordinates))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: message.coordinate))
+        request.requestsAlternateRoutes = false
+        request.transportType = .walking
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { (response, error) in
+            guard let unwrappedResponse = response else{
+                print(error?.localizedDescription)
+                self.showError(error: "Get closer to message")
+                return
+            }
+            if(!unwrappedResponse.routes.isEmpty){
+                let route = unwrappedResponse.routes.first!
+                self.mapView.addOverlay(route.polyline as MKOverlay)
+                self.lastRouteOverlay = route.polyline
+                //logic for zooming on view with both points and the route
+                let oldBoundingMapRect = route.polyline.boundingMapRect
+                
+                let rects = [currCoordinates, message.coordinate].lazy.map { MKMapRect(origin: MKMapPoint($0), size: MKMapSize()) }
+                let fittingRect = rects.reduce(MKMapRect.null) { $0.union($1) }
+                let fixedRect = MKMapRect(x: fittingRect.origin.x, y: fittingRect.origin.y, width: fittingRect.width * 1.1, height: fittingRect.height * 1.1)
+                
+                let unionedRects = oldBoundingMapRect.union(fixedRect)
+                
+                //let fullRect = MKMapRect(origin: unionedRects.origin, size: MKMapSize(width: unionedRects.width * 1.1, height: unionedRects.height * 1.1))
+                
+                self.mapView.visibleMapRect = unionedRects
+            }
+        }
+    }
+    
     
 
 }
