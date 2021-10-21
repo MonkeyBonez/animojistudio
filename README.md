@@ -1,6 +1,6 @@
 <h1 style="color:#5501FF">Sonder</h1>
 
-<video src="https://drive.google.com/file/d/1MYWwsx4Pr3ql5iPjFkgx22pNkV7dNnh9/preview" width="640" height="480" allow="autoplay"></iframe>
+[![Watch the video](https://drive.google.com/file/d/1MYWwsx4Pr3ql5iPjFkgx22pNkV7dNnh9/preview)](https://drive.google.com/file/d/1MYWwsx4Pr3ql5iPjFkgx22pNkV7dNnh9/preview)
 
 
 Previous Notes from Animoji Project:
