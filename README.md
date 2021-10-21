@@ -1,4 +1,7 @@
-<h1 style="color:#5501FF">*******Studio</h1>
+<h1 style="color:#5501FF">Sonder</h1>
+
+
+Previous Notes from Animoji Project:
 Record ******* videos with unlimited duration with this standalone app.
 
 This app uses the private AvatarKit framework, the same one that's used by Apple's iMessage app. It leverages ReplayKit's screen recording capabilities to allow for longer recordings than the standard app.
