@@ -1,6 +1,6 @@
 <h1 style="color:#5501FF">Sonder</h1>
 
-<https://drive.google.com/file/d/1MYWwsx4Pr3ql5iPjFkgx22pNkV7dNnh9/preview>
+[Watch the demo](https://drive.google.com/file/d/1MYWwsx4Pr3ql5iPjFkgx22pNkV7dNnh9/preview)
 
 Previous Notes from Animoji Project:
 Record ******* videos with unlimited duration with this standalone app.
